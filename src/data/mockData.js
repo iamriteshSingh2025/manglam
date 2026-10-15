@@ -1,0 +1,775 @@
+// KaamSetu Demo Data Store
+// Clearly marked demonstration data with realistic Indian construction marketplace specs
+
+export const WORKER_CATEGORIES = [
+  {
+    group: 'Construction',
+    items: [
+      { id: 'raj-mistri', name: 'Raj Mistri', icon: 'Hammer', count: 184 },
+      { id: 'building-mistri', name: 'Building Mistri', icon: 'Building2', count: 96 },
+      { id: 'masonry-labour', name: 'Masonry Labour', icon: 'HardHat', count: 320 },
+      { id: 'shuttering-carpenter', name: 'Shuttering Carpenter', icon: 'Wrench', count: 88 },
+      { id: 'bar-bending', name: 'Bar Bending / Sariya Work', icon: 'Construction', count: 112 },
+      { id: 'tile-marble', name: 'Tile and Marble Installer', icon: 'Grid', count: 140 },
+      { id: 'pop-worker', name: 'POP Worker', icon: 'Layers', count: 65 },
+      { id: 'putty-finishing', name: 'Putty and Wall Finishing', icon: 'Paintbrush', count: 175 },
+    ]
+  },
+  {
+    group: 'Painting and Finishing',
+    items: [
+      { id: 'painter', name: 'Painter', icon: 'Paintbrush', count: 210 },
+      { id: 'wall-putty', name: 'Wall Putty Worker', icon: 'Sparkles', count: 145 },
+      { id: 'waterproofing', name: 'Waterproofing Worker', icon: 'ShieldCheck', count: 72 },
+      { id: 'texture-painter', name: 'Texture Painter', icon: 'Palette', count: 54 },
+      { id: 'polishing-worker', name: 'Polishing Worker', icon: 'Gem', count: 48 },
+    ]
+  },
+  {
+    group: 'Electrical and Technical',
+    items: [
+      { id: 'electrician', name: 'Electrician', icon: 'Zap', count: 195 },
+      { id: 'house-wiring', name: 'House Wiring Technician', icon: 'Cpu', count: 130 },
+      { id: 'inverter-tech', name: 'Inverter Installation Technician', icon: 'BatteryCharging', count: 82 },
+      { id: 'cctv-tech', name: 'CCTV Installation Technician', icon: 'Camera', count: 64 },
+      { id: 'appliance-repair', name: 'Appliance Repair Technician', icon: 'Tv', count: 91 },
+      { id: 'ac-tech', name: 'AC Technician', icon: 'Wind', count: 104 },
+    ]
+  },
+  {
+    group: 'Plumbing and Home Repair',
+    items: [
+      { id: 'plumber', name: 'Plumber', icon: 'Droplets', count: 168 },
+      { id: 'carpenter', name: 'Carpenter', icon: 'Axe', count: 150 },
+      { id: 'door-window-fitter', name: 'Door and Window Fitter', icon: 'DoorOpen', count: 76 },
+      { id: 'welding-worker', name: 'Welding Worker', icon: 'Flame', count: 89 },
+      { id: 'fabrication-worker', name: 'Fabrication Worker', icon: 'Cog', count: 73 },
+      { id: 'rooftop-sheet', name: 'Rooftop and Sheet Installation Worker', icon: 'Home', count: 42 },
+    ]
+  },
+  {
+    group: 'General Labour',
+    items: [
+      { id: 'construction-labour', name: 'Construction Labour', icon: 'Users', count: 410 },
+      { id: 'loading-unloading', name: 'Loading and Unloading Labour', icon: 'Truck', count: 230 },
+      { id: 'helper', name: 'Helper', icon: 'UserPlus', count: 350 },
+      { id: 'site-cleaning', name: 'Site Cleaning Worker', icon: 'Trash2', count: 120 },
+      { id: 'material-handling', name: 'Material Handling Labour', icon: 'Boxes', count: 180 },
+    ]
+  }
+];
+
+export const POPULAR_CITIES = [
+  'Lucknow',
+  'Varanasi',
+  'Kanpur',
+  'Prayagraj',
+  'Delhi NCR',
+  'Patna',
+  'Jaipur',
+  'Bhopal',
+  'Indore',
+  'Gorakhpur',
+  'Agra',
+  'Meerut'
+];
+
+export const INITIAL_WORKERS = [
+  {
+    id: 'w-101',
+    name: 'Rameshwar "Ramesh" Yadav',
+    primarySkill: 'Raj Mistri',
+    additionalSkills: ['Brick Masonry', 'Plastering', 'Foundation Work'],
+    experienceYears: 14,
+    city: 'Lucknow',
+    locality: 'Gomti Nagar & Indiranagar',
+    workingRadiusKm: 25,
+    workTypes: ['Daily Wage', 'Project-Based Work'],
+    expectedWage: '₹950 / day (Mistri)',
+    availability: 'Available Immediately',
+    isAvailable: true,
+    verificationStatus: 'Approved',
+    isVerified: true,
+    rating: 4.8,
+    reviewsCount: 38,
+    phone: '+91 98390 XXXXX (Connect via KaamSetu)',
+    bio: '14 years of hands-on structural brick masonry, RCC column framing, and finish plastering for independent duplex and commercial foundations.',
+    projectsCompleted: 62,
+    badgeText: 'Top Rated Mistri'
+  },
+  {
+    id: 'w-102',
+    name: 'Mohammad Salim',
+    primarySkill: 'Shuttering Carpenter',
+    additionalSkills: ['Bar Bending / Sariya Work', 'Centering Work', 'Beam Framing'],
+    experienceYears: 9,
+    city: 'Varanasi',
+    locality: 'Shivpur, Mahmoorganj & Cantt',
+    workingRadiusKm: 30,
+    workTypes: ['Per-Day Contract', 'Project-Based Work'],
+    expectedWage: '₹900 / day',
+    availability: 'Available Immediately',
+    isAvailable: true,
+    verificationStatus: 'Approved',
+    isVerified: true,
+    rating: 4.7,
+    reviewsCount: 29,
+    phone: '+91 94500 XXXXX (Connect via KaamSetu)',
+    bio: 'Specialist in steel & plywood shuttering for slabs, beams, columns, and staircase cast. Leads a dedicated team of 6 shuttering helpers.',
+    projectsCompleted: 45,
+    badgeText: 'Team Leader'
+  },
+  {
+    id: 'w-103',
+    name: 'Arvind Kumar Sharma',
+    primarySkill: 'Electrician',
+    additionalSkills: ['House Wiring Technician', 'Inverter Installation', 'MCB Distribution Board'],
+    experienceYears: 11,
+    city: 'Delhi NCR',
+    locality: 'Noida, Greater Noida & Ghaziabad',
+    workingRadiusKm: 35,
+    workTypes: ['Daily Wage', 'Fixed-Price Job'],
+    expectedWage: '₹850 / day or ₹45 / point',
+    availability: 'Available from Next Week',
+    isAvailable: true,
+    verificationStatus: 'Approved',
+    isVerified: true,
+    rating: 4.9,
+    reviewsCount: 52,
+    phone: '+91 98110 XXXXX (Connect via KaamSetu)',
+    bio: 'Certified ITI Wireman with 11+ years handling concealed conduit wiring, three-phase load balancing, inverter and smart home setups.',
+    projectsCompleted: 84,
+    badgeText: 'Certified Wireman'
+  },
+  {
+    id: 'w-104',
+    name: 'Dinesh Verma',
+    primarySkill: 'Painter',
+    additionalSkills: ['Wall Putty Worker', 'Waterproofing Worker', 'Texture Painting'],
+    experienceYears: 8,
+    city: 'Patna',
+    locality: 'Kankarbagh, Bailey Road & Danapur',
+    workingRadiusKm: 20,
+    workTypes: ['Fixed-Price Job', 'Per-Day Contract'],
+    expectedWage: '₹750 / day or ₹9 / sq.ft',
+    availability: 'Available Immediately',
+    isAvailable: true,
+    verificationStatus: 'Approved',
+    isVerified: true,
+    rating: 4.6,
+    reviewsCount: 31,
+    phone: '+91 93340 XXXXX (Connect via KaamSetu)',
+    bio: 'Expert in Asian Paints and Berger finishes, acrylic wall putty, water seepage treatments, and interior royal metallic texture work.',
+    projectsCompleted: 51,
+    badgeText: 'Texture Expert'
+  },
+  {
+    id: 'w-105',
+    name: 'Vikram Vishwakarma',
+    primarySkill: 'Carpenter',
+    additionalSkills: ['Door and Window Fitter', 'Modular Kitchen Cabinets', 'Almirah Framing'],
+    experienceYears: 12,
+    city: 'Kanpur',
+    locality: 'Kakadeo, Swaroop Nagar & Kalyanpur',
+    workingRadiusKm: 25,
+    workTypes: ['Daily Wage', 'Fixed-Price Job', 'Project-Based Work'],
+    expectedWage: '₹950 / day',
+    availability: 'Available Immediately',
+    isAvailable: true,
+    verificationStatus: 'Approved',
+    isVerified: true,
+    rating: 4.9,
+    reviewsCount: 44,
+    phone: '+91 97920 XXXXX (Connect via KaamSetu)',
+    bio: 'Master woodworker proficient in Teak, Marandi, and Flush door fittings, hydraulic hinges, plywood framework, and laminated wardrobe installations.',
+    projectsCompleted: 70,
+    badgeText: 'Master Artisan'
+  },
+  {
+    id: 'w-106',
+    name: 'Rajesh Bind',
+    primarySkill: 'Plumber',
+    additionalSkills: ['CPVC / UPVC Piping', 'Sanitary Fitting', 'Overhead Tank Installation'],
+    experienceYears: 10,
+    city: 'Prayagraj',
+    locality: 'Civil Lines, Naini & Jhalwa',
+    workingRadiusKm: 25,
+    workTypes: ['Daily Wage', 'Fixed-Price Job'],
+    expectedWage: '₹800 / day',
+    availability: 'Available Immediately',
+    isAvailable: true,
+    verificationStatus: 'Approved',
+    isVerified: true,
+    rating: 4.7,
+    reviewsCount: 36,
+    phone: '+91 99180 XXXXX (Connect via KaamSetu)',
+    bio: 'Complete bathroom sanitary fitting, water pump pressure troubleshooting, concealed wall-hung commode framing, and water tank plumbing lines.',
+    projectsCompleted: 58,
+    badgeText: 'Piping Specialist'
+  },
+  {
+    id: 'w-107',
+    name: 'Manoj Tiwari',
+    primarySkill: 'Tile and Marble Installer',
+    additionalSkills: ['Granite Countertops', 'Vitrified Tiles', 'Italian Marble Polishing'],
+    experienceYears: 13,
+    city: 'Jaipur',
+    locality: 'Mansarovar, Vaishali Nagar & Malviya Nagar',
+    workingRadiusKm: 30,
+    workTypes: ['Fixed-Price Job', 'Project-Based Work'],
+    expectedWage: '₹22 / sq.ft (Tiles) / ₹45 (Granite)',
+    availability: 'Available in 3 Days',
+    isAvailable: true,
+    verificationStatus: 'Approved',
+    isVerified: true,
+    rating: 4.8,
+    reviewsCount: 41,
+    phone: '+91 94140 XXXXX (Connect via KaamSetu)',
+    bio: 'Precision laser-guided floor leveling for large 4x2 and 6x4 vitrified tiles, staircase granite bull-nosing, and kitchen platform slab casting.',
+    projectsCompleted: 66,
+    badgeText: 'Precision Tile'
+  },
+  {
+    id: 'w-108',
+    name: 'Sunil Kumar Paswan',
+    primarySkill: 'Bar Bending / Sariya Work',
+    additionalSkills: ['RCC Foundation Ring Bending', 'Slab Mesh Tying', 'Column Caging'],
+    experienceYears: 7,
+    city: 'Bhopal',
+    locality: 'MP Nagar, Kolar & Hoshangabad Road',
+    workingRadiusKm: 25,
+    workTypes: ['Daily Wage', 'Project-Based Work'],
+    expectedWage: '₹850 / day or ₹4,500 / tonne',
+    availability: 'Available Immediately',
+    isAvailable: true,
+    verificationStatus: 'Pending Review',
+    isVerified: false,
+    rating: 4.5,
+    reviewsCount: 18,
+    phone: '+91 98260 XXXXX (Connect via KaamSetu)',
+    bio: 'Experienced sariya mistri for structural bar bending according to structural engineering drawings. Fast ring binding and footing cage tie-ups.',
+    projectsCompleted: 34,
+    badgeText: 'Structural Sariya'
+  }
+];
+
+export const INITIAL_SERVICES = [
+  {
+    id: 'srv-house-construction',
+    title: 'New House Construction',
+    category: 'Construction',
+    tagline: 'Complete structural brickwork, RCC framing and turnkey finishing',
+    description: 'End-to-end building execution from foundation digging, column casting, brick masonry to roof slab casting. Available as Labour Contract or Material + Labour contract.',
+    scope: [
+      'Excavation & Footing Foundation',
+      'RCC Column, Beam & Slab Casting',
+      'First Class Red Brick / Flyash Wall Masonry',
+      'Concealed Piping & Conduit Provisioning',
+      'Internal & External Dual Coat Plastering'
+    ],
+    duration: '3 to 7 Months (Depending on plot & floors)',
+    requiredWorkers: ['Raj Mistri', 'Bar Bending Mistri', 'Shuttering Carpenter', 'Construction Labour'],
+    pricingModel: 'Quotation Based (₹1,450 to ₹2,100 / sq.ft built-up for Turnkey)',
+    icon: 'Building2'
+  },
+  {
+    id: 'srv-renovation',
+    title: 'Home Renovation & Remodeling',
+    category: 'Construction',
+    tagline: 'Revamp existing rooms, structural modifications and modern upgrades',
+    description: 'Transform outdated layouts, knock down non-load-bearing walls, add second-floor extensions, modern flooring, and false ceilings for your home.',
+    scope: [
+      'Wall Demolition & Debris Disposal',
+      'New Brick Partition & Lintel Fitting',
+      'Floor Tile Removal & Fresh Screed Laying',
+      'Door Frame & Window Replacements',
+      'Ceiling POP and Cove Lighting Upgrades'
+    ],
+    duration: '2 to 5 Weeks',
+    requiredWorkers: ['Building Mistri', 'Tile Installer', 'Electrician', 'Painter'],
+    pricingModel: 'Scope & Measurement Based Quotation',
+    icon: 'Hammer'
+  },
+  {
+    id: 'srv-painting',
+    title: 'Wall Painting & Waterproofing',
+    category: 'Painting and Finishing',
+    tagline: 'Interior luxury emulsion, exterior weather coats & crack sealing',
+    description: 'Professional paint solutions with wall moisture testing, 2-coat putty application, primer sealing, and machine-sanded paint coats for mirror-smooth walls.',
+    scope: [
+      'Surface Grinding & Moisture Checking',
+      'Double Coat Acrylic Putty & Primer',
+      'Ceiling & Wall Emulsion Painting (2+ Coats)',
+      'Exterior Elastomeric Anti-fungal Coating',
+      'Wood & Metal Enamel Spray / Brush Coating'
+    ],
+    duration: '4 to 10 Days',
+    requiredWorkers: ['Painter', 'Wall Putty Worker', 'Waterproofing Worker'],
+    pricingModel: 'Per Sq.Ft or Fixed Job Contract',
+    icon: 'Paintbrush'
+  },
+  {
+    id: 'srv-electrical',
+    title: 'House Electrical Wiring & Distribution',
+    category: 'Electrical and Technical',
+    tagline: 'Safety-first conduit chasing, wire pulling, switchboard & MCB panels',
+    description: 'Standardized IS-certified concealed wiring layout. Includes load calculations for air conditioners, geysers, inverters, and heavy kitchen appliances.',
+    scope: [
+      'Wall Grooving & PVC Conduit Pipe Laying',
+      'Fire-retardant (FR) Copper Wire Pulling',
+      'Distribution Box (DB), ELCB & MCB Setup',
+      'Modular Switch Plates & Heavy Sockets',
+      'Earthing Pit Chemical Boring & Testing'
+    ],
+    duration: '5 to 14 Days',
+    requiredWorkers: ['Electrician', 'House Wiring Technician', 'Helper'],
+    pricingModel: 'Per Point or Whole House Contract',
+    icon: 'Zap'
+  },
+  {
+    id: 'srv-plumbing',
+    title: 'Sanitary & Plumbing Piping Installation',
+    category: 'Plumbing and Home Repair',
+    tagline: 'Leak-proof hot & cold CPVC pipes, drainage lines & luxury sanitaryware',
+    description: 'Complete piping network design preventing pressure drops and foul odor. Precision installation of concealed diverters, overhead water tanks, and sewage septic traps.',
+    scope: [
+      'Hot/Cold CPVC Wall Grooving & Solvent Jointing',
+      'SWR PVC Drainage & Rainwater Piping',
+      'Concealed Diverter, Jet Spray & Flush Cisterns',
+      'Overhead Loft & Terrace Tank Plumbing with Bypass',
+      'Pressure Testing with Hydraulic Pump'
+    ],
+    duration: '4 to 12 Days',
+    requiredWorkers: ['Plumber', 'Helper'],
+    pricingModel: 'Per Bathroom / Line or Daily Wage',
+    icon: 'Droplets'
+  },
+  {
+    id: 'srv-tile-marble',
+    title: 'Tile, Marble & Granite Flooring Work',
+    category: 'Construction',
+    tagline: 'Seamless vitrified tiles, staircase granite treads & stone cladding',
+    description: 'Laser-leveled flooring with high-adhesion polymer mortar. Eliminates hollow sounds, uneven lippage, and delivers crisp epoxy grouting.',
+    scope: [
+      'Sub-base Leveling & Cement Mortar Bedding',
+      'Vitrified Floor Tiles (4x2, 6x4, 2x2)',
+      'Kitchen Granite Platform & Sink Basin Cutting',
+      'Staircase Treads & Risers Chamfering',
+      'Stain-resistant Epoxy Grout Filling'
+    ],
+    duration: '1 to 3 Weeks',
+    requiredWorkers: ['Tile and Marble Installer', 'Helper'],
+    pricingModel: 'Per Sq.Ft Measurement Basis',
+    icon: 'Grid'
+  },
+  {
+    id: 'srv-waterproofing',
+    title: 'Terrace & Basement Waterproofing',
+    category: 'Painting and Finishing',
+    tagline: 'Polymer modified slurry coatings, brickbat coba & joint grouting',
+    description: 'End water seepage and ceiling dampness permanently. Specialized chemical membrane coatings for rooftop slabs, sunken bathrooms, and retaining basements.',
+    scope: [
+      'Crack V-grooving & Polyurethane Sealant',
+      '2-Coat Acrylic Polymer Modified Slurry',
+      'Fiberglass Mesh Reinforcement',
+      'Brickbat Coba or Screed Protective Top Layer',
+      'Ponding Water Leakage Test (72 Hours)'
+    ],
+    duration: '3 to 7 Days',
+    requiredWorkers: ['Waterproofing Worker', 'Masonry Labour'],
+    pricingModel: 'Per Sq.Ft with Warranty Agreement',
+    icon: 'ShieldCheck'
+  },
+  {
+    id: 'srv-fabrication',
+    title: 'Roof Shed, Gate & Steel Fabrication',
+    category: 'Plumbing and Home Repair',
+    tagline: 'Heavy MS gates, balcony railings, designer grills & profile sheet sheds',
+    description: 'Custom metal fabrication with precision arc and MIG welding. Heavy gauge MS tubes, galvanized iron (GI) roof sheds, and safety iron gates.',
+    scope: [
+      'Structural Steel Tubular Truss Welding',
+      'Color-coated Corrugated Roof Sheet Installation',
+      'Main Boundary Gate & Safety Grills',
+      'Staircase Handrails (SS 304 or MS Pipe)',
+      'Anti-rust Red Oxide Primer Coat'
+    ],
+    duration: '4 to 10 Days',
+    requiredWorkers: ['Welding Worker', 'Fabrication Worker', 'Rooftop Sheet Worker'],
+    pricingModel: 'Per Kg Metal or Sq.Ft Area',
+    icon: 'Flame'
+  }
+];
+
+export const INITIAL_MATERIALS = [
+  {
+    id: 'mat-cement-ultratech',
+    name: 'UltraTech Super Cement (PPC)',
+    category: 'Cement',
+    supplierName: 'UltraBuild Cement & Aggregates',
+    supplierCity: 'Lucknow',
+    deliveryLocations: ['Lucknow', 'Barabanki', 'Unnao', 'Sitapur'],
+    price: 385,
+    priceType: 'Fixed / Current Rate',
+    unit: 'bag (50 Kg)',
+    minOrderQty: '50 Bags',
+    availability: 'In Stock',
+    rating: 4.8,
+    reviewsCount: 64,
+    description: 'Engineered Portland Pozzolana Cement (PPC) for durable RCC slabs, foundations, and high-strength mortar plaster.',
+    specifications: {
+      Grade: 'PPC Fly-ash based',
+      Packaging: 'Tamper-proof HDPE Bag',
+      SettingTime: 'Initial > 30 mins, Final < 600 mins',
+      Standard: 'IS 1489 Part 1'
+    },
+    demoSupplierVerified: true
+  },
+  {
+    id: 'mat-sariya-tata',
+    name: 'Tata Tiscon 550D TMT Rebar (12mm)',
+    category: 'Steel / Sariya',
+    supplierName: 'Kashi Steel & TMT Sariya Traders',
+    supplierCity: 'Varanasi',
+    deliveryLocations: ['Varanasi', 'Chandauli', 'Mirzapur', 'Ghazipur'],
+    price: 68500,
+    priceType: 'Request Price / Daily Rate',
+    unit: 'Tonne',
+    minOrderQty: '1 Tonne',
+    availability: 'In Stock',
+    rating: 4.9,
+    reviewsCount: 82,
+    description: 'Fe-550D super ductile high tensile steel rebar with superior earthquake resistance, ribbed bond with concrete, and high corrosion resistance.',
+    specifications: {
+      Diameter: '12mm (Also available 8mm, 10mm, 16mm, 20mm)',
+      Grade: 'Fe 550D Super Ductile',
+      Length: '12 Metres standard',
+      Standard: 'IS 1786'
+    },
+    demoSupplierVerified: true
+  },
+  {
+    id: 'mat-sand-balu',
+    name: 'Coarse River Sand / Yamuna Balu (Plaster & Concrete)',
+    category: 'Sand / Balu',
+    supplierName: 'Ganga Sand & Balu Supply Co.',
+    supplierCity: 'Kanpur',
+    deliveryLocations: ['Kanpur', 'Unnao', 'Lucknow', 'Fatehpur'],
+    price: 48,
+    priceType: 'Request Price',
+    unit: 'Cubic Foot (cft)',
+    minOrderQty: '400 cft (1 Dumper Truck)',
+    availability: 'Next Day Dispatch',
+    rating: 4.6,
+    reviewsCount: 39,
+    description: 'Washed, silt-free red/grey coarse river sand ideal for load-bearing RCC concrete mix and crack-resistant masonry wall joints.',
+    specifications: {
+      Zone: 'Zone II River Sand',
+      SiltContent: '< 3% Washed',
+      VehicleLoad: 'Dumpers (400 to 800 cft)',
+      Moisture: 'Naturally drained'
+    },
+    demoSupplierVerified: true
+  },
+  {
+    id: 'mat-gitti-aggregate',
+    name: 'Blue Stone Aggregate / Gitti (20mm & 10mm)',
+    category: 'Aggregate / Gitti',
+    supplierName: 'Bundelkhand Stone Crushers & Infra',
+    supplierCity: 'Prayagraj',
+    deliveryLocations: ['Prayagraj', 'Kaushambi', 'Mirzapur', 'Banda'],
+    price: 36,
+    priceType: 'Request Price',
+    unit: 'Cubic Foot (cft)',
+    minOrderQty: '500 cft (1 Truck)',
+    availability: 'In Stock',
+    rating: 4.7,
+    reviewsCount: 28,
+    description: 'Crushed hard granite blue stone aggregates, machine graded for dense RCC mix proportion without voids.',
+    specifications: {
+      SizeFraction: '20mm Graded (60%) + 10mm (40%)',
+      FlakinessIndex: '< 15%',
+      CrushingValue: '< 20%',
+      Standard: 'IS 383'
+    },
+    demoSupplierVerified: true
+  },
+  {
+    id: 'mat-red-bricks',
+    name: 'First Class Kiln Red Bricks (A-Grade Awwal)',
+    category: 'Bricks',
+    supplierName: 'Awadh Bhatta Udyog',
+    supplierCity: 'Lucknow',
+    deliveryLocations: ['Lucknow', 'Sitapur', 'Rae Bareli'],
+    price: 8.5,
+    priceType: 'Fixed / Current Rate',
+    unit: 'Piece',
+    minOrderQty: '3,000 Pieces (1 Tractor Trolley)',
+    availability: 'In Stock',
+    rating: 4.7,
+    reviewsCount: 45,
+    description: 'Well-burnt red clay bricks with sharp edges, uniform metallic ringing sound, and high compressive strength exceeding 10 N/mm².',
+    specifications: {
+      StandardSize: '9" x 4.25" x 2.75"',
+      WaterAbsorption: '< 15%',
+      Efflorescence: 'Nil to Slight',
+      Origin: 'Chimney Kiln (Bhatta)'
+    },
+    demoSupplierVerified: true
+  },
+  {
+    id: 'mat-aac-blocks',
+    name: 'Siporex AAC Lightweight Thermal Blocks',
+    category: 'Blocks',
+    supplierName: 'GreenBuild Masonry Solutions',
+    supplierCity: 'Delhi NCR',
+    deliveryLocations: ['Delhi NCR', 'Noida', 'Gurugram', 'Faridabad'],
+    price: 58,
+    priceType: 'Request Price',
+    unit: 'Piece',
+    minOrderQty: '500 Pieces',
+    availability: 'In Stock',
+    rating: 4.8,
+    reviewsCount: 33,
+    description: 'Autoclaved aerated concrete blocks offering 3x faster construction, 50% dead-load weight reduction and high thermal insulation.',
+    specifications: {
+      Dimensions: '600mm x 200mm x 150mm (6 Inch)',
+      DryDensity: '550 - 650 kg/m³',
+      FireRating: '4 Hours',
+      Savings: 'Reduces mortar joint cost by 40%'
+    },
+    demoSupplierVerified: true
+  },
+  {
+    id: 'mat-tiles-kajaria',
+    name: 'Kajaria Double Charge Vitrified Floor Tiles (4x2 Ft)',
+    category: 'Tiles',
+    supplierName: 'Apex Tiles & Sanitary World',
+    supplierCity: 'Delhi NCR',
+    deliveryLocations: ['Delhi NCR', 'Ghaziabad', 'Noida', 'Meerut'],
+    price: 52,
+    priceType: 'Request Price',
+    unit: 'Sq.Ft (Sold per box)',
+    minOrderQty: '30 Boxes (480 sq.ft)',
+    availability: 'In Stock',
+    rating: 4.9,
+    reviewsCount: 71,
+    description: 'High gloss, stain-proof double charge vitrified tiles designed for living rooms, bedrooms, and heavy footfall commercial floors.',
+    specifications: {
+      Size: '1200mm x 600mm (4x2 Feet)',
+      Finish: 'Nano Polished Glossy',
+      BoxCoverage: '15.5 Sq.Ft (2 Pieces per box)',
+      Brand: 'Kajaria Ceramics'
+    },
+    demoSupplierVerified: true
+  },
+  {
+    id: 'mat-paint-asian',
+    name: 'Asian Paints Apex Ultima Exterior Emulsion',
+    category: 'Paint and Putty',
+    supplierName: 'Krishna Paints & Waterproofing Hub',
+    supplierCity: 'Patna',
+    deliveryLocations: ['Patna', 'Hajipur', 'Muzaffarpur'],
+    price: 4950,
+    priceType: 'Fixed / Current Rate',
+    unit: '20 Litre Bucket',
+    minOrderQty: '2 Buckets',
+    availability: 'In Stock',
+    rating: 4.9,
+    reviewsCount: 56,
+    description: 'Premium outdoor elastomeric emulsion with Colour Stay technology and 7-year performance warranty against algae and extreme UV rays.',
+    specifications: {
+      PackSize: '20 Litres',
+      Coverage: '55 - 65 sq.ft / Litre (2 coats)',
+      Warranty: '7 Year Manufacturer Warranty',
+      Surface: 'Exterior Plastered Walls'
+    },
+    demoSupplierVerified: true
+  },
+  {
+    id: 'mat-electrical-polycab',
+    name: 'Polycab Green FR-LSH Fire-Safe House Wires (90m)',
+    category: 'Electrical Materials',
+    supplierName: 'Vidyut Electricals & Power Traders',
+    supplierCity: 'Varanasi',
+    deliveryLocations: ['Varanasi', 'Jaunpur', 'Prayagraj'],
+    price: 1840,
+    priceType: 'Fixed / Current Rate',
+    unit: 'Coil (90 Metres)',
+    minOrderQty: '4 Coils',
+    availability: 'In Stock',
+    rating: 4.8,
+    reviewsCount: 42,
+    description: '100% pure electrolytic copper wire with Flame Retardant Low Smoke Halogen insulation for residential fire protection.',
+    specifications: {
+      Gauge: '1.5 sq.mm (Also available 1.0, 2.5, 4.0, 6.0)',
+      Length: '90 Metres per coil',
+      Insulation: 'FR-LSH Lead-Free PVC',
+      Standard: 'IS 694'
+    },
+    demoSupplierVerified: true
+  },
+  {
+    id: 'mat-plumbing-astral',
+    name: 'Astral CPVC Pro Pipes & Fittings (Class 1 & 2)',
+    category: 'Plumbing Materials',
+    supplierName: 'JalShree Pipes & Sanitary Mart',
+    supplierCity: 'Jaipur',
+    deliveryLocations: ['Jaipur', 'Ajmer', 'Sikar', 'Alwar'],
+    price: 320,
+    priceType: 'Request Price',
+    unit: 'Pipe Length (3 Metres / 10 Ft)',
+    minOrderQty: '15 Pipes (Assorted sizes)',
+    availability: 'In Stock',
+    rating: 4.9,
+    reviewsCount: 49,
+    description: 'Hot and cold water CPVC pressure plumbing system with NSF-61 certification. Handles temperatures up to 93°C without corrosion.',
+    specifications: {
+      Diameter: '3/4 Inch (20mm) & 1 Inch (25mm)',
+      PressureRating: 'SDR 11 (28 kg/cm²)',
+      TemperatureRange: 'Up to 93° Celsius',
+      Brand: 'Astral Pipes'
+    },
+    demoSupplierVerified: true
+  }
+];
+
+export const INITIAL_REQUIREMENTS = [
+  {
+    id: 'KS-REQ-8491',
+    customerName: 'Vivek Singhania',
+    mobile: '+91 98391 12345',
+    city: 'Lucknow',
+    locality: 'Shaheed Path, Sector 7',
+    requirementType: 'New Construction',
+    serviceCategory: 'Raj Mistri / House Construction',
+    description: 'Need team for Ground + 1 Floor residential construction on a 1,500 sq.ft plot. Looking for experienced Raj Mistri with 6-8 labourers for column casting and 9-inch outer brick walls.',
+    budget: '₹28,00,000 (Turnkey / Labour Contract)',
+    preferredStartDate: 'Within 10 Days',
+    duration: '5 Months',
+    scopeType: 'Labour + Material',
+    status: 'Under Review', // New, Under Review, Assigned, Provider Contacted, Quotation Received, Confirmed, In Progress, Completed
+    createdAt: '2026-10-12',
+    assignedProvider: 'Sharma Constructions & Civil Works',
+    notes: 'Site visit scheduled by contractor. Soil test completed.'
+  },
+  {
+    id: 'KS-REQ-8492',
+    customerName: 'Anuradha Pandey',
+    mobile: '+91 94501 67890',
+    city: 'Varanasi',
+    locality: 'Mahmoorganj, Lane 4',
+    requirementType: 'Painting and Finishing',
+    serviceCategory: 'Painter / Putty Worker',
+    description: 'Complete 3 BHK duplex repainting with 2 coats acrylic putty and Asian Paints Royale Luxury emulsion on interior walls and Apex Ultima outside.',
+    budget: '₹48,000 (Labour Only)',
+    preferredStartDate: 'Immediate',
+    duration: '8 Days',
+    scopeType: 'Labour only',
+    status: 'Quotation Received',
+    createdAt: '2026-10-13',
+    assignedProvider: 'Dinesh Verma (Painter)',
+    notes: 'Quotation of ₹42,000 submitted by provider. Customer reviewing.'
+  },
+  {
+    id: 'KS-REQ-8493',
+    customerName: 'Rajnish Buildtech Pvt Ltd',
+    mobile: '+91 97920 44556',
+    city: 'Kanpur',
+    locality: 'Panki Industrial Area',
+    requirementType: 'Material Purchase',
+    serviceCategory: 'Steel / Sariya & Cement',
+    description: 'Urgent bulk purchase: 18 Tonne Tata Tiscon or Jindal Panther 550D TMT (12mm, 16mm, 20mm) and 600 Bags OPC 53 Grade Cement for warehouse foundation slab.',
+    budget: '₹14,50,000',
+    preferredStartDate: 'Within 3 Days',
+    duration: 'Immediate Delivery',
+    scopeType: 'Material only',
+    status: 'Provider Contacted',
+    createdAt: '2026-10-14',
+    assignedProvider: 'Kashi Steel & UltraBuild Materials',
+    notes: 'Suppliers notified. Awaiting wholesale delivery quotation.'
+  },
+  {
+    id: 'KS-REQ-8494',
+    customerName: 'Er. Rajeshwar Nath',
+    mobile: '+91 98110 99887',
+    city: 'Delhi NCR',
+    locality: 'Sector 62, Noida',
+    requirementType: 'Electrical or Plumbing',
+    serviceCategory: 'Electrician / House Wiring',
+    description: 'Concealed wiring for new 4-floor builder floor building. Point wiring, AC copper piping ducting, distribution board setup with separate meter provisions.',
+    budget: '₹1,20,000 (Labour Only)',
+    preferredStartDate: 'Next Monday',
+    duration: '18 Days',
+    scopeType: 'Labour only',
+    status: 'Assigned',
+    createdAt: '2026-10-10',
+    assignedProvider: 'Arvind Kumar Sharma (Master Electrician)',
+    notes: 'Work commencing on site following slab shuttering removal.'
+  }
+];
+
+export const INITIAL_CONTRACTORS = [
+  {
+    id: 'c-201',
+    businessName: 'Sharma Constructions & Civil Works',
+    contactPerson: 'Er. Ashutosh Sharma',
+    mobile: '+91 98390 55443',
+    city: 'Lucknow',
+    serviceArea: 'Lucknow, Kanpur, Ayodhya',
+    servicesOffered: ['New House Construction', 'Turnkey Civil Projects', 'RCC Framing', 'Industrial Sheds'],
+    teamSize: '35 Workers & Mistris',
+    projectType: ['Residential Duplex', 'Commercial Complex', 'Boundary Walls'],
+    description: '18+ years in civil contracting. Dedicated Raj Mistris, bar benders, centering plates, and concrete mixers for timely project handover.',
+    verificationStatus: 'Approved',
+    projectsCompleted: 85,
+    rating: 4.8
+  },
+  {
+    id: 'c-202',
+    businessName: 'Purvanchal Builders & Civil Infra',
+    contactPerson: 'Santosh Rai',
+    mobile: '+91 94500 88771',
+    city: 'Varanasi',
+    serviceArea: 'Varanasi, Chandauli, Prayagraj',
+    servicesOffered: ['Home Renovation', 'Complete Building Construction', 'Tile & Marble Flooring'],
+    teamSize: '50+ Craftsmen',
+    projectType: ['Villas', 'School Buildings', 'Hospital Renovation'],
+    description: 'Specialized in earthquake-resistant structural RCC work and premium interior plastering across Eastern UP.',
+    verificationStatus: 'Approved',
+    projectsCompleted: 110,
+    rating: 4.9
+  }
+];
+
+export const INITIAL_SUPPLIERS = [
+  {
+    id: 'sup-301',
+    businessName: 'UltraBuild Cement & Aggregates',
+    contactPerson: 'Sunil Aggarwal',
+    phone: '+91 98391 77665',
+    email: 'contact@ultrabuildmaterials.demo',
+    location: 'Transport Nagar, Lucknow',
+    deliveryLocations: ['Lucknow', 'Barabanki', 'Unnao', 'Sitapur'],
+    materialCategories: ['Cement', 'Aggregate / Gitti', 'Sand / Balu'],
+    pricingModel: 'Wholesale & Direct Site Delivery',
+    minOrderQty: '50 Bags / 400 cft',
+    verificationStatus: 'Approved',
+    rating: 4.8,
+    activeProductsCount: 8
+  },
+  {
+    id: 'sup-302',
+    businessName: 'Kashi Steel & TMT Sariya Traders',
+    contactPerson: 'Pramod Keshari',
+    phone: '+91 94502 33221',
+    email: 'sales@kashisteel.demo',
+    location: 'Rathyatra, Varanasi',
+    deliveryLocations: ['Varanasi', 'Chandauli', 'Mirzapur', 'Ghazipur'],
+    materialCategories: ['Steel / Sariya', 'Binding Wire', 'Roofing Materials'],
+    pricingModel: 'Daily Mandi / Mill Rate',
+    minOrderQty: '1 Tonne',
+    verificationStatus: 'Approved',
+    rating: 4.9,
+    activeProductsCount: 12
+  }
+];
