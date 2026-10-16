@@ -18,11 +18,11 @@ export const MobileBottomNav = ({ onOpenPostModal }) => {
   };
 
   const navItems = [
-    { label: 'Workers', icon: Users, path: '/workers' },
-    { label: 'Services', icon: Hammer, path: '/services' },
-    { label: 'Post', icon: PlusCircle, isCta: true },
-    { label: 'Materials', icon: Package, path: '/materials' },
-    { label: 'Dashboard', icon: LayoutDashboard, path: getDashboardPath() },
+    { label: 'कारीगर', icon: Users, path: '/workers' },
+    { label: 'सेवाएँ', icon: Hammer, path: '/services' },
+    { label: 'पोस्ट', icon: PlusCircle, isCta: true },
+    { label: 'सामग्री', icon: Package, path: '/materials' },
+    { label: 'डैशबोर्ड', icon: LayoutDashboard, path: getDashboardPath() },
   ];
 
   return (
@@ -79,7 +79,7 @@ export const MobileBottomNav = ({ onOpenPostModal }) => {
                 <PlusCircle size={26} color="#FFFFFF" strokeWidth={2.5} />
               </Box>
               <Typography variant="caption" sx={{ color: '#EA580C', fontWeight: 700, fontSize: '0.68rem', mt: 0.25 }}>
-                Post Req
+                जरूरत पोस्ट
               </Typography>
             </Box>
           );

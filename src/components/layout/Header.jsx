@@ -48,14 +48,14 @@ export const Header = ({ onOpenPostModal }) => {
   const [roleAnchorEl, setRoleAnchorEl] = useState(null);
 
   const navLinks = [
-    { label: 'Home', path: '/' },
-    { label: 'Find Workers', path: '/workers' },
-    { label: 'Construction Services', path: '/services' },
-    { label: 'Building Materials', path: '/materials' },
-    { label: 'For Workers', path: '/register-worker' },
-    { label: 'For Suppliers', path: '/register-supplier' },
-    { label: 'How It Works', path: '/how-it-works' },
-    { label: 'Contact', path: '/contact' },
+    { label: 'होम', path: '/' },
+    { label: 'कारीगर खोजें', path: '/workers' },
+    { label: 'निर्माण सेवाएँ', path: '/services' },
+    { label: 'निर्माण सामग्री', path: '/materials' },
+    { label: 'कारीगरों के लिए', path: '/register-worker' },
+    { label: 'सप्लायर के लिए', path: '/register-supplier' },
+    { label: 'कैसे काम करता है', path: '/how-it-works' },
+    { label: 'संपर्क करें', path: '/contact' },
   ];
 
   const handleCityChange = (e) => {
@@ -84,6 +84,15 @@ export const Header = ({ onOpenPostModal }) => {
     return '/dashboard/customer';
   };
 
+  const roleNameHindi = {
+    visitor: 'आगंतुक',
+    customer: 'ग्राहक',
+    worker: 'कारीगर',
+    contractor: 'ठेकेदार',
+    supplier: 'सप्लायर',
+    admin: 'एडमिन',
+  };
+
   return (
     <>
       <DemoBanner />
@@ -91,7 +100,7 @@ export const Header = ({ onOpenPostModal }) => {
         <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ minHeight: { xs: 68, md: 74 }, display: 'flex', justifyContent: 'space-between' }}>
             
-            {/* Logo & Tagline */}
+            {/* लोगो और टैगलाइन */}
             <Box
               component={Link}
               to="/"
@@ -131,7 +140,7 @@ export const Header = ({ onOpenPostModal }) => {
                     gap: 0.5
                   }}
                 >
-                  Kaam<span style={{ color: '#EA580C' }}>Setu</span>
+                  काम<span style={{ color: '#EA580C' }}>सेतु</span>
                 </Typography>
                 <Typography
                   variant="caption"
@@ -148,7 +157,7 @@ export const Header = ({ onOpenPostModal }) => {
               </Box>
             </Box>
 
-            {/* City Selector (Desktop) */}
+            {/* शहर चुनें (Desktop) */}
             <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', mr: 2 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', bgcolor: 'rgba(255, 255, 255, 0.06)', borderRadius: 2, px: 1.25, py: 0.4, border: '1px solid rgba(255, 255, 255, 0.1)' }}>
                 <MapPin size={16} color="#EA580C" style={{ marginRight: 6 }} />
@@ -164,7 +173,7 @@ export const Header = ({ onOpenPostModal }) => {
                     '& .MuiSvgIcon-root': { color: '#94A3B8' },
                   }}
                 >
-                  <MenuItem value="All Cities">All India (Cities)</MenuItem>
+                  <MenuItem value="All Cities">सभी शहर (अखिल भारत)</MenuItem>
                   {POPULAR_CITIES.map(city => (
                     <MenuItem key={city} value={city}>{city}</MenuItem>
                   ))}
@@ -172,7 +181,7 @@ export const Header = ({ onOpenPostModal }) => {
               </Box>
             </Box>
 
-            {/* Desktop Navigation Links */}
+            {/* Desktop नेविगेशन लिंक */}
             <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 0.5 }}>
               {navLinks.map((link) => {
                 const isActive = location.pathname === link.path;
@@ -214,9 +223,9 @@ export const Header = ({ onOpenPostModal }) => {
               })}
             </Box>
 
-            {/* Right Action Buttons */}
+            {/* दायें तरफ के बटन */}
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.25 }}>
-              {/* Founder Helpline Button */}
+              {/* संस्थापक हेल्पलाइन */}
               <Button
                 component="a"
                 href="tel:+918739000333"
@@ -240,10 +249,10 @@ export const Header = ({ onOpenPostModal }) => {
                   }
                 }}
               >
-                Owner / Raka Mishra ji: 8739000333
+                मालिक / राका मिश्रा जी: 8739000333
               </Button>
 
-              {/* Role Switcher Button */}
+              {/* भूमिका बदलें बटन */}
               <Button
                 variant="outlined"
                 size="small"
@@ -265,7 +274,7 @@ export const Header = ({ onOpenPostModal }) => {
                   }
                 }}
               >
-                {currentRole === 'visitor' ? 'Role: Visitor' : `Role: ${currentRole.toUpperCase()}`}
+                {currentRole === 'visitor' ? 'भूमिका: आगंतुक' : `भूमिका: ${roleNameHindi[currentRole] || currentRole.toUpperCase()}`}
               </Button>
 
               <Menu
@@ -284,26 +293,26 @@ export const Header = ({ onOpenPostModal }) => {
                 }}
               >
                 <MenuItem onClick={() => handleRoleSelect('visitor')} selected={currentRole === 'visitor'}>
-                  Public Visitor
+                  आम आगंतुक (Visitor)
                 </MenuItem>
                 <MenuItem onClick={() => handleRoleSelect('customer')} selected={currentRole === 'customer'}>
-                  Customer / Homeowner
+                  ग्राहक / घर मालिक
                 </MenuItem>
                 <MenuItem onClick={() => handleRoleSelect('worker')} selected={currentRole === 'worker'}>
-                  Skilled Worker (Raj Mistri)
+                  कुशल कारीगर (राज मिस्त्री)
                 </MenuItem>
                 <MenuItem onClick={() => handleRoleSelect('contractor')} selected={currentRole === 'contractor'}>
-                  Contractor / Team
+                  ठेकेदार / टीम
                 </MenuItem>
                 <MenuItem onClick={() => handleRoleSelect('supplier')} selected={currentRole === 'supplier'}>
-                  Building Material Supplier
+                  निर्माण सामग्री सप्लायर
                 </MenuItem>
                 <MenuItem onClick={() => handleRoleSelect('admin')} selected={currentRole === 'admin'} sx={{ color: '#FB923C', fontWeight: 600 }}>
-                  Platform Admin Dashboard
+                  प्लेटफार्म एडमिन डैशबोर्ड
                 </MenuItem>
               </Menu>
 
-              {/* Dashboard Link if role chosen */}
+              {/* डैशबोर्ड लिंक */}
               {currentRole !== 'visitor' ? (
                 <Button
                   component={Link}
@@ -325,7 +334,7 @@ export const Header = ({ onOpenPostModal }) => {
                     }
                   }}
                 >
-                  My Dashboard
+                  मेरा डैशबोर्ड
                 </Button>
               ) : (
                 <Button
@@ -340,11 +349,11 @@ export const Header = ({ onOpenPostModal }) => {
                     '&:hover': { color: '#EA580C' }
                   }}
                 >
-                  Login / Join
+                  लॉगिन / जुड़ें
                 </Button>
               )}
 
-              {/* Primary CTA: Post Your Requirement */}
+              {/* मुख्य CTA: जरूरत पोस्ट करें */}
               <Button
                 variant="contained"
                 onClick={onOpenPostModal || (() => navigate('/post-requirement'))}
@@ -366,10 +375,10 @@ export const Header = ({ onOpenPostModal }) => {
                   }
                 }}
               >
-                Post Requirement
+                जरूरत पोस्ट करें
               </Button>
 
-              {/* Mobile Drawer Trigger */}
+              {/* मोबाइल मेनू बटन */}
               <IconButton
                 onClick={() => setMobileOpen(true)}
                 sx={{
@@ -386,7 +395,7 @@ export const Header = ({ onOpenPostModal }) => {
         </Container>
       </AppBar>
 
-      {/* Mobile Navigation Drawer */}
+      {/* मोबाइल नेविगेशन ड्रॉअर */}
       <Drawer
         anchor="right"
         open={mobileOpen}
@@ -407,7 +416,7 @@ export const Header = ({ onOpenPostModal }) => {
               <HardHat size={20} color="#FFFFFF" />
             </Box>
             <Typography variant="h6" sx={{ fontWeight: 800, color: '#FFFFFF' }}>
-              Kaam<span style={{ color: '#EA580C' }}>Setu</span>
+              काम<span style={{ color: '#EA580C' }}>सेतु</span>
             </Typography>
           </Box>
           <IconButton onClick={() => setMobileOpen(false)} sx={{ color: '#94A3B8' }}>
@@ -415,13 +424,13 @@ export const Header = ({ onOpenPostModal }) => {
           </IconButton>
         </Box>
 
-        {/* Owner Information Box */}
+        {/* मालिक की जानकारी */}
         <Box sx={{ mb: 2, p: 1.5, bgcolor: 'rgba(234, 88, 12, 0.15)', borderRadius: 2, border: '1px solid rgba(234, 88, 12, 0.4)' }}>
           <Typography variant="caption" sx={{ color: '#FED7AA', fontWeight: 700, display: 'block' }}>
-            Main Owner / Founder:
+            मुख्य मालिक / संस्थापक:
           </Typography>
           <Typography variant="subtitle2" sx={{ color: '#FFF', fontWeight: 800 }}>
-            Abhishek Mishra (Raka Mishra ji)
+            अभिषेक मिश्रा (राका मिश्रा जी)
           </Typography>
           <Button
             component="a"
@@ -432,14 +441,14 @@ export const Header = ({ onOpenPostModal }) => {
             startIcon={<PhoneCall size={14} />}
             sx={{ mt: 1, bgcolor: '#EA580C', color: '#FFF', fontWeight: 700, py: 0.6, fontSize: '0.78rem' }}
           >
-            Call: +91 8739000333
+            कॉल करें: +91 8739000333
           </Button>
         </Box>
 
-        {/* City Selector in Mobile Drawer */}
+        {/* मोबाइल शहर चुनें */}
         <Box sx={{ mb: 2, p: 1.5, bgcolor: 'rgba(255, 255, 255, 0.05)', borderRadius: 2 }}>
           <Typography variant="caption" sx={{ color: '#94A3B8', display: 'block', mb: 0.5 }}>
-            Selected City:
+            चुना हुआ शहर:
           </Typography>
           <Select
             value={activeCity}
@@ -453,23 +462,23 @@ export const Header = ({ onOpenPostModal }) => {
               '& .MuiSvgIcon-root': { color: '#EA580C' }
             }}
           >
-            <MenuItem value="All Cities">All India (Cities)</MenuItem>
+            <MenuItem value="All Cities">सभी शहर (अखिल भारत)</MenuItem>
             {POPULAR_CITIES.map(city => (
               <MenuItem key={city} value={city}>{city}</MenuItem>
             ))}
           </Select>
         </Box>
 
-        {/* Role Switcher in Mobile Drawer */}
+        {/* मोबाइल भूमिका बदलें */}
         <Box sx={{ mb: 3, p: 1.5, bgcolor: 'rgba(234, 88, 12, 0.1)', border: '1px solid rgba(234, 88, 12, 0.3)', borderRadius: 2 }}>
           <Typography variant="caption" sx={{ color: '#FB923C', fontWeight: 600, display: 'block', mb: 0.5 }}>
-            Switch User Role:
+            भूमिका बदलें:
           </Typography>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.75 }}>
             {['visitor', 'customer', 'worker', 'contractor', 'supplier', 'admin'].map(r => (
               <Chip
                 key={r}
-                label={r.toUpperCase()}
+                label={roleNameHindi[r]?.toUpperCase() || r.toUpperCase()}
                 onClick={() => {
                   handleRoleSelect(r);
                   setMobileOpen(false);
@@ -486,7 +495,7 @@ export const Header = ({ onOpenPostModal }) => {
           </Box>
         </Box>
 
-        {/* Links */}
+        {/* लिंक */}
         <List sx={{ py: 0 }}>
           {navLinks.map((link) => (
             <ListItem key={link.label} disablePadding sx={{ mb: 0.5 }}>
@@ -532,7 +541,7 @@ export const Header = ({ onOpenPostModal }) => {
               '&:hover': { bgcolor: '#C2410C' }
             }}
           >
-            Post Requirement
+            जरूरत पोस्ट करें
           </Button>
 
           <Button
@@ -548,7 +557,7 @@ export const Header = ({ onOpenPostModal }) => {
               fontWeight: 600
             }}
           >
-            Role Login & Dashboards
+            लॉगिन एवं डैशबोर्ड
           </Button>
         </Box>
       </Drawer>

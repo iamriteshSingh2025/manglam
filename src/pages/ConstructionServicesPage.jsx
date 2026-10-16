@@ -22,6 +22,14 @@ export const ConstructionServicesPage = ({ onOpenQuoteModal }) => {
 
   const categories = ['All', 'Construction', 'Painting and Finishing', 'Electrical and Technical', 'Plumbing and Home Repair'];
 
+  const categoryLabels = {
+    'All': 'सभी',
+    'Construction': 'निर्माण',
+    'Painting and Finishing': 'पेंटिंग एवं फिनिशिंग',
+    'Electrical and Technical': 'इलेक्ट्रिकल एवं तकनीकी',
+    'Plumbing and Home Repair': 'प्लंबिंग एवं घर की मरम्मत'
+  };
+
   const filteredServices = services.filter(service => {
     if (selectedCategory !== 'All' && service.category !== selectedCategory) return false;
     if (search) {
@@ -37,20 +45,20 @@ export const ConstructionServicesPage = ({ onOpenQuoteModal }) => {
     <Box sx={{ py: 5 }}>
       <Container maxWidth="xl">
         
-        {/* Title */}
+        {/* शीर्षक */}
         <Box sx={{ mb: 4 }}>
           <Typography variant="overline" sx={{ color: '#EA580C', fontWeight: 800, letterSpacing: '0.06em' }}>
-            Professional Solutions
+            व्यावसायिक समाधान
           </Typography>
           <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 1 }}>
-            Construction & Renovation Services
+            निर्माण एवं रिनोवेशन सेवाएँ
           </Typography>
           <Typography variant="body1" sx={{ color: '#64748B' }}>
-            Structured civil contracting, electrical wiring, plumbing, and finishing solutions with transparent milestone scopes.
+            पारदर्शी माइलस्टोन स्कोप के साथ संरचित सिविल कॉन्ट्रैक्टिंग, इलेक्ट्रिकल वायरिंग, प्लंबिंग और फिनिशिंग समाधान।
           </Typography>
         </Box>
 
-        {/* Search & Tabs */}
+        {/* सर्च और टैब्स */}
         <Paper
           elevation={0}
           sx={{
@@ -70,7 +78,7 @@ export const ConstructionServicesPage = ({ onOpenQuoteModal }) => {
             <TextField
               fullWidth
               size="small"
-              placeholder="Search services (e.g. Turnkey, Painting, Wiring, Tile)..."
+              placeholder="सेवाएँ खोजें (जैसे टर्नकी, पेंटिंग, वायरिंग, टाइल)..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               InputProps={{
@@ -101,12 +109,12 @@ export const ConstructionServicesPage = ({ onOpenQuoteModal }) => {
             }}
           >
             {categories.map(cat => (
-              <Tab key={cat} label={cat} value={cat} />
+              <Tab key={cat} label={categoryLabels[cat] || cat} value={cat} />
             ))}
           </Tabs>
         </Paper>
 
-        {/* Services Grid */}
+        {/* सेवा ग्रिड */}
         <Grid container spacing={3}>
           {filteredServices.map(service => (
             <Grid key={service.id} size={{ xs: 12, sm: 6, lg: 4 }}>

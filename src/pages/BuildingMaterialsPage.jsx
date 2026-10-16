@@ -38,6 +38,20 @@ export const BuildingMaterialsPage = ({ onOpenQuoteModal }) => {
     'Plumbing Materials'
   ];
 
+  const categoryLabels = {
+    'All': 'सभी',
+    'Cement': 'सीमेंट',
+    'Steel / Sariya': 'स्टील / सरिया',
+    'Sand / Balu': 'रेत / बालू',
+    'Aggregate / Gitti': 'गिट्टी / एग्रीगेट',
+    'Bricks': 'ईंट',
+    'Blocks': 'ब्लॉक्स',
+    'Tiles': 'टाइल्स',
+    'Paint and Putty': 'पेंट एवं पुट्टी',
+    'Electrical Materials': 'इलेक्ट्रिकल सामग्री',
+    'Plumbing Materials': 'प्लंबिंग सामग्री'
+  };
+
   const filteredMaterials = materials.filter(mat => {
     if (selectedCategory !== 'All' && mat.category !== selectedCategory) return false;
     if (selectedCity && selectedCity !== 'All Cities') {
@@ -59,29 +73,29 @@ export const BuildingMaterialsPage = ({ onOpenQuoteModal }) => {
     <Box sx={{ py: 5 }}>
       <Container maxWidth="xl">
         
-        {/* Title */}
+        {/* शीर्षक */}
         <Box sx={{ mb: 3 }}>
           <Typography variant="overline" sx={{ color: '#EA580C', fontWeight: 800, letterSpacing: '0.06em' }}>
-            Direct Dealership Sourcing
+            सीधी डीलरशिप सोर्सिंग
           </Typography>
           <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 1 }}>
-            Building Materials Marketplace
+            निर्माण सामग्री मार्केटप्लेस
           </Typography>
           <Typography variant="body1" sx={{ color: '#64748B' }}>
-            Source cement, TMT sariya, sand, aggregates, and finishing supplies directly from verified regional stockists and mills.
+            सीमेंट, TMT सरिया, रेत, गिट्टी और फिनिशिंग सामग्री सीधे सत्यापित क्षेत्रीय स्टॉकिस्ट और मिलों से प्राप्त करें।
           </Typography>
         </Box>
 
-        {/* Transparent Market Pricing Notice */}
+        {/* पारदर्शी बाजार मूल्य सूचना */}
         <Alert
           severity="info"
           icon={<AlertCircle size={20} color="#2563EB" />}
           sx={{ mb: 4, borderRadius: 2.5, bgcolor: '#EFF6FF', border: '1px solid #BFDBFE' }}
         >
-          <strong>Market Price Transparency:</strong> Steel rebar and cement prices fluctuate based on daily mill and mandi rates. We show indicative prices where verified; for live truckload orders, use <strong>"Request Price"</strong> to receive the current dispatch quote directly from the supplier.
+          <strong>बाजार मूल्य पारदर्शिता:</strong> स्टील सरिया और सीमेंट की कीमतें दैनिक मिल और मंडी दरों के अनुसार बदलती हैं। हम सत्यापित सांकेतिक मूल्य दिखाते हैं; ट्रकलोड ऑर्डर के लिए <strong>"दाम पूछें"</strong> पर क्लिक करके सप्लायर से सीधे वर्तमान डिस्पैच कोटेशन प्राप्त करें।
         </Alert>
 
-        {/* Filter & Search Bar */}
+        {/* फिल्टर और सर्च बार */}
         <Paper
           elevation={0}
           sx={{
@@ -100,7 +114,7 @@ export const BuildingMaterialsPage = ({ onOpenQuoteModal }) => {
             <TextField
               fullWidth
               size="small"
-              placeholder="Search cement, TMT sariya, balu, tiles, supplier name..."
+              placeholder="सीमेंट, TMT सरिया, बालू, टाइल्स, सप्लायर का नाम खोजें..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               InputProps={{
@@ -131,7 +145,7 @@ export const BuildingMaterialsPage = ({ onOpenQuoteModal }) => {
                 ),
               }}
             >
-              <MenuItem value="All Cities">All Delivery Cities</MenuItem>
+              <MenuItem value="All Cities">सभी डिलीवरी शहर</MenuItem>
               {POPULAR_CITIES.map(c => (
                 <MenuItem key={c} value={c}>{c}</MenuItem>
               ))}
@@ -139,7 +153,7 @@ export const BuildingMaterialsPage = ({ onOpenQuoteModal }) => {
           </Box>
         </Paper>
 
-        {/* Category Filter Tabs */}
+        {/* श्रेणी फिल्टर टैब्स */}
         <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 4 }}>
           <Tabs
             value={selectedCategory}
@@ -159,12 +173,12 @@ export const BuildingMaterialsPage = ({ onOpenQuoteModal }) => {
             }}
           >
             {categories.map(cat => (
-              <Tab key={cat} label={cat} value={cat} />
+              <Tab key={cat} label={categoryLabels[cat] || cat} value={cat} />
             ))}
           </Tabs>
         </Box>
 
-        {/* Materials Grid */}
+        {/* सामग्री ग्रिड */}
         <Grid container spacing={3}>
           {filteredMaterials.map(mat => (
             <Grid key={mat.id} size={{ xs: 12, sm: 6, lg: 4 }}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Typography, Grid, Paper, Chip, Button, Divider } from '@mui/material';
+import { Box, Container, Typography, Grid, Paper, Chip, Button, Divider, Alert } from '@mui/material';
 import {
   Search,
   FileText,
@@ -17,18 +17,18 @@ export const HowItWorksPage = () => {
     <Box sx={{ py: 6, bgcolor: '#F8FAFC' }}>
       <Container maxWidth="xl">
         
-        {/* Title */}
+        {/* शीर्षक */}
         <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <Chip label="Marketplace Guide" sx={{ bgcolor: 'rgba(234, 88, 12, 0.1)', color: '#EA580C', fontWeight: 700, mb: 1.5 }} />
+          <Chip label="मार्केटप्लेस गाइड" sx={{ bgcolor: 'rgba(234, 88, 12, 0.1)', color: '#EA580C', fontWeight: 700, mb: 1.5 }} />
           <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 1.5 }}>
-            How KaamSetu Connects Construction in India
+            कामसेतु भारत में निर्माण को कैसे जोड़ता है
           </Typography>
           <Typography variant="body1" sx={{ color: '#64748B', maxWidth: 640, mx: 'auto' }}>
-            A transparent, broker-free platform engineered specifically for homeowners, skilled mistris, building contractors, and material dealers.
+            एक पारदर्शी, बिचौलिया-मुक्त प्लेटफार्म, विशेष रूप से घर मालिकों, कुशल मिस्त्रियों, निर्माण ठेकेदारों और सामग्री डीलरों के लिए बनाया गया।
           </Typography>
         </Box>
 
-        {/* Section 1: For Homeowners & Customers */}
+        {/* अनुभाग 1: घर मालिकों और ग्राहकों के लिए */}
         <Paper sx={{ p: { xs: 3, sm: 5 }, borderRadius: 4, mb: 5, border: '1px solid #E2E8F0', bgcolor: '#FFF' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
             <Box sx={{ width: 44, height: 44, borderRadius: 2, bgcolor: '#EFF6FF', color: '#1D4ED8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -36,20 +36,20 @@ export const HowItWorksPage = () => {
             </Box>
             <Box>
               <Typography variant="h5" sx={{ fontWeight: 800, color: '#0F172A' }}>
-                For Homeowners, Builders & Property Owners
+                घर मालिकों, बिल्डरों एवं संपत्ति मालिकों के लिए
               </Typography>
               <Typography variant="caption" sx={{ color: '#64748B' }}>
-                How to find trusted mistris, contractors, and building materials
+                भरोसेमंद मिस्त्री, ठेकेदार और निर्माण सामग्री कैसे खोजें
               </Typography>
             </Box>
           </Box>
 
           <Grid container spacing={3}>
             {[
-              { num: '1', title: '1. Select Trade or Post Requirement', desc: 'Browse our categorized directory of Raj Mistris, Electricians, Painters, Plumbers or submit a turnkey house construction requirement.' },
-              { num: '2', title: '2. Review Profiles & Verification', desc: 'Inspect experience years, customer review track records, working radius, and admin verification badges.' },
-              { num: '3', title: '3. Receive & Compare Quotations', desc: 'Vetted providers respond with competitive daily wage or contract estimates and schedule site visits.' },
-              { num: '4', title: '4. Direct Agreement on Terms', desc: 'Finalize measurements, materials, and payment milestones directly with the provider without third-party commission deductions.' }
+              { num: '1', title: '1. व्यापार चुनें या जरूरत पोस्ट करें', desc: 'राज मिस्त्री, इलेक्ट्रिशियन, पेंटर, प्लंबर की वर्गीकृत डायरेक्टरी ब्राउज़ करें या टर्नकी घर निर्माण की जरूरत सबमिट करें।' },
+              { num: '2', title: '2. प्रोफाइल और सत्यापन की समीक्षा करें', desc: 'अनुभव वर्ष, ग्राहक समीक्षा ट्रैक रिकॉर्ड, कार्य त्रिज्या और एडमिन सत्यापन बैज का निरीक्षण करें।' },
+              { num: '3', title: '3. कोटेशन प्राप्त करें और तुलना करें', desc: 'सत्यापित प्रदाता प्रतिस्पर्धी दैनिक मजदूरी या अनुबंध अनुमान और साइट विज़िट शेड्यूल के साथ जवाब देते हैं।' },
+              { num: '4', title: '4. शर्तों पर सीधे समझौता', desc: 'माप, सामग्री और भुगतान माइलस्टोन सीधे प्रदाता के साथ तय करें, बिना किसी तृतीय-पक्ष कमीशन कटौती के।' }
             ].map(step => (
               <Grid key={step.num} size={{ xs: 12, sm: 6, md: 3 }}>
                 <Box sx={{ p: 2.5, bgcolor: '#F8FAFC', borderRadius: 3, border: '1px solid #F1F5F9', height: '100%' }}>
@@ -68,7 +68,7 @@ export const HowItWorksPage = () => {
           </Grid>
         </Paper>
 
-        {/* Section 2: For Workers */}
+        {/* अनुभाग 2: कारीगरों के लिए */}
         <Paper sx={{ p: { xs: 3, sm: 5 }, borderRadius: 4, mb: 5, border: '1px solid #E2E8F0', bgcolor: '#FFF' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
             <Box sx={{ width: 44, height: 44, borderRadius: 2, bgcolor: 'rgba(234, 88, 12, 0.1)', color: '#EA580C', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -76,20 +76,20 @@ export const HowItWorksPage = () => {
             </Box>
             <Box>
               <Typography variant="h5" sx={{ fontWeight: 800, color: '#0F172A' }}>
-                For Skilled Workers & Mistris
+                कुशल कारीगरों एवं मिस्त्रियों के लिए
               </Typography>
               <Typography variant="caption" sx={{ color: '#64748B' }}>
-                Get regular work opportunities and connect with customers
+                नियमित काम के अवसर पाएँ और ग्राहकों से जुड़ें
               </Typography>
             </Box>
           </Box>
 
           <Grid container spacing={3}>
             {[
-              { num: '1', title: '1. Register Your Profile', desc: 'Submit your trade skill, years of experience, daily wage or contract preferences, and preferred working radius.' },
-              { num: '2', title: '2. Admin Profile Review', desc: 'Our operational team reviews your credentials. Vetted workers receive the official KaamSetu Verified Badge.' },
-              { num: '3', title: '3. Receive Local Job Alerts', desc: 'Get notified via SMS and portal when customers or contractors in your city post matching requirements.' },
-              { num: '4', title: '4. Direct Payment & Retention', desc: 'Get paid 100% of your agreed wages directly from the customer. Zero middleman cuts or commissions.' }
+              { num: '1', title: '1. अपनी प्रोफाइल रजिस्टर करें', desc: 'अपना व्यापार कौशल, अनुभव के वर्ष, दैनिक मजदूरी या अनुबंध प्राथमिकताएँ और पसंदीदा कार्य त्रिज्या सबमिट करें।' },
+              { num: '2', title: '2. एडमिन प्रोफाइल समीक्षा', desc: 'हमारी संचालन टीम आपके प्रमाण-पत्रों की समीक्षा करती है। सत्यापित कारीगरों को आधिकारिक कामसेतु सत्यापित बैज प्राप्त होता है।' },
+              { num: '3', title: '3. स्थानीय जॉब अलर्ट प्राप्त करें', desc: 'जब आपके शहर के ग्राहक या ठेकेदार मिलती-जुलती आवश्यकताएँ पोस्ट करते हैं, तो SMS और पोर्टल के माध्यम से सूचित किया जाएगा।' },
+              { num: '4', title: '4. सीधा भुगतान एवं पूर्ण मजदूरी', desc: 'अपनी सहमत मजदूरी का 100% सीधे ग्राहक से प्राप्त करें। शून्य बिचौलिया कटौती या कमीशन।' }
             ].map(step => (
               <Grid key={step.num} size={{ xs: 12, sm: 6, md: 3 }}>
                 <Box sx={{ p: 2.5, bgcolor: '#F8FAFC', borderRadius: 3, border: '1px solid #F1F5F9', height: '100%' }}>
@@ -108,7 +108,7 @@ export const HowItWorksPage = () => {
           </Grid>
         </Paper>
 
-        {/* Section 3: For Material Suppliers */}
+        {/* अनुभाग 3: सामग्री सप्लायरों के लिए */}
         <Paper sx={{ p: { xs: 3, sm: 5 }, borderRadius: 4, mb: 5, border: '1px solid #E2E8F0', bgcolor: '#FFF' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
             <Box sx={{ width: 44, height: 44, borderRadius: 2, bgcolor: '#EFF6FF', color: '#0284C7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -116,20 +116,20 @@ export const HowItWorksPage = () => {
             </Box>
             <Box>
               <Typography variant="h5" sx={{ fontWeight: 800, color: '#0F172A' }}>
-                For Building Material Dealerships & Suppliers
+                निर्माण सामग्री डीलरशिप एवं सप्लायरों के लिए
               </Typography>
               <Typography variant="caption" sx={{ color: '#64748B' }}>
-                Supply cement, steel, bricks, sand, and tiles directly to active sites
+                सीमेंट, स्टील, ईंट, रेत और टाइल्स सीधे सक्रिय साइटों पर सप्लाई करें
               </Typography>
             </Box>
           </Box>
 
           <Grid container spacing={3}>
             {[
-              { num: '1', title: '1. Onboard Your Dealership', desc: 'Register your business name, warehouse location, delivery radius, and material categories.' },
-              { num: '2', title: '2. Publish Catalogue & MOQ', desc: 'Publish cement brands, TMT sariya sizes, sand, bricks, and minimum delivery quantities.' },
-              { num: '3', title: '3. Receive Site Inquiries', desc: 'Builders, contractors, and individuals submit purchase enquiries for immediate dispatch.' },
-              { num: '4', title: '4. Deliver & Grow Turnover', desc: 'Quote daily mandi rates, dispatch truckloads, and build long-term repeat client relationships.' }
+              { num: '1', title: '1. अपनी डीलरशिप ऑनबोर्ड करें', desc: 'अपना व्यवसाय नाम, गोदाम स्थान, डिलीवरी त्रिज्या और सामग्री श्रेणियाँ पंजीकृत करें।' },
+              { num: '2', title: '2. कैटलॉग और MOQ प्रकाशित करें', desc: 'सीमेंट ब्रांड, TMT सरिया साइज़, रेत, ईंट और न्यूनतम डिलीवरी मात्रा प्रकाशित करें।' },
+              { num: '3', title: '3. साइट पूछताछ प्राप्त करें', desc: 'बिल्डर, ठेकेदार और व्यक्ति तत्काल डिस्पैच के लिए खरीद पूछताछ सबमिट करते हैं।' },
+              { num: '4', title: '4. डिलीवर करें और टर्नओवर बढ़ाएँ', desc: 'दैनिक मंडी दरों का कोटेशन दें, ट्रकलोड डिस्पैच करें और दीर्घकालिक रिपीट क्लाइंट संबंध बनाएँ।' }
             ].map(step => (
               <Grid key={step.num} size={{ xs: 12, sm: 6, md: 3 }}>
                 <Box sx={{ p: 2.5, bgcolor: '#F8FAFC', borderRadius: 3, border: '1px solid #F1F5F9', height: '100%' }}>
@@ -148,9 +148,9 @@ export const HowItWorksPage = () => {
           </Grid>
         </Paper>
 
-        {/* Disclaimer */}
+        {/* अस्वीकरण */}
         <Alert severity="warning" icon={<AlertCircle size={20} />} sx={{ borderRadius: 3 }}>
-          <strong>Platform Role Disclaimer:</strong> KaamSetu operates strictly as a discovery and matching ecosystem. Final wage terms, scope boundaries, material delivery logistics, and safety protocols must be mutually agreed between parties.
+          <strong>प्लेटफार्म भूमिका अस्वीकरण:</strong> कामसेतु केवल एक खोज और मैचिंग इकोसिस्टम के रूप में कार्य करता है। अंतिम मजदूरी शर्तें, कार्य सीमाएँ, सामग्री डिलीवरी लॉजिस्टिक्स और सुरक्षा प्रोटोकॉल पक्षों के बीच आपसी सहमति से तय होने चाहिए।
         </Alert>
 
       </Container>

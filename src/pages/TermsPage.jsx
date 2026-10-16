@@ -11,43 +11,43 @@ export const TermsPage = () => {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
             <FileText size={28} color="#EA580C" />
             <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A' }}>
-              Terms & Conditions
+              नियम एवं शर्तें
             </Typography>
           </Box>
           <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 3 }}>
-            Last Updated: October 2026 • KaamSetu Marketplace Terms of Use
+            अंतिम अपडेट: अक्टूबर 2026 • कामसेतु मार्केटप्लेस उपयोग की शर्तें
           </Typography>
 
           <Alert severity="warning" sx={{ mb: 4, borderRadius: 2.5 }}>
-            <strong>Important Operational Notice:</strong> KaamSetu is a technology communication bridge connecting skilled workers, contractors, material suppliers, and customers. KaamSetu is not an employer, general contractor, or building materials warehouse.
+            <strong>महत्वपूर्ण संचालन सूचना:</strong> कामसेतु एक प्रौद्योगिकी संचार पुल है जो कुशल कारीगरों, ठेकेदारों, सामग्री सप्लायरों और ग्राहकों को जोड़ता है। कामसेतु नियोक्ता, जनरल ठेकेदार या निर्माण सामग्री गोदाम नहीं है।
           </Alert>
 
           <Typography variant="h6" sx={{ fontWeight: 700, color: '#0F172A', mb: 1 }}>
-            1. Nature of the Marketplace
+            1. मार्केटप्लेस की प्रकृति
           </Typography>
           <Typography variant="body2" sx={{ color: '#475569', lineHeight: 1.7, mb: 3 }}>
-            KaamSetu facilitates introductions, quotation exchanges, and portfolio displays between property owners (Customers) and independent trade service providers (Raj Mistris, Carpenters, Electricians, Plumbers, Contractors, and Building Material Suppliers). All final contracts, work orders, payment schedules, and performance standards are solely agreed between the respective parties.
+            कामसेतु संपत्ति मालिकों (ग्राहकों) और स्वतंत्र व्यापार सेवा प्रदाताओं (राज मिस्त्री, बढ़ई, इलेक्ट्रिशियन, प्लंबर, ठेकेदार और निर्माण सामग्री सप्लायर) के बीच परिचय, कोटेशन आदान-प्रदान और पोर्टफोलियो प्रदर्शन की सुविधा प्रदान करता है। सभी अंतिम अनुबंध, कार्य आदेश, भुगतान अनुसूचियाँ और प्रदर्शन मानक पूरी तरह संबंधित पक्षों के बीच तय किए जाते हैं।
           </Typography>
 
           <Typography variant="h6" sx={{ fontWeight: 700, color: '#0F172A', mb: 1 }}>
-            2. Worker & Provider Status
+            2. कारीगर एवं प्रदाता की स्थिति
           </Typography>
           <Typography variant="body2" sx={{ color: '#475569', lineHeight: 1.7, mb: 3 }}>
-            Skilled workers and contractors listed on the platform are independent professionals or business entities and are not employees, agents, or joint venture partners of KaamSetu. While KaamSetu verifies identities and references before issuing verification badges, customers are advised to inspect physical credentials and past sites.
+            प्लेटफार्म पर सूचीबद्ध कुशल कारीगर और ठेकेदार स्वतंत्र पेशेवर या व्यावसायिक संस्थाएँ हैं और कामसेतु के कर्मचारी, एजेंट या संयुक्त उद्यम भागीदार नहीं हैं। हालांकि कामसेतु सत्यापन बैज जारी करने से पहले पहचान और संदर्भों का सत्यापन करता है, ग्राहकों को भौतिक प्रमाण-पत्रों और पिछले साइट कार्यों का निरीक्षण करने की सलाह दी जाती है।
           </Typography>
 
           <Typography variant="h6" sx={{ fontWeight: 700, color: '#0F172A', mb: 1 }}>
-            3. Pricing, Mandi Rates & Material Delivery
+            3. मूल्य निर्धारण, मंडी दरें एवं सामग्री डिलीवरी
           </Typography>
           <Typography variant="body2" sx={{ color: '#475569', lineHeight: 1.7, mb: 3 }}>
-            Prices listed for building materials (such as cement, TMT sariya, sand, and aggregates) are indicative or subject to live mandi quotes. Final delivered prices, unloading charges, and vehicle access terms are set directly by the authorized supplier dealership.
+            निर्माण सामग्री (जैसे सीमेंट, TMT सरिया, रेत और गिट्टी) के लिए सूचीबद्ध कीमतें सांकेतिक हैं या लाइव मंडी कोटेशन के अधीन हैं। अंतिम डिलीवरी मूल्य, अनलोडिंग शुल्क और वाहन पहुँच शर्तें सीधे अधिकृत सप्लायर डीलरशिप द्वारा निर्धारित की जाती हैं।
           </Typography>
 
           <Typography variant="h6" sx={{ fontWeight: 700, color: '#0F172A', mb: 1 }}>
-            4. Limitation of Liability
+            4. दायित्व की सीमा
           </Typography>
           <Typography variant="body2" sx={{ color: '#475569', lineHeight: 1.7 }}>
-            KaamSetu shall not be liable for any structural defects, work delays, site accidents, or contractual disputes occurring at individual construction sites. Users agree to resolve disputes amicably or through relevant civil remedies.
+            कामसेतु व्यक्तिगत निर्माण स्थलों पर होने वाले किसी भी संरचनात्मक दोष, कार्य विलंब, साइट दुर्घटना या अनुबंध विवाद के लिए उत्तरदायी नहीं होगा। उपयोगकर्ता विवादों को सौहार्दपूर्ण ढंग से या प्रासंगिक सिविल उपायों के माध्यम से हल करने के लिए सहमत हैं।
           </Typography>
 
         </Paper>

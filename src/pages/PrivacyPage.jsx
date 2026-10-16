@@ -11,32 +11,32 @@ export const PrivacyPage = () => {
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
             <ShieldCheck size={28} color="#EA580C" />
             <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A' }}>
-              Privacy & Data Policy
+              गोपनीयता एवं डेटा नीति
             </Typography>
           </Box>
           <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 3 }}>
-            Last Updated: October 2026 • KaamSetu Privacy Governance
+            अंतिम अपडेट: अक्टूबर 2026 • कामसेतु गोपनीयता शासन
           </Typography>
 
           <Typography variant="h6" sx={{ fontWeight: 700, color: '#0F172A', mb: 1 }}>
-            1. Information Collection & Usage
+            1. सूचना संग्रह एवं उपयोग
           </Typography>
           <Typography variant="body2" sx={{ color: '#475569', lineHeight: 1.7, mb: 3 }}>
-            We only collect information necessary to facilitate construction and trade matching — such as your contact name, telephone number, city, locality, and project scope details. We do not sell your personal contact numbers to unvetted third-party telemarketers.
+            हम केवल निर्माण और व्यापार मैचिंग की सुविधा के लिए आवश्यक जानकारी एकत्र करते हैं — जैसे आपका संपर्क नाम, टेलीफोन नंबर, शहर, इलाका और प्रोजेक्ट स्कोप विवरण। हम आपके व्यक्तिगत संपर्क नंबरों को असत्यापित तृतीय-पक्ष टेलीमार्केटर्स को नहीं बेचते।
           </Typography>
 
           <Typography variant="h6" sx={{ fontWeight: 700, color: '#0F172A', mb: 1 }}>
-            2. Worker Data Protection
+            2. कारीगर डेटा सुरक्षा
           </Typography>
           <Typography variant="body2" sx={{ color: '#475569', lineHeight: 1.7, mb: 3 }}>
-            Workers' sensitive personal documents collected during optional verification checks are kept encrypted in restricted admin access environments. Public worker profiles only display practical experience, skill badges, and contact routing numbers.
+            वैकल्पिक सत्यापन जाँच के दौरान एकत्र किए गए कारीगरों के संवेदनशील व्यक्तिगत दस्तावेज़ प्रतिबंधित एडमिन एक्सेस वातावरण में एन्क्रिप्टेड रखे जाते हैं। सार्वजनिक कारीगर प्रोफाइल केवल व्यावहारिक अनुभव, कौशल बैज और संपर्क रूटिंग नंबर प्रदर्शित करते हैं।
           </Typography>
 
           <Typography variant="h6" sx={{ fontWeight: 700, color: '#0F172A', mb: 1 }}>
-            3. Communications & Consent
+            3. संचार एवं सहमति
           </Typography>
           <Typography variant="body2" sx={{ color: '#475569', lineHeight: 1.7 }}>
-            By submitting a construction requirement or registering as a provider, you consent to receive direct telephone calls, SMS alerts, and quotation updates regarding your active project inquiries.
+            निर्माण की आवश्यकता सबमिट करके या प्रदाता के रूप में पंजीकरण करके, आप अपनी सक्रिय प्रोजेक्ट पूछताछ के संबंध में सीधे टेलीफोन कॉल, SMS अलर्ट और कोटेशन अपडेट प्राप्त करने की सहमति देते हैं।
           </Typography>
 
         </Paper>
