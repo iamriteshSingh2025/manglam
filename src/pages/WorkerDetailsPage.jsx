@@ -30,7 +30,8 @@ import {
   ArrowLeft,
   Send,
   Building2,
-  Award
+  Award,
+  PhoneCall
 } from 'lucide-react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
@@ -43,7 +44,7 @@ export const WorkerDetailsPage = ({ onOpenQuoteModal }) => {
   const worker = workers.find(w => w.id === id) || workers[0];
   const isSaved = savedWorkers.includes(worker?.id);
 
-  // Direct contact form
+  // सीधा संपर्क फॉर्म
   const [enquiryForm, setEnquiryForm] = useState({
     name: '',
     phone: '',
@@ -56,38 +57,38 @@ export const WorkerDetailsPage = ({ onOpenQuoteModal }) => {
   const handleEnquirySubmit = (e) => {
     e.preventDefault();
     if (!enquiryForm.name || !enquiryForm.phone) {
-      alert('Please enter your name and phone number.');
+      alert('कृपया अपना नाम और मोबाइल नंबर दर्ज करें।');
       return;
     }
     setEnquirySuccess(true);
-    showNotification(`Enquiry sent directly to ${worker.name}!`, 'success');
+    showNotification(`${worker.name} को आपका कोटेशन अनुरोध भेज दिया गया है!`, 'success');
   };
 
   if (!worker) {
     return (
       <Container sx={{ py: 8, textAlign: 'center' }}>
-        <Typography variant="h5">Worker profile not found.</Typography>
-        <Button onClick={() => navigate('/workers')} sx={{ mt: 2, color: '#EA580C' }}>
-          Back to Workers Directory
+        <Typography variant="h5">कारीगर प्रोफाइल नहीं मिला।</Typography>
+        <Button onClick={() => navigate('/workers')} sx={{ mt: 2, color: '#EA580C', fontWeight: 700 }}>
+          कारीगर सूची पर वापस जाएँ
         </Button>
       </Container>
     );
   }
 
   return (
-    <Box sx={{ py: 5 }}>
+    <Box sx={{ py: 5, bgcolor: '#F8FAFC' }}>
       <Container maxWidth="xl">
         
-        {/* Breadcrumb */}
+        {/* ब्रेडक्रम्ब्स */}
         <Breadcrumbs sx={{ mb: 3 }}>
-          <Link to="/" style={{ color: '#64748B', textDecoration: 'none', fontSize: '0.85rem' }}>Home</Link>
-          <Link to="/workers" style={{ color: '#64748B', textDecoration: 'none', fontSize: '0.85rem' }}>Find Workers</Link>
-          <Typography sx={{ color: '#0F172A', fontSize: '0.85rem', fontWeight: 600 }}>{worker.name}</Typography>
+          <Link to="/" style={{ color: '#64748B', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 600 }}>होम</Link>
+          <Link to="/workers" style={{ color: '#64748B', textDecoration: 'none', fontSize: '0.85rem', fontWeight: 600 }}>कारीगर खोजें</Link>
+          <Typography sx={{ color: '#0F172A', fontSize: '0.85rem', fontWeight: 800 }}>{worker.name}</Typography>
         </Breadcrumbs>
 
         <Grid container spacing={4}>
           
-          {/* Main Profile Info */}
+          {/* मुख्य प्रोफाइल विवरण */}
           <Grid size={{ xs: 12, md: 8 }}>
             <Paper
               sx={{
@@ -95,58 +96,64 @@ export const WorkerDetailsPage = ({ onOpenQuoteModal }) => {
                 borderRadius: 4,
                 bgcolor: '#FFFFFF',
                 border: '1px solid #E2E8F0',
-                mb: 4
+                mb: 4,
+                boxShadow: '0 4px 20px rgba(15, 23, 42, 0.04)'
               }}
             >
-              {/* Header Profile Box */}
+              {/* प्रोफाइल हेडर बॉक्स */}
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 2, mb: 3 }}>
                 <Box sx={{ display: 'flex', gap: 2.5, alignItems: 'center' }}>
                   <Box
                     sx={{
-                      width: 72,
-                      height: 72,
-                      borderRadius: 3,
+                      width: 76,
+                      height: 76,
+                      borderRadius: 3.5,
                       bgcolor: '#0F172A',
                       color: '#FFF',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      fontWeight: 800,
-                      fontSize: '1.75rem',
-                      border: '3px solid #EA580C'
+                      fontWeight: 900,
+                      fontSize: '2rem',
+                      border: '3px solid #EA580C',
+                      boxShadow: '0 8px 20px rgba(234, 88, 12, 0.3)'
                     }}
                   >
                     {worker.name.charAt(0)}
                   </Box>
                   <Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
-                      <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A' }}>
+                      <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A', fontSize: { xs: '1.4rem', sm: '1.8rem' } }}>
                         {worker.name}
                       </Typography>
                       {worker.isVerified ? (
                         <Chip
                           icon={<ShieldCheck size={15} color="#15803D" />}
-                          label="Admin Verified"
+                          label="एडमिन सत्यापित (Verified)"
                           size="small"
-                          sx={{ bgcolor: '#DCFCE7', color: '#15803D', fontWeight: 700 }}
+                          sx={{ bgcolor: '#DCFCE7', color: '#15803D', fontWeight: 800, border: '1px solid #86EFAC' }}
                         />
                       ) : (
-                        <Chip label={worker.verificationStatus} size="small" sx={{ bgcolor: '#FEF3C7', color: '#B45309' }} />
+                        <Chip label={worker.verificationStatus} size="small" sx={{ bgcolor: '#FEF3C7', color: '#B45309', fontWeight: 700 }} />
                       )}
                     </Box>
 
-                    <Typography variant="h6" sx={{ color: '#EA580C', fontWeight: 700, mt: 0.25 }}>
+                    <Typography variant="h6" sx={{ color: '#EA580C', fontWeight: 800, mt: 0.3 }}>
                       {worker.primarySkill}
                     </Typography>
 
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 0.5, color: '#64748B', fontSize: '0.85rem' }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2.5, mt: 0.8, color: '#64748B', fontSize: '0.88rem', flexWrap: 'wrap' }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                        <MapPin size={15} color="#EA580C" />
-                        <span>{worker.city} • {worker.locality}</span>
+                        <MapPin size={16} color="#EA580C" />
+                        <Typography variant="caption" sx={{ color: '#475569', fontWeight: 700, fontSize: '0.84rem' }}>
+                          {worker.city} • {worker.locality}
+                        </Typography>
                       </Box>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                        <Briefcase size={15} color="#0F172A" />
-                        <span>{worker.experienceYears} Years Experience</span>
+                        <Briefcase size={16} color="#0F172A" />
+                        <Typography variant="caption" sx={{ color: '#0F172A', fontWeight: 800, fontSize: '0.84rem' }}>
+                          {worker.experienceYears} वर्ष का अनुभव
+                        </Typography>
                       </Box>
                     </Box>
                   </Box>
@@ -159,174 +166,175 @@ export const WorkerDetailsPage = ({ onOpenQuoteModal }) => {
                   sx={{
                     borderColor: isSaved ? '#EA580C' : '#CBD5E1',
                     color: isSaved ? '#EA580C' : '#475569',
-                    borderRadius: 2
+                    borderRadius: 2,
+                    fontWeight: 700
                   }}
                 >
-                  {isSaved ? 'Saved' : 'Save Profile'}
+                  {isSaved ? 'सेव किया गया' : 'सेव करें'}
                 </Button>
               </Box>
 
               <Divider sx={{ my: 3 }} />
 
-              {/* Bio / Description */}
+              {/* परिचय / बायो */}
               <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#0F172A', mb: 1 }}>
-                Worker Background & Trade Experience
+                कारीगर परिचय एवं कार्य अनुभव
               </Typography>
-              <Typography variant="body1" sx={{ color: '#475569', lineHeight: 1.7, mb: 3 }}>
+              <Typography variant="body1" sx={{ color: '#475569', lineHeight: 1.8, mb: 3.5, fontSize: '0.98rem' }}>
                 {worker.bio}
               </Typography>
 
-              {/* Specializations & Skills */}
+              {/* विशेषज्ञता एवं कौशल */}
               <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#0F172A', mb: 1.5 }}>
-                Skills & Technical Competencies
+                कौशल एवं तकनीकी विशेषज्ञता
               </Typography>
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 4 }}>
-                <Chip label={worker.primarySkill} sx={{ bgcolor: '#EA580C', color: '#FFF', fontWeight: 700 }} />
+                <Chip label={worker.primarySkill} sx={{ bgcolor: '#EA580C', color: '#FFF', fontWeight: 800 }} />
                 {worker.additionalSkills?.map(skill => (
                   <Chip
                     key={skill}
                     label={skill}
-                    sx={{ bgcolor: '#F1F5F9', color: '#1E293B', fontWeight: 600, border: '1px solid #E2E8F0' }}
+                    sx={{ bgcolor: '#F1F5F9', color: '#1E293B', fontWeight: 700, border: '1px solid #E2E8F0' }}
                   />
                 ))}
               </Box>
 
-              {/* Contract preferences & Working terms */}
+              {/* कार्य शर्तें एवं दरें */}
               <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#0F172A', mb: 1.5 }}>
-                Work Terms & Engagement Preferences
+                कार्य शर्तें एवं दर प्राथमिकता
               </Typography>
               <Grid container spacing={2} sx={{ mb: 4 }}>
                 <Grid size={{ xs: 12, sm: 4 }}>
                   <Box sx={{ p: 2, bgcolor: '#F8FAFC', borderRadius: 2.5, border: '1px solid #E2E8F0' }}>
-                    <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
-                      Expected Rate:
+                    <Typography variant="caption" sx={{ color: '#64748B', display: 'block', fontWeight: 600 }}>
+                      अपेक्षित कार्य दर:
                     </Typography>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#0F172A' }}>
+                    <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#0F172A' }}>
                       {worker.expectedWage}
                     </Typography>
                   </Box>
                 </Grid>
                 <Grid size={{ xs: 12, sm: 4 }}>
                   <Box sx={{ p: 2, bgcolor: '#F8FAFC', borderRadius: 2.5, border: '1px solid #E2E8F0' }}>
-                    <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
-                      Working Radius:
+                    <Typography variant="caption" sx={{ color: '#64748B', display: 'block', fontWeight: 600 }}>
+                      कार्य क्षेत्र (त्रिज्या):
                     </Typography>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#0F172A' }}>
-                      Up to {worker.workingRadiusKm || 25} Km
+                    <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#0F172A' }}>
+                      {worker.workingRadiusKm || 25} किमी तक
                     </Typography>
                   </Box>
                 </Grid>
                 <Grid size={{ xs: 12, sm: 4 }}>
                   <Box sx={{ p: 2, bgcolor: '#F8FAFC', borderRadius: 2.5, border: '1px solid #E2E8F0' }}>
-                    <Typography variant="caption" sx={{ color: '#64748B', display: 'block' }}>
-                      Availability Status:
+                    <Typography variant="caption" sx={{ color: '#64748B', display: 'block', fontWeight: 600 }}>
+                      वर्तमान उपलब्धता:
                     </Typography>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 700, color: worker.isAvailable ? '#16A34A' : '#D97706' }}>
+                    <Typography variant="subtitle1" sx={{ fontWeight: 800, color: worker.isAvailable ? '#15803D' : '#D97706' }}>
                       {worker.availability}
                     </Typography>
                   </Box>
                 </Grid>
               </Grid>
 
-              {/* Simulated Projects Record */}
+              {/* प्रोजेक्ट रिकॉर्ड */}
               <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#0F172A', mb: 1.5 }}>
-                Recent Project Track Record (Demo Record)
+                प्रोजेक्ट ट्रैक रिकॉर्ड
               </Typography>
-              <Box sx={{ p: 2, bgcolor: 'rgba(234, 88, 12, 0.04)', borderRadius: 2.5, border: '1px dashed rgba(234, 88, 12, 0.3)' }}>
-                <Typography variant="body2" sx={{ color: '#334155', lineHeight: 1.6 }}>
-                  Completed <strong>{worker.projectsCompleted || 40}+ construction and repair projects</strong> across {worker.city}. Specializes in high-quality structural alignment, safety precautions on height, and on-time milestone delivery.
+              <Box sx={{ p: 2.5, bgcolor: 'rgba(234, 88, 12, 0.05)', borderRadius: 3, border: '1px dashed rgba(234, 88, 12, 0.35)' }}>
+                <Typography variant="body2" sx={{ color: '#334155', lineHeight: 1.7, fontSize: '0.92rem' }}>
+                  {worker.city} एवं आसपास के इलाकों में <strong>{worker.projectsCompleted || 40}+ से अधिक निर्माण एवं रिनोवेशन कार्य</strong> सफलतापूर्वक पूरे किए हैं। सही साहुल-सूत (लाइन-लेवल), मजबूत कॉलम बीम और तय समय सीमा में कार्य समाप्त करने के लिए जाने जाते हैं।
                 </Typography>
               </Box>
 
             </Paper>
           </Grid>
 
-          {/* Right Sidebar: Quick Contact & Quotation Enquiry */}
+          {/* दायां साइडबार: त्वरित संपर्क एवं कोटेशन अनुरोध */}
           <Grid size={{ xs: 12, md: 4 }}>
             <Paper
               sx={{
-                p: 3,
+                p: 3.5,
                 borderRadius: 4,
                 bgcolor: '#FFFFFF',
                 border: '1px solid #E2E8F0',
                 position: { md: 'sticky' },
-                top: { md: 90 },
+                top: { md: 95 },
                 boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)'
               }}
             >
               <Typography variant="h6" sx={{ fontWeight: 800, color: '#0F172A', mb: 0.5 }}>
-                Connect with {worker.name}
+                {worker.name} से संपर्क करें
               </Typography>
-              <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 2 }}>
-                Submit your site details to request a quotation or schedule a site visit.
+              <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 2.5 }}>
+                अपनी साइट का विवरण भेजें और सीधे फोन पर बात या साइट विजिट तय करें।
               </Typography>
 
               {enquirySuccess ? (
                 <Box sx={{ py: 3, textAlign: 'center' }}>
-                  <Box sx={{ width: 50, height: 50, borderRadius: '50%', bgcolor: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 1.5 }}>
-                    <CheckCircle2 size={28} />
+                  <Box sx={{ width: 56, height: 56, borderRadius: '50%', bgcolor: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 1.5 }}>
+                    <CheckCircle2 size={32} />
                   </Box>
-                  <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>
-                    Enquiry Dispatched!
+                  <Typography variant="subtitle1" sx={{ fontWeight: 800, mb: 1 }}>
+                    पूछताछ सफलतापूर्वक भेजी गई!
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 2 }}>
-                    {worker.name} has been notified of your project enquiry. You will receive an SMS and call update.
+                  <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 2.5, lineHeight: 1.5 }}>
+                    {worker.name} को आपकी आवश्यकता भेज दी गई है। वे जल्द ही आपसे फोन पर संपर्क करेंगे।
                   </Typography>
                   <Button
                     variant="outlined"
                     size="small"
                     onClick={() => setEnquirySuccess(false)}
-                    sx={{ color: '#EA580C', borderColor: '#EA580C' }}
+                    sx={{ color: '#EA580C', borderColor: '#EA580C', fontWeight: 700 }}
                   >
-                    Send Another Request
+                    अन्य संदेश भेजें
                   </Button>
                 </Box>
               ) : (
                 <form onSubmit={handleEnquirySubmit}>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                     <TextField
-                      label="Your Name *"
+                      label="आपका पूरा नाम *"
                       fullWidth
                       size="small"
                       required
                       value={enquiryForm.name}
                       onChange={(e) => setEnquiryForm(prev => ({ ...prev, name: e.target.value }))}
-                      placeholder="e.g. Suresh Bansal"
+                      placeholder="उदा. सुरेश बंसल"
                     />
                     <TextField
-                      label="Mobile Number *"
+                      label="मोबाइल नंबर *"
                       fullWidth
                       size="small"
                       required
                       value={enquiryForm.phone}
                       onChange={(e) => setEnquiryForm(prev => ({ ...prev, phone: e.target.value }))}
-                      placeholder="+91 98XXX XXXXX"
+                      placeholder="उदा. 98390 XXXXX"
                     />
                     <TextField
-                      label="Site Address / Locality"
+                      label="साइट का पता / इलाका"
                       fullWidth
                       size="small"
                       value={enquiryForm.siteLocation}
                       onChange={(e) => setEnquiryForm(prev => ({ ...prev, siteLocation: e.target.value }))}
-                      placeholder="e.g. Aliganj, Sector B"
+                      placeholder="उदा. अलीगंज, सेक्टर बी"
                     />
                     <TextField
-                      label="Estimated Duration or Days"
+                      label="अपेक्षित कार्य दिवस / अवधि"
                       fullWidth
                       size="small"
                       value={enquiryForm.workDuration}
                       onChange={(e) => setEnquiryForm(prev => ({ ...prev, workDuration: e.target.value }))}
-                      placeholder="e.g. 5 Days / 1 Month"
+                      placeholder="उदा. 10 दिन या 2 माह"
                     />
                     <TextField
-                      label="Scope & Notes"
+                      label="काम का विवरण / नोट"
                       multiline
                       rows={3}
                       fullWidth
                       size="small"
                       value={enquiryForm.notes}
                       onChange={(e) => setEnquiryForm(prev => ({ ...prev, notes: e.target.value }))}
-                      placeholder="Describe what needs to be constructed, repaired or installed."
+                      placeholder="मकान चिनाई, कॉलम ढलाई या प्लास्टरिंग संबंधी विवरण दें..."
                     />
 
                     <Button
@@ -336,13 +344,15 @@ export const WorkerDetailsPage = ({ onOpenQuoteModal }) => {
                       startIcon={<Send size={16} />}
                       sx={{
                         bgcolor: '#EA580C',
-                        fontWeight: 700,
-                        py: 1.2,
+                        color: '#FFF',
+                        fontWeight: 800,
+                        py: 1.25,
                         borderRadius: 2,
+                        boxShadow: '0 4px 14px rgba(234, 88, 12, 0.35)',
                         '&:hover': { bgcolor: '#C2410C' }
                       }}
                     >
-                      Request Quotation
+                      कोटेशन / बातचीत अनुरोध भेजें
                     </Button>
                   </Box>
                 </form>
@@ -351,9 +361,9 @@ export const WorkerDetailsPage = ({ onOpenQuoteModal }) => {
               <Divider sx={{ my: 2.5 }} />
 
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: '#64748B' }}>
-                <Phone size={15} color="#EA580C" />
-                <Typography variant="caption" sx={{ fontWeight: 600 }}>
-                  Phone: {worker.phone}
+                <Phone size={16} color="#EA580C" />
+                <Typography variant="caption" sx={{ fontWeight: 700, color: '#334155' }}>
+                  हेल्पलाइन: {worker.phone}
                 </Typography>
               </Box>
             </Paper>

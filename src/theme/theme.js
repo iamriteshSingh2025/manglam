@@ -40,37 +40,37 @@ export const theme = createTheme({
     divider: '#E2E8F0',
   },
   typography: {
-    fontFamily: '"Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    fontFamily: '"Noto Sans Devanagari", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
     h1: {
-      fontFamily: '"Outfit", "Plus Jakarta Sans", sans-serif',
-      fontWeight: 700,
+      fontFamily: '"Outfit", "Noto Sans Devanagari", "Plus Jakarta Sans", sans-serif',
+      fontWeight: 800,
       letterSpacing: '-0.025em',
-      lineHeight: 1.2,
-    },
-    h2: {
-      fontFamily: '"Outfit", "Plus Jakarta Sans", sans-serif',
-      fontWeight: 700,
-      letterSpacing: '-0.02em',
       lineHeight: 1.25,
     },
-    h3: {
-      fontFamily: '"Outfit", "Plus Jakarta Sans", sans-serif',
-      fontWeight: 600,
-      letterSpacing: '-0.015em',
+    h2: {
+      fontFamily: '"Outfit", "Noto Sans Devanagari", "Plus Jakarta Sans", sans-serif',
+      fontWeight: 700,
+      letterSpacing: '-0.02em',
       lineHeight: 1.3,
     },
+    h3: {
+      fontFamily: '"Outfit", "Noto Sans Devanagari", "Plus Jakarta Sans", sans-serif',
+      fontWeight: 700,
+      letterSpacing: '-0.015em',
+      lineHeight: 1.35,
+    },
     h4: {
-      fontFamily: '"Outfit", "Plus Jakarta Sans", sans-serif',
-      fontWeight: 600,
+      fontFamily: '"Outfit", "Noto Sans Devanagari", "Plus Jakarta Sans", sans-serif',
+      fontWeight: 700,
       letterSpacing: '-0.01em',
     },
     h5: {
-      fontFamily: '"Outfit", "Plus Jakarta Sans", sans-serif',
-      fontWeight: 600,
+      fontFamily: '"Outfit", "Noto Sans Devanagari", "Plus Jakarta Sans", sans-serif',
+      fontWeight: 700,
     },
     h6: {
-      fontFamily: '"Outfit", "Plus Jakarta Sans", sans-serif',
-      fontWeight: 600,
+      fontFamily: '"Outfit", "Noto Sans Devanagari", "Plus Jakarta Sans", sans-serif',
+      fontWeight: 700,
     },
     subtitle1: {
       fontWeight: 500,

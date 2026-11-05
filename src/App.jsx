@@ -4,6 +4,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, Box, Snackbar, Alert } from '@mui/material';
 import { theme } from './theme/theme';
 import { AppProvider, useApp } from './context/AppContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 // Layout
 import { Header } from './components/layout/Header';
@@ -181,11 +182,13 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppProvider>
-        <Router>
-          <MainLayout />
-        </Router>
-      </AppProvider>
+      <LanguageProvider>
+        <AppProvider>
+          <Router>
+            <MainLayout />
+          </Router>
+        </AppProvider>
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

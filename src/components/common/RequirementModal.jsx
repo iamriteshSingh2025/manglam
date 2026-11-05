@@ -19,56 +19,56 @@ import {
   FormControl,
   FormLabel
 } from '@mui/material';
-import { X as CloseIcon, CheckCircle2, HardHat, FileText, ArrowRight } from 'lucide-react';
+import { X as CloseIcon, CheckCircle2, HardHat, FileText, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import { POPULAR_CITIES } from '../../data/mockData';
 
-export const RequirementModal = ({ open, onClose, defaultCategory = '', defaultType = 'New Construction' }) => {
+export const RequirementModal = ({ open, onClose, defaultCategory = '', defaultType = 'नया निर्माण' }) => {
   const navigate = useNavigate();
   const { postRequirement, setCurrentRole } = useApp();
 
   const [formData, setFormData] = useState({
     customerName: '',
     mobile: '',
-    city: 'Lucknow',
+    city: 'लखनऊ (Lucknow)',
     locality: '',
     requirementType: defaultType,
-    serviceCategory: defaultCategory || 'Raj Mistri / House Construction',
+    serviceCategory: defaultCategory || 'राज मिस्त्री / भवन निर्माण',
     description: '',
     budget: '',
-    preferredStartDate: 'Within 1 Week',
+    preferredStartDate: '1 सप्ताह के अंदर',
     duration: '',
-    scopeType: 'Labour + Material',
+    scopeType: 'सामग्री + लेबर',
   });
 
   const [submittedRef, setSubmittedRef] = useState(null);
 
   const requirementTypes = [
-    'New Construction',
-    'Renovation',
-    'Repair',
-    'Labour Requirement',
-    'Electrical or Plumbing',
-    'Painting and Finishing',
-    'Material Purchase',
-    'Contractor Requirement',
-    'Other'
+    'नया निर्माण',
+    'मकान रिनोवेशन',
+    'मरम्मत व सुधार कार्य',
+    'लेबर / मजदूर आवश्यकता',
+    'इलेक्ट्रिकल या प्लंबिंग',
+    'पेंटिंग एवं पुट्टी कार्य',
+    'निर्माण सामग्री खरीद',
+    'ठेकेदार आवश्यकता',
+    'अन्य सिविल कार्य'
   ];
 
   const categoryOptions = [
-    'Raj Mistri / House Construction',
-    'Building Mistri & Masonry',
-    'Shuttering Carpenter & Sariya',
-    'Painter & Putty Worker',
-    'Electrician & House Wiring',
-    'Plumber & Sanitary Fitting',
-    'Tile, Granite & Marble Work',
-    'Waterproofing & Terrace Treatment',
-    'Welding & Fabrication',
-    'Cement, Sand & Aggregates',
-    'TMT Steel / Sariya Supply',
-    'General Construction Labour'
+    'राज मिस्त्री / भवन निर्माण',
+    'बिल्डिंग मिस्त्री एवं चिनाई',
+    'शटरिंग बढ़ई व सरिया बाइंडिंग',
+    'पेंटर एवं वॉल पुट्टी कारीगर',
+    'इलेक्ट्रीशियन व हाउस वायरिंग',
+    'प्लंबर व सेनेटरी फिटिंग',
+    'टाइल्स, मार्बल व ग्रेनाइट कार्य',
+    'छत वाटरप्रूफिंग व सीलन उपचार',
+    'वेल्डिंग, ग्रिल व फैब्रिकेशन',
+    'सीमेंट, बालू व मौरंग आपूर्ति',
+    'सरिया (TMT Rebar) थोक खरीद',
+    'सामान्य निर्माण श्रमिक (लेबर)'
   ];
 
   const handleChange = (e) => {
@@ -79,7 +79,7 @@ export const RequirementModal = ({ open, onClose, defaultCategory = '', defaultT
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.customerName || !formData.mobile || !formData.description) {
-      alert('Please fill the required fields: Customer Name, Mobile Number, and Description.');
+      alert('कृपया आवश्यक विवरण भरें: आपका नाम, मोबाइल नंबर और काम का विवरण।');
       return;
     }
 
@@ -92,15 +92,15 @@ export const RequirementModal = ({ open, onClose, defaultCategory = '', defaultT
     setFormData({
       customerName: '',
       mobile: '',
-      city: 'Lucknow',
+      city: 'लखनऊ (Lucknow)',
       locality: '',
       requirementType: defaultType,
-      serviceCategory: defaultCategory || 'Raj Mistri / House Construction',
+      serviceCategory: defaultCategory || 'राज मिस्त्री / भवन निर्माण',
       description: '',
       budget: '',
-      preferredStartDate: 'Within 1 Week',
+      preferredStartDate: '1 सप्ताह के अंदर',
       duration: '',
-      scopeType: 'Labour + Material',
+      scopeType: 'सामग्री + लेबर',
     });
     onClose();
   };
@@ -119,42 +119,42 @@ export const RequirementModal = ({ open, onClose, defaultCategory = '', defaultT
       fullWidth
       PaperProps={{
         sx: {
-          borderRadius: 3,
-          p: { xs: 1, sm: 2 },
+          borderRadius: 4,
+          overflow: 'hidden',
           bgcolor: '#FFFFFF',
         }
       }}
     >
-      <DialogTitle component="div" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pb: 1 }}>
+      <DialogTitle component="div" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pb: 1.5, bgcolor: '#0F172A', color: '#FFF' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-          <Box sx={{ width: 40, height: 40, borderRadius: 2, bgcolor: '#EA580C', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <HardHat size={22} color="#FFF" />
+          <Box sx={{ width: 44, height: 44, borderRadius: 2.5, bgcolor: '#EA580C', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(234, 88, 12, 0.4)' }}>
+            <HardHat size={24} color="#FFF" />
           </Box>
           <Box>
-            <Typography variant="h6" sx={{ fontWeight: 700, color: '#0F172A', lineHeight: 1.2 }}>
-              Post Your Construction Requirement
+            <Typography variant="h6" sx={{ fontWeight: 800, color: '#FFFFFF', lineHeight: 1.2, fontSize: '1.1rem' }}>
+              अपनी निर्माण आवश्यकता पोस्ट करें
             </Typography>
-            <Typography variant="caption" sx={{ color: '#64748B' }}>
-              Connect with verified mistris, contractors & material suppliers in your city.
+            <Typography variant="caption" sx={{ color: '#FED7AA', fontWeight: 600 }}>
+              अपने शहर के सत्यापित मिस्त्री, ठेकेदार व सीधे सप्लायर से निशुल्क कोटेशन पाएं
             </Typography>
           </Box>
         </Box>
-        <IconButton onClick={handleResetAndClose} size="small">
-          <CloseIcon size={20} />
+        <IconButton onClick={handleResetAndClose} size="small" sx={{ color: '#94A3B8' }}>
+          <CloseIcon size={22} />
         </IconButton>
       </DialogTitle>
 
-      <DialogContent dividers sx={{ borderColor: '#E2E8F0', py: 2.5 }}>
+      <DialogContent dividers sx={{ borderColor: '#E2E8F0', py: 3, bgcolor: '#F8FAFC' }}>
         {submittedRef ? (
           <Box sx={{ py: 4, textAlign: 'center' }}>
-            <Box sx={{ width: 68, height: 68, borderRadius: '50%', bgcolor: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
-              <CheckCircle2 size={38} />
+            <Box sx={{ width: 72, height: 72, borderRadius: '50%', bgcolor: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
+              <CheckCircle2 size={42} />
             </Box>
             <Typography variant="h5" sx={{ fontWeight: 800, color: '#0F172A', mb: 1 }}>
-              Requirement Submitted Successfully!
+              आपकी आवश्यकता सफलतापूर्वक पोस्ट हो गई!
             </Typography>
             <Typography variant="body1" sx={{ color: '#475569', mb: 2 }}>
-              Your requirement has been saved with reference number:
+              आपकी संदर्भ संख्या (रेफरेंस आईडी):
             </Typography>
             <Chip
               label={submittedRef}
@@ -162,75 +162,76 @@ export const RequirementModal = ({ open, onClose, defaultCategory = '', defaultT
                 bgcolor: '#0F172A',
                 color: '#EA580C',
                 fontWeight: 800,
-                fontSize: '1.1rem',
-                py: 2.5,
-                px: 2,
-                borderRadius: 2,
-                mb: 3
+                fontSize: '1.2rem',
+                py: 2.8,
+                px: 2.5,
+                borderRadius: 2.5,
+                mb: 3,
+                boxShadow: '0 4px 14px rgba(0,0,0,0.15)'
               }}
             />
-            <Alert severity="info" sx={{ maxWidth: 580, mx: 'auto', textAlign: 'left', mb: 3 }}>
-              <strong>Demo Confirmation:</strong> This requirement has been logged in your local session data. You can track this requirement status, assigned providers, and quotation responses directly inside the <strong>Customer Dashboard</strong> or <strong>Admin Dashboard</strong>.
+            <Alert severity="success" icon={<ShieldCheck size={20} />} sx={{ maxWidth: 620, mx: 'auto', textAlign: 'left', mb: 3, borderRadius: 2.5 }}>
+              <strong>सीधी बातचीत:</strong> आपकी आवश्यकता हमारे सत्यापित कारीगर नेटवर्क को प्रसारित कर दी गई है। उपयुक्त ठेकेदार और मिस्त्री आपसे सीधे फोन पर बात करेंगे।
             </Alert>
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
               <Button
                 variant="contained"
                 onClick={handleGoToDashboard}
                 endIcon={<ArrowRight size={16} />}
-                sx={{ bgcolor: '#EA580C', '&:hover': { bgcolor: '#C2410C' }, fontWeight: 700, px: 3, py: 1 }}
+                sx={{ bgcolor: '#EA580C', '&:hover': { bgcolor: '#C2410C' }, fontWeight: 700, px: 3.5, py: 1.2, borderRadius: 2.5 }}
               >
-                Track in Customer Dashboard
+                ग्राहक डैशबोर्ड में ट्रैक करें
               </Button>
               <Button
                 variant="outlined"
                 onClick={handleResetAndClose}
-                sx={{ borderColor: '#CBD5E1', color: '#475569', fontWeight: 600 }}
+                sx={{ borderColor: '#CBD5E1', color: '#475569', fontWeight: 700, borderRadius: 2.5 }}
               >
-                Close & Return
+                होम पेज पर लौटें
               </Button>
             </Box>
           </Box>
         ) : (
           <form onSubmit={handleSubmit}>
-            <Alert severity="warning" sx={{ mb: 2.5, py: 0.5, fontSize: '0.82rem' }}>
-              <strong>Fair Scope Notice:</strong> Please describe your required work accurately. Workers & suppliers respond with customized estimates and site visits.
+            <Alert severity="info" icon={<ShieldCheck size={18} />} sx={{ mb: 3, borderRadius: 2.5, fontSize: '0.82rem', bgcolor: '#EFF6FF', border: '1px solid #BFDBFE' }}>
+              <strong>पारदर्शी प्रक्रिया:</strong> अपनी आवश्यकता का सही-सही विवरण दर्ज करें ताकि सही कारीगर या सप्लायर तुरंत आपसे संपर्क कर सकें।
             </Alert>
 
-            <Grid container spacing={2}>
-              {/* Customer Name */}
+            <Grid container spacing={2.2}>
+              {/* नाम */}
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
-                  label="Your Full Name *"
+                  label="आपका पूरा नाम *"
                   name="customerName"
                   value={formData.customerName}
                   onChange={handleChange}
                   fullWidth
                   size="small"
                   required
-                  placeholder="e.g. Ramesh Chandra / Sharma & Associates"
+                  placeholder="उदा. रमेश कुमार / विवेक सिंघानिया"
                 />
               </Grid>
 
-              {/* Mobile */}
+              {/* मोबाइल */}
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
-                  label="Mobile Number *"
+                  label="मोबाइल नंबर *"
                   name="mobile"
                   value={formData.mobile}
                   onChange={handleChange}
                   fullWidth
                   size="small"
                   required
-                  placeholder="+91 98765 XXXXX"
-                  helperText="Used for SMS & direct quotation updates"
+                  placeholder="उदा. 98390 XXXXX"
+                  helperText="कारीगर व सप्लायर इस नंबर पर सीधे संपर्क करेंगे"
                 />
               </Grid>
 
-              {/* City */}
+              {/* शहर */}
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   select
-                  label="City *"
+                  label="शहर / जिला *"
                   name="city"
                   value={formData.city}
                   onChange={handleChange}
@@ -244,25 +245,25 @@ export const RequirementModal = ({ open, onClose, defaultCategory = '', defaultT
                 </TextField>
               </Grid>
 
-              {/* Locality */}
+              {/* इलाका */}
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
-                  label="Locality / Area / Landmark *"
+                  label="इलाका / लैंडमार्क *"
                   name="locality"
                   value={formData.locality}
                   onChange={handleChange}
                   fullWidth
                   size="small"
                   required
-                  placeholder="e.g. Gomti Nagar, Extension Road"
+                  placeholder="उदा. गोमती नगर, शहीद पथ, सेक्टर 4"
                 />
               </Grid>
 
-              {/* Requirement Type */}
+              {/* कार्य प्रकार */}
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   select
-                  label="Requirement Type *"
+                  label="आवश्यकता का प्रकार *"
                   name="requirementType"
                   value={formData.requirementType}
                   onChange={handleChange}
@@ -276,11 +277,11 @@ export const RequirementModal = ({ open, onClose, defaultCategory = '', defaultT
                 </TextField>
               </Grid>
 
-              {/* Category */}
+              {/* श्रेणी */}
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   select
-                  label="Service or Trade Category *"
+                  label="सेवा अथवा ट्रेड श्रेणी *"
                   name="serviceCategory"
                   value={formData.serviceCategory}
                   onChange={handleChange}
@@ -294,11 +295,11 @@ export const RequirementModal = ({ open, onClose, defaultCategory = '', defaultT
                 </TextField>
               </Grid>
 
-              {/* Scope Type Radio */}
+              {/* स्कोप मोड */}
               <Grid size={{ xs: 12 }}>
                 <FormControl component="fieldset">
-                  <FormLabel component="legend" sx={{ fontSize: '0.85rem', fontWeight: 600, color: '#0F172A', mb: 0.5 }}>
-                    Scope Mode:
+                  <FormLabel component="legend" sx={{ fontSize: '0.85rem', fontWeight: 700, color: '#0F172A', mb: 0.5 }}>
+                    ठेका / अनुबंध का प्रकार:
                   </FormLabel>
                   <RadioGroup
                     row
@@ -306,17 +307,17 @@ export const RequirementModal = ({ open, onClose, defaultCategory = '', defaultT
                     value={formData.scopeType}
                     onChange={handleChange}
                   >
-                    <FormControlLabel value="Labour only" control={<Radio size="small" color="secondary" />} label={<Typography variant="body2">Labour Only</Typography>} />
-                    <FormControlLabel value="Material only" control={<Radio size="small" color="secondary" />} label={<Typography variant="body2">Material Only</Typography>} />
-                    <FormControlLabel value="Labour + Material" control={<Radio size="small" color="secondary" />} label={<Typography variant="body2" sx={{ fontWeight: 600 }}>Labour + Material (Turnkey)</Typography>} />
+                    <FormControlLabel value="केवल लेबर" control={<Radio size="small" color="secondary" />} label={<Typography variant="body2" sx={{ fontWeight: 600 }}>केवल लेबर (Labour Only)</Typography>} />
+                    <FormControlLabel value="केवल सामग्री" control={<Radio size="small" color="secondary" />} label={<Typography variant="body2" sx={{ fontWeight: 600 }}>केवल सामग्री (Material Only)</Typography>} />
+                    <FormControlLabel value="सामग्री + लेबर" control={<Radio size="small" color="secondary" />} label={<Typography variant="body2" sx={{ fontWeight: 700, color: '#EA580C' }}>सामग्री + लेबर (टर्नकी ठेका)</Typography>} />
                   </RadioGroup>
                 </FormControl>
               </Grid>
 
-              {/* Description */}
+              {/* विवरण */}
               <Grid size={{ xs: 12 }}>
                 <TextField
-                  label="Project Work Description *"
+                  label="काम का पूरा विवरण *"
                   name="description"
                   value={formData.description}
                   onChange={handleChange}
@@ -324,72 +325,74 @@ export const RequirementModal = ({ open, onClose, defaultCategory = '', defaultT
                   multiline
                   rows={3}
                   required
-                  placeholder="Specify total area (sq.ft), number of floors/rooms, specific materials, daily wage preference, or any urgency."
+                  placeholder="प्लॉट साइज (जैसे 1500 वर्ग फीट), कमरों की संख्या, कॉलम ढलाई, 9 इंच ईंट चिनाई, दैनिक मजदूरी या कोई विशेष आवश्यकता लिखें..."
                 />
               </Grid>
 
-              {/* Approx Budget */}
+              {/* अनुमानित बजट */}
               <Grid size={{ xs: 12, sm: 4 }}>
                 <TextField
-                  label="Approx. Budget (₹ optional)"
+                  label="अनुमानित बजट (₹ वैकल्पिक)"
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
                   fullWidth
                   size="small"
-                  placeholder="e.g. 50,000 or 15,00,000"
+                  placeholder="जैसे 50,000 या 25,00,000"
                 />
               </Grid>
 
-              {/* Preferred Start Date */}
+              {/* कार्य शुरू करने का समय */}
               <Grid size={{ xs: 12, sm: 4 }}>
                 <TextField
                   select
-                  label="Preferred Start Date"
+                  label="काम कब शुरू करना है?"
                   name="preferredStartDate"
                   value={formData.preferredStartDate}
                   onChange={handleChange}
                   fullWidth
                   size="small"
                 >
-                  <MenuItem value="Immediate (Within 24-48 hrs)">Immediate (24-48 hrs)</MenuItem>
-                  <MenuItem value="Within 1 Week">Within 1 Week</MenuItem>
-                  <MenuItem value="Within 15 Days">Within 15 Days</MenuItem>
-                  <MenuItem value="Next Month / Planning Stage">Next Month</MenuItem>
+                  <MenuItem value="तुरंत (24-48 घंटे)">तुरंत (24-48 घंटे में)</MenuItem>
+                  <MenuItem value="1 सप्ताह के अंदर">1 सप्ताह के अंदर</MenuItem>
+                  <MenuItem value="15 दिन के अंदर">15 दिन के अंदर</MenuItem>
+                  <MenuItem value="अगले महीने / योजना स्तर">अगले महीने</MenuItem>
                 </TextField>
               </Grid>
 
-              {/* Work Duration */}
+              {/* अनुमानित कार्य अवधि */}
               <Grid size={{ xs: 12, sm: 4 }}>
                 <TextField
-                  label="Estimated Duration (optional)"
+                  label="अनुमानित कार्य अवधि"
                   name="duration"
                   value={formData.duration}
                   onChange={handleChange}
                   fullWidth
                   size="small"
-                  placeholder="e.g. 10 Days / 3 Months"
+                  placeholder="जैसे 15 दिन या 4 माह"
                 />
               </Grid>
             </Grid>
 
             <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end', gap: 1.5 }}>
-              <Button onClick={handleResetAndClose} sx={{ color: '#64748B' }}>
-                Cancel
+              <Button onClick={handleResetAndClose} sx={{ color: '#64748B', fontWeight: 600 }}>
+                रद्द करें
               </Button>
               <Button
                 type="submit"
                 variant="contained"
                 sx={{
                   bgcolor: '#EA580C',
+                  color: '#FFF',
                   fontWeight: 700,
-                  px: 3,
-                  py: 1,
+                  px: 3.5,
+                  py: 1.1,
                   borderRadius: 2,
+                  boxShadow: '0 4px 14px rgba(234, 88, 12, 0.4)',
                   '&:hover': { bgcolor: '#C2410C' }
                 }}
               >
-                Submit Requirement & Get Quotations
+                आवश्यकता पोस्ट करें
               </Button>
             </Box>
           </form>

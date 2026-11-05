@@ -34,7 +34,7 @@ export const Footer = () => {
                 <HardHat size={24} color="#FFFFFF" />
               </Box>
               <Typography variant="h5" sx={{ fontWeight: 800, color: '#FFFFFF', letterSpacing: '-0.02em' }}>
-                काम<span style={{ color: '#EA580C' }}>सेतु</span>
+                मंगलम <span style={{ color: '#EA580C' }}>विश्वकर्मा</span>
               </Typography>
             </Box>
 

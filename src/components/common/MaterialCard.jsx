@@ -12,13 +12,11 @@ import {
 import {
   Package,
   Truck,
-  MapPin,
   Building2,
-  CheckCircle2,
-  FileQuestion,
   ShieldCheck,
   Star,
-  ArrowRight
+  ArrowRight,
+  PhoneCall
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,123 +30,179 @@ export const MaterialCard = ({ material, onRequestQuote }) => {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        borderRadius: 3.5,
+        borderRadius: 4,
         bgcolor: '#FFFFFF',
         border: '1px solid #E2E8F0',
-        p: { xs: 2, sm: 2.5 },
+        overflow: 'hidden',
+        boxShadow: '0 4px 16px rgba(15, 23, 42, 0.04)',
       }}
     >
-      {/* Category & Availability badge */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
-        <Chip
-          label={material.category}
-          size="small"
-          sx={{
-            fontSize: '0.72rem',
-            fontWeight: 700,
-            bgcolor: 'rgba(234, 88, 12, 0.08)',
-            color: '#EA580C',
-            border: '1px solid rgba(234, 88, 12, 0.2)'
-          }}
-        />
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-          <Box sx={{ width: 7, height: 7, borderRadius: '50%', bgcolor: '#16A34A' }} />
-          <Typography variant="caption" sx={{ color: '#16A34A', fontWeight: 600 }}>
-            {material.availability}
-          </Typography>
+      {/* मैटेरियल इमेज */}
+      {material.image && (
+        <Box sx={{ position: 'relative', height: 160, overflow: 'hidden' }} className="image-zoom-container">
+          <Box
+            component="img"
+            src={material.image}
+            alt={material.name}
+            sx={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block'
+            }}
+          />
+          <Box
+            sx={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(15,23,42,0.6) 100%)'
+            }}
+          />
+          <Box sx={{ position: 'absolute', top: 10, left: 10 }}>
+            <Chip
+              label={material.category}
+              size="small"
+              sx={{
+                fontSize: '0.72rem',
+                fontWeight: 700,
+                bgcolor: '#EA580C',
+                color: '#FFF',
+                border: 'none',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+              }}
+            />
+          </Box>
+          <Box sx={{ position: 'absolute', bottom: 10, right: 10, display: 'flex', alignItems: 'center', gap: 0.6, bgcolor: 'rgba(15, 23, 42, 0.85)', px: 1, py: 0.3, borderRadius: 1.5, backdropFilter: 'blur(6px)' }}>
+            <Box sx={{ width: 7, height: 7, borderRadius: '50%', bgcolor: '#4ADE80' }} />
+            <Typography variant="caption" sx={{ color: '#4ADE80', fontWeight: 700, fontSize: '0.7rem' }}>
+              {material.availability}
+            </Typography>
+          </Box>
         </Box>
-      </Box>
+      )}
 
-      {/* Product Name */}
-      <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#0F172A', mb: 0.75, lineHeight: 1.3 }}>
-        {material.name}
-      </Typography>
-
-      {/* Supplier Name & City */}
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5, color: '#64748B' }}>
-        <Building2 size={15} color="#0F172A" />
-        <Typography variant="body2" sx={{ fontWeight: 600, color: '#334155', fontSize: '0.84rem' }}>
-          {material.supplierName}
+      <CardContent sx={{ p: { xs: 2, sm: 2.5 }, flex: 1, display: 'flex', flexDirection: 'column' }}>
+        
+        {/* सामग्री का नाम */}
+        <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#0F172A', mb: 1, lineHeight: 1.35, fontSize: '1rem' }}>
+          {material.name}
         </Typography>
-        {material.demoSupplierVerified && (
-          <Tooltip title="Registered Business Supplier with commercial trade license" arrow>
-            <ShieldCheck size={15} color="#16A34A" />
-          </Tooltip>
-        )}
-      </Box>
 
-      {/* Price / Request Price Block */}
-      <Box sx={{ bgcolor: '#F8FAFC', p: 1.5, borderRadius: 2, mb: 2, border: '1px solid #F1F5F9' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', mb: 0.5 }}>
-          <Typography variant="caption" sx={{ color: '#64748B' }}>
-            Indicative Rate:
+        {/* सप्लायर का नाम व शहर */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5, color: '#64748B' }}>
+          <Building2 size={16} color="#EA580C" />
+          <Typography variant="body2" sx={{ fontWeight: 700, color: '#334155', fontSize: '0.84rem' }}>
+            {material.supplierName}
           </Typography>
-          <Box sx={{ textAlign: 'right' }}>
-            {material.price > 0 && material.priceType?.includes('Fixed') ? (
-              <Typography variant="h6" sx={{ fontWeight: 800, color: '#0F172A', lineHeight: 1 }}>
-                ₹{material.price.toLocaleString('en-IN')} <span style={{ fontSize: '0.78rem', color: '#64748B', fontWeight: 500 }}>/ {material.unit}</span>
-              </Typography>
-            ) : (
-              <Chip
-                icon={<FileQuestion size={13} color="#C2410C" />}
-                label="Request Price / Daily Mandi Rate"
-                size="small"
-                sx={{
-                  bgcolor: '#FFF7ED',
-                  color: '#C2410C',
-                  border: '1px solid #FFEDD5',
-                  fontWeight: 600,
-                  fontSize: '0.7rem'
-                }}
-              />
-            )}
+          {material.demoSupplierVerified && (
+            <Tooltip title="सत्यापित डीलर / व्यापार लाइसेंस सत्यापित" arrow>
+              <ShieldCheck size={16} color="#16A34A" />
+            </Tooltip>
+          )}
+        </Box>
+
+        {/* मूल्य / मंडी भाव ब्लॉक */}
+        <Box sx={{ bgcolor: '#F8FAFC', p: 1.5, borderRadius: 2.5, mb: 2, border: '1px solid #E2E8F0' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', mb: 0.5 }}>
+            <Typography variant="caption" sx={{ color: '#64748B', fontWeight: 600 }}>
+              अनुमानित मंडी दर:
+            </Typography>
+            <Box sx={{ textAlign: 'right' }}>
+              {material.price > 0 && material.priceType?.includes('स्थिर') ? (
+                <Typography variant="h6" sx={{ fontWeight: 800, color: '#0F172A', lineHeight: 1 }}>
+                  ₹{material.price.toLocaleString('en-IN')} <span style={{ fontSize: '0.78rem', color: '#64748B', fontWeight: 600 }}>/ {material.unit}</span>
+                </Typography>
+              ) : (
+                <Chip
+                  label="दैनिक मंडी भाव / कोटेशन दर"
+                  size="small"
+                  sx={{
+                    bgcolor: '#FFF7ED',
+                    color: '#C2410C',
+                    border: '1px solid #FFEDD5',
+                    fontWeight: 700,
+                    fontSize: '0.72rem'
+                  }}
+                />
+              )}
+            </Box>
+          </Box>
+
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1, pt: 1, borderTop: '1px dashed #E2E8F0' }}>
+            <Typography variant="caption" sx={{ color: '#64748B' }}>
+              न्यूनतम ऑर्डर:
+            </Typography>
+            <Typography variant="caption" sx={{ color: '#0F172A', fontWeight: 700 }}>
+              {material.minOrderQty}
+            </Typography>
           </Box>
         </Box>
 
-        {/* Minimum Order Qty */}
-        {material.minOrderQty && (
-          <Typography variant="caption" sx={{ color: '#475569', display: 'block', mt: 0.5 }}>
-            <strong>MOQ:</strong> {material.minOrderQty}
-          </Typography>
-        )}
-      </Box>
-
-      {/* Delivery Locations */}
-      <Box sx={{ mb: 2, display: 'flex', alignItems: 'flex-start', gap: 0.75, color: '#64748B', fontSize: '0.8rem' }}>
-        <Truck size={15} color="#EA580C" style={{ marginTop: 2, flexShrink: 0 }} />
-        <Typography variant="caption" sx={{ color: '#64748B', lineHeight: 1.4 }}>
-          <strong>Delivery Locations:</strong> {material.deliveryLocations.join(', ')}
+        {/* विवरण */}
+        <Typography variant="body2" sx={{ color: '#64748B', fontSize: '0.82rem', mb: 2, lineHeight: 1.5, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+          {material.description}
         </Typography>
-      </Box>
 
-      {/* Short Description */}
-      <Typography variant="caption" sx={{ color: '#64748B', mb: 2, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', lineHeight: 1.5 }}>
-        {material.description}
-      </Typography>
+        {/* डिलीवरी शहर एवं रेटिंग */}
+        <Box sx={{ mt: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.6, color: '#64748B' }}>
+            <Truck size={15} color="#0F172A" />
+            <Typography variant="caption" sx={{ color: '#475569', fontWeight: 600 }}>
+              {material.supplierCity} एवं आसपास
+            </Typography>
+          </Box>
 
-      <Divider sx={{ mt: 'auto', mb: 1.75 }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.4, bgcolor: '#FEF3C7', px: 1, py: 0.25, borderRadius: 1.5 }}>
+            <Star size={13} fill="#D97706" color="#D97706" />
+            <Typography variant="caption" sx={{ fontWeight: 800, color: '#92400E' }}>
+              {material.rating || 4.8}
+            </Typography>
+          </Box>
+        </Box>
 
-      {/* Action Buttons */}
-      <Box sx={{ display: 'flex', gap: 1 }}>
-        <Button
-          variant="outlined"
-          size="small"
-          fullWidth
-          onClick={() => navigate(`/materials/${material.id}`)}
-          sx={{ borderColor: '#CBD5E1', color: '#0F172A', fontWeight: 600, borderRadius: 2 }}
-        >
-          Details
-        </Button>
-        <Button
-          variant="contained"
-          size="small"
-          fullWidth
-          onClick={() => onRequestQuote(material)}
-          sx={{ bgcolor: '#EA580C', color: '#FFF', fontWeight: 700, borderRadius: 2, '&:hover': { bgcolor: '#C2410C' } }}
-        >
-          Request Quote
-        </Button>
-      </Box>
+        <Divider sx={{ mb: 2 }} />
+
+        {/* एक्शन बटन */}
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <Button
+            variant="outlined"
+            size="small"
+            fullWidth
+            onClick={() => navigate(`/materials/${material.id}`)}
+            sx={{
+              borderColor: '#CBD5E1',
+              color: '#0F172A',
+              fontWeight: 700,
+              fontSize: '0.82rem',
+              py: 0.85,
+              borderRadius: 2,
+              '&:hover': { borderColor: '#0F172A', bgcolor: '#F8FAFC' }
+            }}
+          >
+            विवरण देखें
+          </Button>
+          <Button
+            variant="contained"
+            size="small"
+            fullWidth
+            onClick={() => onRequestQuote(material)}
+            startIcon={<PhoneCall size={14} />}
+            sx={{
+              bgcolor: '#EA580C',
+              color: '#FFF',
+              fontWeight: 700,
+              fontSize: '0.82rem',
+              py: 0.85,
+              borderRadius: 2,
+              boxShadow: '0 4px 12px rgba(234, 88, 12, 0.25)',
+              '&:hover': { bgcolor: '#C2410C' }
+            }}
+          >
+            रेट पूछें
+          </Button>
+        </Box>
+
+      </CardContent>
     </Card>
   );
 };

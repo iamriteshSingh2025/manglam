@@ -18,20 +18,12 @@ import { ServiceCard } from '../components/common/ServiceCard';
 export const ConstructionServicesPage = ({ onOpenQuoteModal }) => {
   const { services } = useApp();
   const [search, setSearch] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('सभी');
 
-  const categories = ['All', 'Construction', 'Painting and Finishing', 'Electrical and Technical', 'Plumbing and Home Repair'];
-
-  const categoryLabels = {
-    'All': 'सभी',
-    'Construction': 'निर्माण',
-    'Painting and Finishing': 'पेंटिंग एवं फिनिशिंग',
-    'Electrical and Technical': 'इलेक्ट्रिकल एवं तकनीकी',
-    'Plumbing and Home Repair': 'प्लंबिंग एवं घर की मरम्मत'
-  };
+  const categories = ['सभी', 'भवन निर्माण (सिविल)', 'पेंटिंग एवं फिनिशिंग', 'इलेक्ट्रिकल एवं तकनीकी', 'प्लंबिंग एवं फिटिंग'];
 
   const filteredServices = services.filter(service => {
-    if (selectedCategory !== 'All' && service.category !== selectedCategory) return false;
+    if (selectedCategory !== 'सभी' && service.category !== selectedCategory) return false;
     if (search) {
       const q = search.toLowerCase();
       const matchTitle = service.title.toLowerCase().includes(q);
@@ -42,19 +34,19 @@ export const ConstructionServicesPage = ({ onOpenQuoteModal }) => {
   });
 
   return (
-    <Box sx={{ py: 5 }}>
+    <Box sx={{ py: 6, bgcolor: '#F8FAFC' }}>
       <Container maxWidth="xl">
         
         {/* शीर्षक */}
         <Box sx={{ mb: 4 }}>
           <Typography variant="overline" sx={{ color: '#EA580C', fontWeight: 800, letterSpacing: '0.06em' }}>
-            व्यावसायिक समाधान
+            व्यावसायिक निर्माण समाधान
           </Typography>
-          <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 1 }}>
-            निर्माण एवं रिनोवेशन सेवाएँ
+          <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 1, fontSize: { xs: '1.8rem', md: '2.4rem' } }}>
+            निर्माण, नवीनीकरण एवं ट्रेड सेवाएँ
           </Typography>
-          <Typography variant="body1" sx={{ color: '#64748B' }}>
-            पारदर्शी माइलस्टोन स्कोप के साथ संरचित सिविल कॉन्ट्रैक्टिंग, इलेक्ट्रिकल वायरिंग, प्लंबिंग और फिनिशिंग समाधान।
+          <Typography variant="body1" sx={{ color: '#64748B', fontSize: '1.05rem' }}>
+            पारदर्शी कार्य दायरे और लिखित गारंटी के साथ नया मकान निर्माण, रिनोवेशन, हाउस वायरिंग, पेंटिंग व वाटरप्रूफिंग पैकेज।
           </Typography>
         </Box>
 
@@ -63,7 +55,7 @@ export const ConstructionServicesPage = ({ onOpenQuoteModal }) => {
           elevation={0}
           sx={{
             p: 2,
-            borderRadius: 3,
+            borderRadius: 3.5,
             bgcolor: '#FFFFFF',
             border: '1px solid #E2E8F0',
             mb: 4,
@@ -71,7 +63,8 @@ export const ConstructionServicesPage = ({ onOpenQuoteModal }) => {
             flexWrap: 'wrap',
             gap: 2,
             justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
+            boxShadow: '0 4px 16px rgba(15, 23, 42, 0.03)'
           }}
         >
           <Box sx={{ flex: 1, minWidth: 260 }}>
@@ -98,24 +91,24 @@ export const ConstructionServicesPage = ({ onOpenQuoteModal }) => {
             scrollButtons="auto"
             sx={{
               '& .MuiTab-root': {
-                fontWeight: 600,
+                fontWeight: 700,
                 textTransform: 'none',
-                fontSize: '0.86rem',
+                fontSize: '0.88rem',
                 minWidth: 'auto',
-                px: 2
+                px: 2.2
               },
               '& .Mui-selected': { color: '#EA580C !important' },
-              '& .MuiTabs-indicator': { backgroundColor: '#EA580C' }
+              '& .MuiTabs-indicator': { backgroundColor: '#EA580C', height: 3 }
             }}
           >
             {categories.map(cat => (
-              <Tab key={cat} label={categoryLabels[cat] || cat} value={cat} />
+              <Tab key={cat} label={cat} value={cat} />
             ))}
           </Tabs>
         </Paper>
 
         {/* सेवा ग्रिड */}
-        <Grid container spacing={3}>
+        <Grid container spacing={3.5}>
           {filteredServices.map(service => (
             <Grid key={service.id} size={{ xs: 12, sm: 6, lg: 4 }}>
               <ServiceCard

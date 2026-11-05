@@ -130,7 +130,7 @@ export const Header = ({ onOpenPostModal }) => {
                 <Typography
                   variant="h5"
                   sx={{
-                    fontFamily: '"Outfit", sans-serif',
+                    fontFamily: '"Outfit", "Noto Sans Devanagari", sans-serif',
                     fontWeight: 800,
                     letterSpacing: '-0.02em',
                     color: '#FFFFFF',
@@ -140,19 +140,19 @@ export const Header = ({ onOpenPostModal }) => {
                     gap: 0.5
                   }}
                 >
-                  काम<span style={{ color: '#EA580C' }}>सेतु</span>
+                  मंगलम <span style={{ color: '#EA580C' }}>विश्वकर्मा</span>
                 </Typography>
                 <Typography
                   variant="caption"
                   sx={{
-                    color: '#94A3B8',
-                    fontSize: '0.68rem',
+                    color: '#FED7AA',
+                    fontSize: '0.7rem',
                     letterSpacing: '0.02em',
-                    fontWeight: 500,
+                    fontWeight: 700,
                     display: { xs: 'none', sm: 'block' }
                   }}
                 >
-                  काम करने वालों को काम, हर घर को विश्वास
+                  राका भैया निर्माण मंच • हर घर को विश्वास
                 </Typography>
               </Box>
             </Box>
@@ -416,7 +416,7 @@ export const Header = ({ onOpenPostModal }) => {
               <HardHat size={20} color="#FFFFFF" />
             </Box>
             <Typography variant="h6" sx={{ fontWeight: 800, color: '#FFFFFF' }}>
-              काम<span style={{ color: '#EA580C' }}>सेतु</span>
+              मंगलम <span style={{ color: '#EA580C' }}>विश्वकर्मा</span>
             </Typography>
           </Box>
           <IconButton onClick={() => setMobileOpen(false)} sx={{ color: '#94A3B8' }}>
