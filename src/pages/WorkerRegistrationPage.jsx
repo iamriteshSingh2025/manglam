@@ -21,7 +21,8 @@ import {
   Send,
   ArrowRight,
   ShieldAlert,
-  Sparkles
+  Sparkles,
+  ShieldCheck
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
@@ -34,13 +35,13 @@ export const WorkerRegistrationPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    city: 'Lucknow',
+    city: 'लखनऊ (Lucknow)',
     locality: '',
-    primarySkill: 'Raj Mistri',
-    additionalSkillsText: 'Brickwork, Plastering',
+    primarySkill: 'राज मिस्त्री (चिनाई व ढलाई)',
+    additionalSkillsText: 'ईंट चिनाई, प्लास्टर, कॉलम ढलाई',
     experienceYears: '8',
-    workTypes: ['Daily Wage'],
-    expectedWage: '₹900 / day',
+    workTypes: ['दैनिक मजदूरी'],
+    expectedWage: '₹950 / दिन',
     workingRadiusKm: '25',
     availableImmediate: true,
     bio: ''
@@ -48,26 +49,25 @@ export const WorkerRegistrationPage = () => {
 
   const [registeredWorker, setRegisteredWorker] = useState(null);
 
-  const workTypeOptions = ['Daily Wage', 'Per-Day Contract', 'Fixed-Price Job', 'Project-Based Work'];
+  const workTypeOptions = ['दैनिक मजदूरी', 'प्रोजेक्ट / ठेका कार्य', 'निश्चित दर कार्य', 'प्रति दिन अनुबंध'];
 
   const primarySkillOptions = [
-    'Raj Mistri',
-    'Building Mistri',
-    'Masonry Labour',
-    'Shuttering Carpenter',
-    'Bar Bending / Sariya Work',
-    'Painter',
-    'Wall Putty Worker',
-    'Waterproofing Worker',
-    'Electrician',
-    'House Wiring Technician',
-    'Plumber',
-    'Carpenter',
-    'Door and Window Fitter',
-    'Tile and Marble Installer',
-    'Welding Worker',
-    'Construction Labour',
-    'Helper'
+    'राज मिस्त्री (चिनाई व ढलाई)',
+    'सीनियर भवन निर्माण मिस्त्री',
+    'निर्माण लेबर / बेलदार',
+    'शटरिंग व सेंटरिंग बढ़ई',
+    'सरिया / बार बेंडिंग मिस्त्री',
+    'पेंटर (आंतरिक व बाहरी)',
+    'वॉल पुट्टी कारीगर',
+    'वाटरप्रूफिंग विशेषज्ञ',
+    'इलेक्ट्रीशियन (हाउस वायरिंग)',
+    'कंसील्ड वायरिंग तकनीशियन',
+    'प्लंबर (पाइप व सेनेटरी)',
+    'बढ़ई (फर्नीचर व किवाड़)',
+    'खिड़की-दरवाजा फिटर',
+    'टाइल्स एवं मार्बल मिस्त्री',
+    'वेल्डिंग कारीगर',
+    'साइट हेल्पर'
   ];
 
   const handleWorkTypeToggle = (wt) => {
@@ -82,7 +82,7 @@ export const WorkerRegistrationPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) {
-      alert('Please fill your full name and phone number.');
+      alert('कृपया अपना पूरा नाम और मोबाइल नंबर भरें।');
       return;
     }
 
@@ -103,35 +103,35 @@ export const WorkerRegistrationPage = () => {
     <Box sx={{ py: 6, bgcolor: '#F8FAFC' }}>
       <Container maxWidth="md">
         
-        {/* Header */}
+        {/* हेडर */}
         <Box sx={{ textAlign: 'center', mb: 4 }}>
-          <Box sx={{ width: 52, height: 52, borderRadius: 3, bgcolor: '#EA580C', color: '#FFF', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
-            <HardHat size={28} />
+          <Box sx={{ width: 54, height: 54, borderRadius: 3, bgcolor: '#EA580C', color: '#FFF', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2, boxShadow: '0 6px 18px rgba(234, 88, 12, 0.35)' }}>
+            <HardHat size={30} />
           </Box>
-          <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 1 }}>
-            Worker & Mistri Registration
+          <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 1, fontSize: { xs: '1.8rem', md: '2.4rem' } }}>
+            कारीगर एवं मिस्त्री पंजीकरण
           </Typography>
-          <Typography variant="h6" sx={{ color: '#EA580C', fontWeight: 600, mb: 1 }}>
-            “Aapke Hunar Ko Mile Naye Kaam Ke Mauke.”
+          <Typography variant="h6" sx={{ color: '#EA580C', fontWeight: 800, mb: 1, fontSize: '1.1rem' }}>
+            “आपके हुनर को मिले नए काम के अवसर — सीधे घर मालिकों से जुड़ें।”
           </Typography>
           <Typography variant="body2" sx={{ color: '#64748B', maxWidth: 600, mx: 'auto' }}>
-            Register your trade skill and preferred working area to receive genuine customer work enquiries directly.
+            अपना हुनर और कार्य क्षेत्र दर्ज करें। घर मालिकों और ठेकेदारों से सीधे फोन कॉल प्राप्त करें।
           </Typography>
         </Box>
 
         {registeredWorker ? (
-          <Paper sx={{ p: 5, borderRadius: 4, textAlign: 'center', bgcolor: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)' }}>
-            <Box sx={{ width: 68, height: 68, borderRadius: '50%', bgcolor: '#FEF3C7', color: '#B45309', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
-              <ShieldAlert size={38} />
+          <Paper sx={{ p: { xs: 3, sm: 5 }, borderRadius: 4, textAlign: 'center', bgcolor: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 8px 30px rgba(15, 23, 42, 0.05)' }}>
+            <Box sx={{ width: 72, height: 72, borderRadius: '50%', bgcolor: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2.5 }}>
+              <CheckCircle2 size={42} />
             </Box>
             <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A', mb: 1 }}>
-              Registration Submitted!
+              पंजीकरण सफलतापूर्वक दर्ज हुआ!
             </Typography>
-            <Typography variant="subtitle1" sx={{ color: '#B45309', fontWeight: 700, mb: 2 }}>
-              Current Status: Pending Admin Review
+            <Typography variant="subtitle1" sx={{ color: '#EA580C', fontWeight: 800, mb: 2 }}>
+              वर्तमान स्थिति: एडमिन भौतिक सत्यापन प्रक्रियाधीन
             </Typography>
-            <Typography variant="body2" sx={{ color: '#64748B', maxWidth: 540, mx: 'auto', mb: 3 }}>
-              Your worker profile for <strong>{registeredWorker.name} ({registeredWorker.primarySkill})</strong> has been registered. In accordance with KaamSetu trust guidelines, new profiles remain in "Pending Review" until approved by the admin desk before a Verified Badge is issued.
+            <Typography variant="body2" sx={{ color: '#64748B', maxWidth: 540, mx: 'auto', mb: 3.5, lineHeight: 1.7 }}>
+              आपका कारीगर प्रोफाइल <strong>{registeredWorker.name} ({registeredWorker.primarySkill})</strong> सफलतापूर्वक दर्ज हो गया है। हमारी संचालन टीम द्वारा आईडी व पूर्व अनुभव की पुष्टि के बाद आपके प्रोफाइल को "सत्यापित बैज" प्रदान किया जाएगा।
             </Typography>
 
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
@@ -142,9 +142,9 @@ export const WorkerRegistrationPage = () => {
                   navigate('/dashboard/worker');
                 }}
                 endIcon={<ArrowRight size={18} />}
-                sx={{ bgcolor: '#EA580C', fontWeight: 700, px: 3, py: 1.2, borderRadius: 2, '&:hover': { bgcolor: '#C2410C' } }}
+                sx={{ bgcolor: '#EA580C', fontWeight: 800, px: 3.5, py: 1.2, borderRadius: 2, '&:hover': { bgcolor: '#C2410C' } }}
               >
-                Go to Worker Dashboard
+                कारीगर डैशबोर्ड खोलें
               </Button>
               <Button
                 variant="outlined"
@@ -152,53 +152,53 @@ export const WorkerRegistrationPage = () => {
                   setCurrentRole('admin');
                   navigate('/dashboard/admin');
                 }}
-                sx={{ borderColor: '#0F172A', color: '#0F172A', fontWeight: 700 }}
+                sx={{ borderColor: '#0F172A', color: '#0F172A', fontWeight: 700, borderRadius: 2 }}
               >
-                Switch to Admin Dashboard to Approve
+                एडमिन पोर्टल में सत्यापित करें
               </Button>
             </Box>
           </Paper>
         ) : (
-          <Paper sx={{ p: { xs: 3, sm: 5 }, borderRadius: 4, bgcolor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
-            <Alert severity="info" sx={{ mb: 3.5, fontSize: '0.85rem' }}>
-              <strong>Zero Registration Fees:</strong> KaamSetu does not charge workers any signup fees or cut from your daily wages.
+          <Paper sx={{ p: { xs: 3, sm: 4.5 }, borderRadius: 4, bgcolor: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 8px 30px rgba(15, 23, 42, 0.05)' }}>
+            <Alert severity="success" icon={<ShieldCheck size={20} />} sx={{ mb: 3.5, fontSize: '0.86rem', borderRadius: 2.5 }}>
+              <strong>शून्य पंजीकरण शुल्क:</strong> मंगलम विश्वकर्मा (राका भैया) मंच पर कारीगरों से कोई शुल्क नहीं लिया जाता और आपकी मजदूरी से शून्य कमीशन काटा जाता है।
             </Alert>
 
             <form onSubmit={handleSubmit}>
               <Grid container spacing={2.5}>
                 
-                {/* Full Name */}
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Full Name *"
+                    label="आपका पूरा नाम *"
                     fullWidth
                     required
+                    size="small"
                     value={formData.name}
                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                    placeholder="e.g. Rameshwar Yadav"
+                    placeholder="उदा. रामेश्वर यादव"
                   />
                 </Grid>
 
-                {/* Mobile */}
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Mobile Number *"
+                    label="मोबाइल नंबर *"
                     fullWidth
                     required
+                    size="small"
                     value={formData.phone}
                     onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                    placeholder="+91 98XXX XXXXX"
-                    helperText="Customers will contact you on this number"
+                    placeholder="उदा. 98390 XXXXX"
+                    helperText="घर मालिक व ठेकेदार इसी नंबर पर कॉल करेंगे"
                   />
                 </Grid>
 
-                {/* City */}
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
                     select
-                    label="Primary Working City *"
+                    label="कार्य का मुख्य शहर *"
                     fullWidth
                     required
+                    size="small"
                     value={formData.city}
                     onChange={(e) => setFormData(prev => ({ ...prev, city: e.target.value }))}
                   >
@@ -208,25 +208,25 @@ export const WorkerRegistrationPage = () => {
                   </TextField>
                 </Grid>
 
-                {/* Locality */}
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Your Locality / Base Area *"
+                    label="आपका इलाका / बेस क्षेत्र *"
                     fullWidth
                     required
+                    size="small"
                     value={formData.locality}
                     onChange={(e) => setFormData(prev => ({ ...prev, locality: e.target.value }))}
-                    placeholder="e.g. Gomti Nagar, Sector 4"
+                    placeholder="उदा. गोमती नगर, इंदिरानगर"
                   />
                 </Grid>
 
-                {/* Primary Skill */}
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
                     select
-                    label="Primary Skill / Trade *"
+                    label="प्राथमिक हुनर / ट्रेड *"
                     fullWidth
                     required
+                    size="small"
                     value={formData.primarySkill}
                     onChange={(e) => setFormData(prev => ({ ...prev, primarySkill: e.target.value }))}
                   >
@@ -236,32 +236,32 @@ export const WorkerRegistrationPage = () => {
                   </TextField>
                 </Grid>
 
-                {/* Years of Experience */}
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Years of Practical Experience"
+                    label="काम का अनुभव (वर्ष में)"
                     fullWidth
+                    size="small"
                     type="number"
                     value={formData.experienceYears}
                     onChange={(e) => setFormData(prev => ({ ...prev, experienceYears: e.target.value }))}
                   />
                 </Grid>
 
-                {/* Additional Skills */}
                 <Grid size={{ xs: 12 }}>
                   <TextField
-                    label="Additional Skills (comma separated)"
+                    label="अन्य कौशल (अल्पविराम से अलग करें)"
                     fullWidth
+                    size="small"
                     value={formData.additionalSkillsText}
                     onChange={(e) => setFormData(prev => ({ ...prev, additionalSkillsText: e.target.value }))}
-                    placeholder="e.g. Plastering, Foundation Brickwork, Column Shuttering, Wall Putty"
+                    placeholder="उदा. प्लास्टर, कॉलम ढलाई, नींव खुदाई, वॉल पुट्टी"
                   />
                 </Grid>
 
-                {/* Work Contract Types */}
+                {/* कार्य वरीयता */}
                 <Grid size={{ xs: 12 }}>
-                  <Typography variant="caption" sx={{ fontWeight: 700, color: '#0F172A', display: 'block', mb: 0.5 }}>
-                    Work Preferences:
+                  <Typography variant="caption" sx={{ fontWeight: 800, color: '#0F172A', display: 'block', mb: 0.8 }}>
+                    कार्य अनुबंध प्राथमिकता:
                   </Typography>
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
                     {workTypeOptions.map(wt => (
@@ -274,35 +274,34 @@ export const WorkerRegistrationPage = () => {
                             color="secondary"
                           />
                         }
-                        label={<Typography variant="body2">{wt}</Typography>}
+                        label={<Typography variant="body2" sx={{ fontWeight: 600 }}>{wt}</Typography>}
                       />
                     ))}
                   </Box>
                 </Grid>
 
-                {/* Expected Wage */}
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Expected Daily Wage or Rate (optional)"
+                    label="अपेक्षित दैनिक मजदूरी दर (वैकल्पिक)"
                     fullWidth
+                    size="small"
                     value={formData.expectedWage}
                     onChange={(e) => setFormData(prev => ({ ...prev, expectedWage: e.target.value }))}
-                    placeholder="e.g. ₹950 / day or ₹45 / point"
+                    placeholder="उदा. ₹950 / दिन या ₹45 / प्वाइंट"
                   />
                 </Grid>
 
-                {/* Working Radius */}
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Working Radius (Km)"
+                    label="कार्य करने का अधिकतम दायरा (किमी)"
                     fullWidth
+                    size="small"
                     type="number"
                     value={formData.workingRadiusKm}
                     onChange={(e) => setFormData(prev => ({ ...prev, workingRadiusKm: e.target.value }))}
                   />
                 </Grid>
 
-                {/* Immediate Availability */}
                 <Grid size={{ xs: 12 }}>
                   <FormControlLabel
                     control={
@@ -312,20 +311,19 @@ export const WorkerRegistrationPage = () => {
                         color="success"
                       />
                     }
-                    label={<Typography variant="body2" sx={{ fontWeight: 600 }}>Available for immediate work</Typography>}
+                    label={<Typography variant="body2" sx={{ fontWeight: 700, color: '#16A34A' }}>तुरंत कार्य हेतु उपलब्ध हैं</Typography>}
                   />
                 </Grid>
 
-                {/* Short Bio */}
                 <Grid size={{ xs: 12 }}>
                   <TextField
-                    label="Short Introduction / Past Projects"
+                    label="संक्षिप्त परिचय / पिछले प्रोजेक्ट्स"
                     multiline
                     rows={3}
                     fullWidth
                     value={formData.bio}
                     onChange={(e) => setFormData(prev => ({ ...prev, bio: e.target.value }))}
-                    placeholder="Tell customers about your main specialty, how many helpers you have, or previous prominent buildings completed."
+                    placeholder="अपने अनुभव, सहायकों की टीम संख्या अथवा पिछले प्रमुख मकानों के बारे में बताएं..."
                   />
                 </Grid>
 
@@ -334,8 +332,8 @@ export const WorkerRegistrationPage = () => {
               <Divider sx={{ my: 3.5 }} />
 
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
-                <Button onClick={() => navigate(-1)} sx={{ color: '#64748B' }}>
-                  Cancel
+                <Button onClick={() => navigate(-1)} sx={{ color: '#64748B', fontWeight: 600 }}>
+                  रद्द करें
                 </Button>
                 <Button
                   type="submit"
@@ -343,15 +341,17 @@ export const WorkerRegistrationPage = () => {
                   startIcon={<Send size={18} />}
                   sx={{
                     bgcolor: '#EA580C',
-                    fontWeight: 700,
+                    color: '#FFF',
+                    fontWeight: 800,
                     px: 4,
-                    py: 1.3,
-                    borderRadius: 2.2,
-                    fontSize: '0.95rem',
+                    py: 1.25,
+                    borderRadius: 2,
+                    fontSize: '0.96rem',
+                    boxShadow: '0 4px 14px rgba(234, 88, 12, 0.4)',
                     '&:hover': { bgcolor: '#C2410C' }
                   }}
                 >
-                  Register Profile
+                  प्रोफाइल पंजीकृत करें
                 </Button>
               </Box>
 

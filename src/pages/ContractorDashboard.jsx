@@ -16,60 +16,59 @@ import {
   DialogActions,
   TextField,
   List,
-  ListItem,
-  Alert
+  ListItem
 } from '@mui/material';
 import {
   Building2,
   Users,
   HardHat,
   PlusCircle,
-  Clock,
-  CheckCircle2,
   MapPin,
-  Briefcase
+  Briefcase,
+  CheckCircle2
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 
 export const ContractorDashboard = () => {
   const { contractors, workers, showNotification } = useApp();
   const myContractor = contractors[0] || {
-    businessName: 'Sharma Constructions & Civil Works',
-    contactPerson: 'Er. Ashutosh Sharma',
-    city: 'Lucknow',
-    teamSize: '35 Workers & Mistris'
+    businessName: 'शर्मा कंस्ट्रक्शंस एवं सिविल वर्क्स',
+    contactPerson: 'ई. आशुतोष शर्मा',
+    city: 'लखनऊ',
+    teamSize: '35 कुशल कारीगर एवं मिस्त्री'
   };
 
-  // State for posting labour hiring requirement
+  // मजदूर भर्ती आवश्यकता स्टेट
   const [labourModalOpen, setLabourModalOpen] = useState(false);
   const [labourReq, setLabourReq] = useState({
-    skillNeeded: 'Raj Mistri & Masonry Helpers',
-    headcount: '6 Mistri + 10 Helpers',
-    siteLocation: 'Gomti Nagar Extension, Lucknow',
-    durationDays: '20 Days',
-    dailyRateOffered: '₹950 / Mistri & ₹500 / Helper'
+    skillNeeded: 'राज मिस्त्री एवं चिनाई हेल्पर',
+    headcount: '6 मिस्त्री + 10 हेल्पर',
+    siteLocation: 'गोमती नगर विस्तार, लखनऊ',
+    durationDays: '20 कार्य दिवस',
+    dailyRateOffered: '₹950 / मिस्त्री एवं ₹500 / हेल्पर'
   });
 
   const [activeHiringPosts, setActiveHiringPosts] = useState([
     {
       id: 'LBR-101',
-      skillNeeded: 'Bar Bending / Sariya Mistris',
-      headcount: '4 Mistris',
-      siteLocation: 'Shaheed Path Site, Lucknow',
-      durationDays: '12 Days',
-      dailyRateOffered: '₹900 / day',
+      skillNeeded: 'सरिया मोड़ाई / बार बेंडिंग मिस्त्री',
+      headcount: '4 कुशल मिस्त्री',
+      siteLocation: 'शहीद पथ साइट, लखनऊ',
+      durationDays: '12 दिन',
+      dailyRateOffered: '₹900 / दिन',
       applicantsCount: 6,
-      status: 'Actively Hiring'
+      status: 'भर्ती जारी है'
     },
     {
       id: 'LBR-102',
-      skillNeeded: 'Shuttering Carpenters',
-      headcount: '8 Workers',
-      siteLocation: 'Indiranagar Commercial Plaza',
-      durationDays: '15 Days',
-      dailyRateOffered: '₹900 / day',
+      skillNeeded: 'शटरिंग बढ़ई (कारपेंटर)',
+      headcount: '8 कारीगर',
+      siteLocation: 'इंदिरानगर कमर्शियल प्लाजा',
+      durationDays: '15 दिन',
+      dailyRateOffered: '₹900 / दिन',
       applicantsCount: 11,
-      status: 'Actively Hiring'
+      status: 'भर्ती जारी है'
     }
   ]);
 
@@ -79,18 +78,18 @@ export const ContractorDashboard = () => {
       id: `LBR-${Math.floor(100 + Math.random() * 900)}`,
       ...labourReq,
       applicantsCount: 0,
-      status: 'Actively Hiring'
+      status: 'भर्ती जारी है'
     };
     setActiveHiringPosts(prev => [newPost, ...prev]);
-    showNotification('Labour requirement posted! Nearby mistris will receive job alerts.', 'success');
+    showNotification('कारीगर आवश्यकता सफलतापूर्वक पोस्ट हुई! नजदीकी मिस्त्रियों को अलर्ट भेजा गया है।', 'success');
     setLabourModalOpen(false);
   };
 
   return (
-    <Box sx={{ py: 5, bgcolor: '#F8FAFC' }}>
-      <Container maxWidth="xl">
+    <Box sx={{ py: { xs: 3, md: 5 }, bgcolor: '#F8FAFC', minHeight: '85vh' }}>
+      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3 } }}>
         
-        {/* Header */}
+        {/* हेडर बैनर */}
         <Paper
           sx={{
             p: { xs: 2.5, sm: 3.5 },
@@ -102,10 +101,11 @@ export const ContractorDashboard = () => {
             justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: 2
+            gap: 2.5,
+            boxShadow: '0 10px 25px rgba(15, 23, 42, 0.15)'
           }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
             <Box
               sx={{
                 width: 60,
@@ -116,8 +116,7 @@ export const ContractorDashboard = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontWeight: 800,
-                fontSize: '1.5rem'
+                boxShadow: '0 4px 12px rgba(139, 92, 246, 0.4)'
               }}
             >
               <Building2 size={32} />
@@ -127,10 +126,10 @@ export const ContractorDashboard = () => {
                 {myContractor.businessName}
               </Typography>
               <Typography variant="body2" sx={{ color: '#C4B5FD', fontWeight: 600 }}>
-                Contractor: {myContractor.contactPerson} • Base: {myContractor.city}
+                ठेकेदार: {myContractor.contactPerson} • मुख्यालय: {myContractor.city}
               </Typography>
               <Typography variant="caption" sx={{ color: '#94A3B8' }}>
-                Core Team: {myContractor.teamSize} • Verified Civil Contracting License
+                कार्यकारी टीम: {myContractor.teamSize} • सत्यापित सिविल कंस्ट्रक्शन लाइसेंस
               </Typography>
             </Box>
           </Box>
@@ -141,45 +140,45 @@ export const ContractorDashboard = () => {
             startIcon={<PlusCircle size={18} />}
             sx={{ bgcolor: '#EA580C', fontWeight: 700, px: 3, py: 1.2, borderRadius: 2, '&:hover': { bgcolor: '#C2410C' } }}
           >
-            Hire Labour / Mistri Team
+            कारीगर / मिस्त्री टीम हायर करें
           </Button>
         </Paper>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={{ xs: 2.5, md: 3.5 }}>
           
-          {/* Active Construction Sites */}
+          {/* सक्रिय साइटें */}
           <Grid size={{ xs: 12, md: 7 }}>
-            <Typography variant="h5" sx={{ fontWeight: 800, color: '#0F172A', mb: 2 }}>
-              Active Construction Sites
+            <Typography variant="h5" sx={{ fontWeight: 800, color: '#0F172A', mb: 2, fontSize: { xs: '1.3rem', md: '1.5rem' } }}>
+              सक्रिय निर्माण साइटें
             </Typography>
 
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5, mb: 4 }}>
               {[
-                { title: 'G+2 Luxury Residential Duplex', location: 'Gomti Nagar, Sector 4', progress: 'Slab Shuttering & Steel Mesh', crew: '14 Workers active', budget: '₹42,00,000' },
-                { title: 'Commercial Retail Showroom Framing', location: 'Varanasi Ring Road', progress: 'Brick Masonry (1st Floor)', crew: '18 Workers active', budget: '₹75,00,000' }
+                { title: 'जी+2 लक्ज़री आवासीय डुप्लेक्स विला', location: 'गोमती नगर, सेक्टर 4', progress: 'स्लैब शटरिंग एवं सरिया जाल बाइंडिंग', crew: '14 कारीगर सक्रिय', budget: '₹42,00,000' },
+                { title: 'कमर्शियल रिटेल शोरूम स्ट्रक्चर निर्माण', location: 'वाराणसी रिंग रोड', progress: 'प्रथम तल ईंट चिनाई कार्य', crew: '18 कारीगर सक्रिय', budget: '₹75,00,000' }
               ].map((site, i) => (
-                <Card key={i} sx={{ borderRadius: 3, border: '1px solid #E2E8F0', bgcolor: '#FFF' }}>
-                  <CardContent sx={{ p: 2.5 }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
+                <Card key={i} sx={{ borderRadius: 3, border: '1px solid #E2E8F0', bgcolor: '#FFF', boxShadow: '0 4px 12px rgba(0,0,0,0.02)' }}>
+                  <CardContent sx={{ p: { xs: 2, sm: 2.5 } }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1, flexWrap: 'wrap', gap: 1 }}>
                       <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#0F172A' }}>
                         {site.title}
                       </Typography>
-                      <Chip label="In Execution" size="small" sx={{ bgcolor: '#DCFCE7', color: '#15803D', fontWeight: 700 }} />
+                      <Chip label="कार्य प्रगति पर" size="small" sx={{ bgcolor: '#DCFCE7', color: '#15803D', fontWeight: 700 }} />
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: '#64748B', fontSize: '0.85rem', mb: 1.5 }}>
                       <MapPin size={15} color="#EA580C" />
                       <span>{site.location}</span>
                     </Box>
                     <Typography variant="body2" sx={{ color: '#475569', mb: 2 }}>
-                      Current Milestone: <strong>{site.progress}</strong> • Assigned: {site.crew}
+                      वर्तमान माइलस्टोन: <strong>{site.progress}</strong> • तैनात टीम: {site.crew}
                     </Typography>
                     <Divider sx={{ mb: 1.5 }} />
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 1 }}>
                       <Typography variant="caption" sx={{ color: '#64748B' }}>
-                        Contract Value: <strong style={{ color: '#0F172A' }}>{site.budget}</strong>
+                        अनुबंध मूल्य: <strong style={{ color: '#0F172A' }}>{site.budget}</strong>
                       </Typography>
                       <Button size="small" sx={{ color: '#EA580C', fontWeight: 700 }}>
-                        Site Log & Daily Attendance →
+                        साइट लॉग एवं दैनिक हाजिरी देखें →
                       </Button>
                     </Box>
                   </CardContent>
@@ -187,29 +186,29 @@ export const ContractorDashboard = () => {
               ))}
             </Box>
 
-            {/* Labour Requirements Posted by Contractor */}
-            <Typography variant="h5" sx={{ fontWeight: 800, color: '#0F172A', mb: 2 }}>
-              Your Labour Hiring Posts
+            {/* ठेकेदार द्वारा पोस्ट की गई कारीगर भर्तियाँ */}
+            <Typography variant="h5" sx={{ fontWeight: 800, color: '#0F172A', mb: 2, fontSize: { xs: '1.3rem', md: '1.5rem' } }}>
+              आपकी कारीगर भर्ती पोस्ट्स
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               {activeHiringPosts.map((post) => (
                 <Card key={post.id} sx={{ borderRadius: 3, border: '1px solid #E2E8F0', bgcolor: '#FFF' }}>
-                  <CardContent sx={{ p: 2.5 }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                  <CardContent sx={{ p: { xs: 2, sm: 2.5 } }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1, flexWrap: 'wrap', gap: 1 }}>
                       <Typography variant="subtitle2" sx={{ fontWeight: 800, color: '#0F172A' }}>
                         {post.skillNeeded} ({post.headcount})
                       </Typography>
-                      <Chip label={post.status} size="small" sx={{ bgcolor: '#EFF6FF', color: '#1D4ED8', fontWeight: 600 }} />
+                      <Chip label={post.status} size="small" sx={{ bgcolor: '#EFF6FF', color: '#1D4ED8', fontWeight: 700 }} />
                     </Box>
                     <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 1 }}>
-                      📍 {post.siteLocation} • Duration: {post.durationDays} • Rate: {post.dailyRateOffered}
+                      📍 {post.siteLocation} • अवधि: {post.durationDays} • प्रस्तावित दर: {post.dailyRateOffered}
                     </Typography>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1.5, pt: 1, borderTop: '1px solid #F1F5F9' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1.5, pt: 1, borderTop: '1px solid #F1F5F9', flexWrap: 'wrap', gap: 1 }}>
                       <Typography variant="caption" sx={{ fontWeight: 700, color: '#16A34A' }}>
-                        {post.applicantsCount} Workers Applied
+                        {post.applicantsCount} कारीगरों ने आवेदन किया
                       </Typography>
-                      <Button size="small" variant="outlined" sx={{ borderColor: '#CBD5E1', color: '#0F172A' }}>
-                        Review Worker Applications
+                      <Button size="small" variant="outlined" sx={{ borderColor: '#CBD5E1', color: '#0F172A', fontWeight: 600 }}>
+                        आवेदनकर्ताओं की सूची देखें
                       </Button>
                     </Box>
                   </CardContent>
@@ -219,22 +218,22 @@ export const ContractorDashboard = () => {
 
           </Grid>
 
-          {/* Right Column: Team Roster & Fast Hire */}
+          {/* दायाँ कॉलम: टीम संसाधन एवं डायरेक्ट सोर्सिंग */}
           <Grid size={{ xs: 12, md: 5 }}>
             <Paper sx={{ p: 3, borderRadius: 3, bgcolor: '#FFF', border: '1px solid #E2E8F0', mb: 3 }}>
-              <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#0F172A', mb: 1 }}>
-                Contracting Team Resources
+              <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#0F172A', mb: 0.5 }}>
+                ठेकेदारी टीम एवं मशीनरी संसाधन
               </Typography>
               <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 2 }}>
-                Available workforce under Sharma Civil Works
+                शर्मा सिविल वर्क्स के तहत उपलब्ध कुल श्रम शक्ति
               </Typography>
               <List dense disablePadding>
                 {[
-                  { trade: 'Head Raj Mistris', count: '6 Permanent' },
-                  { trade: 'Bar Bending / Centering Masters', count: '4 Permanent' },
-                  { trade: 'Skilled Shuttering Carpenters', count: '8 On-call' },
-                  { trade: 'Masonry Labour & Helpers', count: '17 On-call' },
-                  { trade: 'Concrete Mixer & Centering Plates', count: '2 Machines + 5,000 sq.ft plates' }
+                  { trade: 'मुख्य हेड राज मिस्त्री', count: '6 स्थायी' },
+                  { trade: 'बार बेंडिंग / सेंटरिंग उस्ताद', count: '4 स्थायी' },
+                  { trade: 'कुशल शटरिंग बढ़ई', count: '8 ऑन-कॉल' },
+                  { trade: 'चिनाई लेबर व हेल्पर', count: '17 ऑन-कॉल' },
+                  { trade: 'कंक्रीट मिक्सर व शटरिंग प्लेट्स', count: '2 मशीन + 5,000 वर्ग फीट प्लेट' }
                 ].map((item, idx) => (
                   <ListItem key={idx} sx={{ px: 0, py: 1, borderBottom: '1px solid #F1F5F9', display: 'flex', justifyContent: 'space-between' }}>
                     <Typography variant="caption" sx={{ fontWeight: 600, color: '#334155' }}>
@@ -249,18 +248,18 @@ export const ContractorDashboard = () => {
             </Paper>
 
             <Paper sx={{ p: 3, borderRadius: 3, bgcolor: '#FFF', border: '1px solid #E2E8F0' }}>
-              <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#0F172A', mb: 1 }}>
-                Direct Sourcing Shortcuts
+              <Typography variant="subtitle1" sx={{ fontWeight: 800, color: '#0F172A', mb: 0.5 }}>
+                त्वरित सामग्री एवं कारीगर सोर्सिंग
               </Typography>
               <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 2 }}>
-                Source materials and sub-contractors on KaamSetu
+                कामसेतु मंच से सीधे सामग्री और सब-कांट्रैक्टर मंगाएं
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
                 <Button component={Link} to="/materials" variant="outlined" fullWidth sx={{ borderColor: '#CBD5E1', color: '#0F172A', fontWeight: 600 }}>
-                  Order Bulk Cement & Sariya
+                  थोक सीमेंट एवं TMT सरिया ऑर्डर करें
                 </Button>
                 <Button component={Link} to="/workers" variant="outlined" fullWidth sx={{ borderColor: '#CBD5E1', color: '#0F172A', fontWeight: 600 }}>
-                  Search Specialized Electricians
+                  स्पेशलिस्ट इलेक्ट्रीशियन व प्लंबर खोजें
                 </Button>
               </Box>
             </Paper>
@@ -269,60 +268,60 @@ export const ContractorDashboard = () => {
 
         </Grid>
 
-        {/* Modal: Post Labour Requirement */}
+        {/* मोडल: कारीगर भर्ती आवश्यकता पोस्ट करें */}
         <Dialog open={labourModalOpen} onClose={() => setLabourModalOpen(false)} maxWidth="sm" fullWidth>
-          <DialogTitle sx={{ fontWeight: 800 }}>
-            Post Labour Requirement for Project Site
+          <DialogTitle sx={{ fontWeight: 800, color: '#0F172A' }}>
+            साइट हेतु कारीगर / मिस्त्री आवश्यकता पोस्ट करें
           </DialogTitle>
           <form onSubmit={handlePostLabourReq}>
             <DialogContent dividers>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <TextField
-                  label="Specific Trade or Skill Needed *"
+                  label="आवश्यक हुनर / कारीगर श्रेणी *"
                   fullWidth
                   required
                   value={labourReq.skillNeeded}
                   onChange={(e) => setLabourReq(prev => ({ ...prev, skillNeeded: e.target.value }))}
-                  placeholder="e.g. Shuttering Carpenter & Sariya Helpers"
+                  placeholder="उदा. शटरिंग कारपेंटर एवं सरिया हेल्पर"
                 />
                 <TextField
-                  label="Required Headcount *"
+                  label="आवश्यक कारीगरों की संख्या *"
                   fullWidth
                   required
                   value={labourReq.headcount}
                   onChange={(e) => setLabourReq(prev => ({ ...prev, headcount: e.target.value }))}
-                  placeholder="e.g. 8 Mistri + 12 Helpers"
+                  placeholder="उदा. 8 मिस्त्री + 12 हेल्पर"
                 />
                 <TextField
-                  label="Construction Site Location *"
+                  label="निर्माण साइट का स्थान (इलाका / शहर) *"
                   fullWidth
                   required
                   value={labourReq.siteLocation}
                   onChange={(e) => setLabourReq(prev => ({ ...prev, siteLocation: e.target.value }))}
-                  placeholder="e.g. Shaheed Path, Sector 7, Lucknow"
+                  placeholder="उदा. शहीद पथ, सेक्टर 7, लखनऊ"
                 />
                 <TextField
-                  label="Work Duration (Days/Weeks) *"
+                  label="कार्य अवधि (दिन / सप्ताह) *"
                   fullWidth
                   required
                   value={labourReq.durationDays}
                   onChange={(e) => setLabourReq(prev => ({ ...prev, durationDays: e.target.value }))}
-                  placeholder="e.g. 15 Working Days"
+                  placeholder="उदा. 15 कार्य दिवस"
                 />
                 <TextField
-                  label="Daily Wage or Rate Offered *"
+                  label="प्रस्तावित दैनिक मजदूरी या दर *"
                   fullWidth
                   required
                   value={labourReq.dailyRateOffered}
                   onChange={(e) => setLabourReq(prev => ({ ...prev, dailyRateOffered: e.target.value }))}
-                  placeholder="e.g. ₹950/day (Mistri), ₹500/day (Helper)"
+                  placeholder="उदा. ₹950/दिन (मिस्त्री), ₹500/दिन (हेल्पर)"
                 />
               </Box>
             </DialogContent>
-            <DialogActions>
-              <Button onClick={() => setLabourModalOpen(false)}>Cancel</Button>
+            <DialogActions sx={{ p: 2 }}>
+              <Button onClick={() => setLabourModalOpen(false)} sx={{ color: '#64748B' }}>रद्द करें</Button>
               <Button type="submit" variant="contained" sx={{ bgcolor: '#EA580C', fontWeight: 700, '&:hover': { bgcolor: '#C2410C' } }}>
-                Broadcast to Workers
+                कारीगरों को जॉब अलर्ट भेजें
               </Button>
             </DialogActions>
           </form>

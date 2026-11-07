@@ -109,27 +109,28 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
   }).slice(0, 6);
 
   return (
-    <Box sx={{ pb: 8 }}>
+    <Box sx={{ pb: { xs: 4, md: 8 }, width: '100%', overflowX: 'hidden' }}>
       
-      {/* 1. हीरो सेक्शन (HERO SECTION WITH AI GENERATED IMAGE) */}
+      {/* 1. हीरो सेक्शन (HERO SECTION - 100% RESPONSIVE) */}
       <Box
         className="gradient-hero"
         sx={{
           color: '#FFFFFF',
-          pt: { xs: 5, md: 8 },
-          pb: { xs: 9, md: 12 },
+          pt: { xs: 4, sm: 6, md: 8 },
+          pb: { xs: 6, sm: 8, md: 11 },
           borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-          position: 'relative'
+          position: 'relative',
+          width: '100%'
         }}
       >
-        <Container maxWidth="xl">
-          <Grid container spacing={4} alignItems="center">
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
+          <Grid container spacing={{ xs: 3, md: 4 }} alignItems="center">
             
             {/* बायां हीरो कंटेंट */}
-            <Grid size={{ xs: 12, lg: 6.5 }}>
-              <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, bgcolor: 'rgba(234, 88, 12, 0.18)', border: '1px solid rgba(234, 88, 12, 0.45)', borderRadius: 5, px: 2, py: 0.8, mb: 3 }}>
+            <Grid size={{ xs: 12, lg: 7 }}>
+              <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, bgcolor: 'rgba(234, 88, 12, 0.18)', border: '1px solid rgba(234, 88, 12, 0.45)', borderRadius: 5, px: { xs: 1.5, sm: 2 }, py: 0.75, mb: { xs: 2, sm: 3 } }}>
                 <Sparkles size={16} color="#FB923C" />
-                <Typography variant="caption" sx={{ color: '#FED7AA', fontWeight: 800, letterSpacing: '0.04em' }}>
+                <Typography variant="caption" sx={{ color: '#FED7AA', fontWeight: 800, fontSize: { xs: '0.72rem', sm: '0.8rem' } }}>
                   भारत का समर्पित निर्माण, कारीगर एवं सामग्री मंच
                 </Typography>
               </Box>
@@ -137,16 +138,17 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
               <Typography
                 variant="h1"
                 sx={{
-                  fontSize: { xs: '2.2rem', sm: '3.1rem', md: '3.7rem' },
+                  fontSize: { xs: '1.95rem', sm: '2.75rem', md: '3.6rem' },
                   fontWeight: 800,
-                  lineHeight: 1.18,
-                  mb: 2.5,
+                  lineHeight: 1.2,
+                  mb: { xs: 2, sm: 2.5 },
                   letterSpacing: '-0.025em',
                   color: '#FFFFFF',
+                  wordBreak: 'break-word'
                 }}
               >
                 घर बनवाना हो या काम ढूँढना हो —{' '}
-                <span style={{ color: '#EA580C', position: 'relative', display: 'inline-block' }}>
+                <span style={{ color: '#EA580C', display: 'inline' }}>
                   सही लोग एक जगह।
                 </span>
               </Typography>
@@ -155,27 +157,28 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                 variant="body1"
                 sx={{
                   color: '#CBD5E1',
-                  fontSize: { xs: '1.02rem', md: '1.18rem' },
+                  fontSize: { xs: '0.96rem', sm: '1.08rem', md: '1.18rem' },
                   lineHeight: 1.65,
-                  mb: 4,
-                  maxWidth: 620,
+                  mb: { xs: 3, sm: 4 },
+                  maxWidth: 640,
                 }}
               >
                 मकान निर्माण और रिनोवेशन के लिए अनुभवी <strong>राज मिस्त्री</strong>, <strong>सिविल ठेकेदार</strong> और सीधे <strong>सामग्री सप्लायर</strong> खोजें। बिना बिचौलिये के सीधे फोन पर बात करें।
               </Typography>
 
               {/* एक्शन बटन */}
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, mb: 4.5 }}>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 1.5, sm: 2 }, mb: { xs: 3.5, sm: 4.5 } }}>
                 <Button
                   variant="contained"
                   size="large"
                   onClick={() => navigate('/workers')}
                   startIcon={<Users size={20} />}
                   sx={{
+                    width: { xs: '100%', sm: 'auto' },
                     bgcolor: '#EA580C',
                     fontWeight: 800,
                     fontSize: '0.98rem',
-                    py: 1.5,
+                    py: 1.4,
                     px: 3.5,
                     borderRadius: 2.5,
                     boxShadow: '0 8px 25px rgba(234, 88, 12, 0.45)',
@@ -191,11 +194,12 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                   onClick={() => navigate('/register-worker')}
                   startIcon={<HardHat size={20} />}
                   sx={{
+                    width: { xs: '100%', sm: 'auto' },
                     color: '#FFFFFF',
                     borderColor: 'rgba(255, 255, 255, 0.35)',
                     fontWeight: 700,
                     fontSize: '0.98rem',
-                    py: 1.5,
+                    py: 1.4,
                     px: 3,
                     borderRadius: 2.5,
                     backdropFilter: 'blur(8px)',
@@ -213,11 +217,13 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                   onClick={onOpenPostModal || (() => navigate('/post-requirement'))}
                   startIcon={<FileText size={18} />}
                   sx={{
+                    width: { xs: '100%', sm: 'auto' },
                     color: '#FDBA74',
                     textDecoration: 'underline',
                     fontWeight: 700,
-                    fontSize: '0.95rem',
+                    fontSize: '0.92rem',
                     textTransform: 'none',
+                    py: { xs: 0.5, sm: 1 },
                     '&:hover': { color: '#FED7AA', bgcolor: 'transparent' }
                   }}
                 >
@@ -225,47 +231,46 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                 </Button>
               </Box>
 
-              {/* प्लेटफॉर्म आँकड़े */}
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3.5, pt: 2.5, borderTop: '1px solid rgba(255, 255, 255, 0.12)' }}>
-                <Box>
-                  <Typography variant="h4" sx={{ fontWeight: 900, color: '#FFFFFF', lineHeight: 1 }}>
+              {/* प्लेटफॉर्म आँकड़े (रेस्पॉन्सिव 3-कॉलम ग्रिड) */}
+              <Grid container spacing={2} sx={{ pt: 2.5, borderTop: '1px solid rgba(255, 255, 255, 0.12)' }}>
+                <Grid size={{ xs: 4, sm: 4 }}>
+                  <Typography variant="h4" sx={{ fontWeight: 900, color: '#FFFFFF', fontSize: { xs: '1.4rem', sm: '1.9rem', md: '2.2rem' }, lineHeight: 1 }}>
                     4,500+
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#94A3B8', fontWeight: 600 }}>
-                    सत्यापित कुशल कारीगर
+                  <Typography variant="caption" sx={{ color: '#94A3B8', fontWeight: 700, fontSize: { xs: '0.68rem', sm: '0.78rem' }, display: 'block', mt: 0.5 }}>
+                    सत्यापित कारीगर
                   </Typography>
-                </Box>
-                <Box sx={{ width: 1, height: 36, bgcolor: 'rgba(255, 255, 255, 0.18)' }} />
-                <Box>
-                  <Typography variant="h4" sx={{ fontWeight: 900, color: '#EA580C', lineHeight: 1 }}>
+                </Grid>
+                <Grid size={{ xs: 4, sm: 4 }}>
+                  <Typography variant="h4" sx={{ fontWeight: 900, color: '#EA580C', fontSize: { xs: '1.4rem', sm: '1.9rem', md: '2.2rem' }, lineHeight: 1 }}>
                     1,200+
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#94A3B8', fontWeight: 600 }}>
-                    सक्रिय प्रोजेक्ट पूछताछ
+                  <Typography variant="caption" sx={{ color: '#94A3B8', fontWeight: 700, fontSize: { xs: '0.68rem', sm: '0.78rem' }, display: 'block', mt: 0.5 }}>
+                    सक्रिय पूछताछ
                   </Typography>
-                </Box>
-                <Box sx={{ width: 1, height: 36, bgcolor: 'rgba(255, 255, 255, 0.18)' }} />
-                <Box>
-                  <Typography variant="h4" sx={{ fontWeight: 900, color: '#38BDF8', lineHeight: 1 }}>
+                </Grid>
+                <Grid size={{ xs: 4, sm: 4 }}>
+                  <Typography variant="h4" sx={{ fontWeight: 900, color: '#38BDF8', fontSize: { xs: '1.4rem', sm: '1.9rem', md: '2.2rem' }, lineHeight: 1 }}>
                     85+
                   </Typography>
-                  <Typography variant="caption" sx={{ color: '#94A3B8', fontWeight: 600 }}>
+                  <Typography variant="caption" sx={{ color: '#94A3B8', fontWeight: 700, fontSize: { xs: '0.68rem', sm: '0.78rem' }, display: 'block', mt: 0.5 }}>
                     शहर एवं जिले
                   </Typography>
-                </Box>
-              </Box>
+                </Grid>
+              </Grid>
 
             </Grid>
 
-            {/* दायां हीरो विज़ुअल (AI जनरेटेड इमेज एवं फ्लोटिंग कार्ड्स) */}
-            <Grid size={{ xs: 12, lg: 5.5 }}>
+            {/* दायां हीरो विज़ुअल (AI जनरेटेड इमेज एवं रेस्पॉन्सिव कार्ड्स) */}
+            <Grid size={{ xs: 12, lg: 5 }}>
               <Box
                 sx={{
                   position: 'relative',
-                  borderRadius: 4.5,
+                  borderRadius: { xs: 3.5, sm: 4.5 },
                   overflow: 'hidden',
-                  boxShadow: '0 24px 50px rgba(0,0,0,0.5)',
-                  border: '1.5px solid rgba(255, 255, 255, 0.15)'
+                  boxShadow: '0 20px 45px rgba(0,0,0,0.45)',
+                  border: '1.5px solid rgba(255, 255, 255, 0.15)',
+                  mt: { xs: 1, lg: 0 }
                 }}
               >
                 {/* AI जनरेटेड हीरो इमेज */}
@@ -275,7 +280,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                   alt="कुशल भारतीय राज मिस्त्री - मंगलम विश्वकर्मा"
                   sx={{
                     width: '100%',
-                    height: { xs: 340, sm: 420, md: 460 },
+                    height: { xs: 260, sm: 360, md: 440 },
                     objectFit: 'cover',
                     display: 'block'
                   }}
@@ -286,12 +291,12 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                   sx={{
                     position: 'absolute',
                     inset: 0,
-                    background: 'linear-gradient(180deg, rgba(15,23,42,0.15) 0%, rgba(15,23,42,0.85) 100%)'
+                    background: 'linear-gradient(180deg, rgba(15,23,42,0.1) 0%, rgba(15,23,42,0.85) 100%)'
                   }}
                 />
 
                 {/* शीर्ष सत्यापित बैज */}
-                <Box sx={{ position: 'absolute', top: 16, right: 16 }}>
+                <Box sx={{ position: 'absolute', top: { xs: 10, sm: 16 }, right: { xs: 10, sm: 16 } }}>
                   <Chip
                     icon={<ShieldCheck size={14} color="#FFF" />}
                     label="100% भौतिक सत्यापित नेटवर्क"
@@ -299,42 +304,40 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                       bgcolor: '#16A34A',
                       color: '#FFF',
                       fontWeight: 800,
-                      fontSize: '0.74rem',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+                      fontSize: { xs: '0.68rem', sm: '0.74rem' },
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                      height: { xs: 24, sm: 28 }
                     }}
                   />
                 </Box>
 
                 {/* बॉटम फ्लोटिंग कार्ड */}
-                <Box sx={{ position: 'absolute', bottom: 16, left: 16, right: 16 }}>
+                <Box sx={{ position: 'absolute', bottom: { xs: 10, sm: 16 }, left: { xs: 10, sm: 16 }, right: { xs: 10, sm: 16 } }}>
                   <Box
                     sx={{
-                      p: 2,
-                      bgcolor: 'rgba(15, 23, 42, 0.88)',
+                      p: { xs: 1.25, sm: 2 },
+                      bgcolor: 'rgba(15, 23, 42, 0.92)',
                       backdropFilter: 'blur(12px)',
-                      borderRadius: 3,
+                      borderRadius: { xs: 2.5, sm: 3 },
                       border: '1px solid rgba(255, 255, 255, 0.16)'
                     }}
                   >
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.2 }}>
-                        <Box sx={{ width: 38, height: 38, borderRadius: '50%', bgcolor: '#EA580C', color: '#FFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800 }}>
+                        <Box sx={{ width: { xs: 32, sm: 38 }, height: { xs: 32, sm: 38 }, borderRadius: '50%', bgcolor: '#EA580C', color: '#FFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: { xs: '0.85rem', sm: '0.95rem' }, flexShrink: 0 }}>
                           रा
                         </Box>
-                        <Box>
-                          <Typography variant="subtitle2" sx={{ fontWeight: 800, color: '#FFF', lineHeight: 1.2 }}>
+                        <Box sx={{ overflow: 'hidden' }}>
+                          <Typography variant="subtitle2" sx={{ fontWeight: 800, color: '#FFF', lineHeight: 1.2, fontSize: { xs: '0.82rem', sm: '0.92rem' } }}>
                             रामेश्वर "रमेश" यादव
                           </Typography>
-                          <Typography variant="caption" sx={{ color: '#FED7AA', fontWeight: 700 }}>
+                          <Typography variant="caption" sx={{ color: '#FED7AA', fontWeight: 700, fontSize: { xs: '0.68rem', sm: '0.75rem' } }}>
                             सीनियर राज मिस्त्री • 14 वर्ष अनुभव
                           </Typography>
                         </Box>
                       </Box>
-                      <Chip size="small" label="तुरंत उपलब्ध" sx={{ bgcolor: '#DCFCE7', color: '#15803D', fontWeight: 800, fontSize: '0.68rem', height: 22 }} />
+                      <Chip size="small" label="तुरंत उपलब्ध" sx={{ bgcolor: '#DCFCE7', color: '#15803D', fontWeight: 800, fontSize: '0.65rem', height: 22, flexShrink: 0 }} />
                     </Box>
-                    <Typography variant="caption" sx={{ color: '#CBD5E1', display: 'block' }}>
-                      📍 लखनऊ (गोमती नगर) • कॉलम बीम, नींव व ईंट चिनाई के विशेषज्ञ
-                    </Typography>
                   </Box>
                 </Box>
 
@@ -345,19 +348,19 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
         </Container>
       </Box>
 
-      {/* 2. त्वरित सर्च बार (QUICK SEARCH BAR) */}
-      <Container maxWidth="xl" sx={{ mt: -6, position: 'relative', zIndex: 10 }}>
+      {/* 2. त्वरित सर्च बार (QUICK SEARCH BAR - 100% RESPONSIVE) */}
+      <Container maxWidth="xl" sx={{ mt: { xs: 3, md: -6 }, position: 'relative', zIndex: 10, px: { xs: 2, sm: 3 } }}>
         <Paper
           elevation={5}
           sx={{
-            p: { xs: 2.5, sm: 3.5 },
-            borderRadius: 4,
+            p: { xs: 2, sm: 3.5 },
+            borderRadius: { xs: 3, sm: 4 },
             bgcolor: '#FFFFFF',
             border: '1px solid #E2E8F0',
             boxShadow: '0 16px 40px rgba(15, 23, 42, 0.12)',
           }}
         >
-          <Typography variant="subtitle1" sx={{ color: '#0F172A', fontWeight: 800, mb: 2, fontSize: '1rem', display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Typography variant="subtitle1" sx={{ color: '#0F172A', fontWeight: 800, mb: 2, fontSize: { xs: '0.92rem', sm: '1rem' }, display: 'flex', alignItems: 'center', gap: 1 }}>
             🔍 कुशल कारीगर, निर्माण सेवाएँ एवं सामग्री खोजें
           </Typography>
 
@@ -365,7 +368,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
             <Grid container spacing={2} alignItems="center">
               
               {/* कीवर्ड खोज */}
-              <Grid size={{ xs: 12, sm: 6, md: 3.5 }}>
+              <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                 <TextField
                   fullWidth
                   size="small"
@@ -404,7 +407,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
               </Grid>
 
               {/* शहर चुनें */}
-              <Grid size={{ xs: 12, sm: 6, md: 2.5 }}>
+              <Grid size={{ xs: 12, sm: 6, md: 3 }}>
                 <TextField
                   select
                   fullWidth
@@ -427,7 +430,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
               </Grid>
 
               {/* सर्च सबमिट बटन */}
-              <Grid size={{ xs: 12, sm: 6, md: 3 }}>
+              <Grid size={{ xs: 12, sm: 6, md: 2 }}>
                 <Button
                   type="submit"
                   variant="contained"
@@ -437,13 +440,13 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                     color: '#FFF',
                     fontWeight: 800,
                     py: 1.1,
-                    fontSize: '0.94rem',
+                    fontSize: '0.92rem',
                     borderRadius: 2,
                     boxShadow: '0 4px 14px rgba(234, 88, 12, 0.35)',
                     '&:hover': { bgcolor: '#C2410C' },
                   }}
                 >
-                  कारीगर व सामग्री खोजें
+                  खोजें
                 </Button>
               </Grid>
 
@@ -452,10 +455,10 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
 
           {/* ट्रेंडिंग सर्च टैग */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 2.2, flexWrap: 'wrap' }}>
-            <Typography variant="caption" sx={{ color: '#64748B', fontWeight: 700 }}>
+            <Typography variant="caption" sx={{ color: '#64748B', fontWeight: 700, fontSize: '0.74rem' }}>
               ट्रेंडिंग सर्च:
             </Typography>
-            {['राज मिस्त्री', 'हाउस पेंटर', 'इलेक्ट्रीशियन', 'सीपीवीसी प्लंबर', 'TMT सरिया 12mm', 'अल्ट्राटेक सीमेंट', 'विट्रिफाइड टाइल्स'].map(term => (
+            {['राज मिस्त्री', 'हाउस पेंटर', 'इलेक्ट्रीशियन', 'सीपीवीसी प्लंबर', 'TMT सरिया', 'अल्ट्राटेक सीमेंट'].map(term => (
               <Chip
                 key={term}
                 label={term}
@@ -466,7 +469,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                 }}
                 sx={{
                   height: 24,
-                  fontSize: '0.74rem',
+                  fontSize: '0.72rem',
                   bgcolor: '#F1F5F9',
                   color: '#334155',
                   fontWeight: 600,
@@ -480,13 +483,13 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
       </Container>
 
       {/* 3. कार्य श्रेणियां एक्सप्लोरर (CATEGORIES EXPLORER) */}
-      <Container maxWidth="xl" sx={{ mt: 8 }}>
+      <Container maxWidth="xl" sx={{ mt: { xs: 6, md: 9 }, px: { xs: 2, sm: 3 } }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: 3 }}>
           <Box>
             <Typography variant="overline" sx={{ color: '#EA580C', fontWeight: 800, letterSpacing: '0.06em' }}>
               कार्य श्रेणियां
             </Typography>
-            <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A' }}>
+            <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A', fontSize: { xs: '1.45rem', sm: '1.9rem', md: '2.2rem' } }}>
               निर्माण एवं ट्रेड श्रेणियां खोजें
             </Typography>
           </Box>
@@ -507,13 +510,14 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
             onChange={(e, val) => setSelectedCategoryGroup(val)}
             variant="scrollable"
             scrollButtons="auto"
+            allowScrollButtonsMobile
             sx={{
               '& .MuiTab-root': {
                 fontWeight: 700,
                 textTransform: 'none',
-                fontSize: '0.94rem',
+                fontSize: { xs: '0.84rem', sm: '0.94rem' },
                 minWidth: 'auto',
-                px: 2.5
+                px: { xs: 1.8, sm: 2.5 }
               },
               '& .Mui-selected': { color: '#EA580C !important' },
               '& .MuiTabs-indicator': { backgroundColor: '#EA580C', height: 3 }
@@ -525,15 +529,15 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
           </Tabs>
         </Box>
 
-        {/* चयनित ग्रुप कार्ड्स */}
-        <Grid container spacing={2}>
+        {/* चयनित ग्रुप कार्ड्स - रेस्पॉन्सिव ग्रिड */}
+        <Grid container spacing={{ xs: 1.5, sm: 2 }}>
           {WORKER_CATEGORIES[selectedCategoryGroup].items.map((cat) => (
-            <Grid key={cat.id} size={{ xs: 6, sm: 4, md: 3 }}>
+            <Grid key={cat.id} size={{ xs: 12, sm: 6, md: 3 }}>
               <Paper
                 className="interactive-card"
                 onClick={() => navigate(`/workers?category=${encodeURIComponent(cat.name)}`)}
                 sx={{
-                  p: 2.2,
+                  p: { xs: 1.75, sm: 2.2 },
                   borderRadius: 3,
                   cursor: 'pointer',
                   border: '1px solid #E2E8F0',
@@ -545,9 +549,9 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
               >
                 <Box
                   sx={{
-                    width: 46,
-                    height: 46,
-                    borderRadius: 2.5,
+                    width: 42,
+                    height: 42,
+                    borderRadius: 2,
                     bgcolor: 'rgba(234, 88, 12, 0.08)',
                     display: 'flex',
                     alignItems: 'center',
@@ -556,10 +560,10 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                     flexShrink: 0
                   }}
                 >
-                  <HardHat size={22} />
+                  <HardHat size={20} />
                 </Box>
                 <Box sx={{ overflow: 'hidden' }}>
-                  <Typography variant="subtitle2" sx={{ fontWeight: 800, color: '#0F172A', lineHeight: 1.3, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 800, color: '#0F172A', lineHeight: 1.3, whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden', fontSize: '0.9rem' }}>
                     {cat.name}
                   </Typography>
                   <Typography variant="caption" sx={{ color: '#64748B', fontWeight: 600 }}>
@@ -573,21 +577,21 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
       </Container>
 
       {/* 4. संपूर्ण निर्माण सेवाएँ (CONSTRUCTION SERVICES WITH AI PHOTOS) */}
-      <Box sx={{ bgcolor: '#F8FAFC', py: 9, mt: 9, borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
-        <Container maxWidth="xl">
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
+      <Box sx={{ bgcolor: '#F8FAFC', py: { xs: 6, md: 9 }, mt: { xs: 6, md: 9 }, borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3 } }}>
+          <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
             <Typography variant="overline" sx={{ color: '#EA580C', fontWeight: 800, letterSpacing: '0.06em' }}>
               सम्पूर्ण निर्माण सेवाएँ
             </Typography>
-            <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 1.5 }}>
+            <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 1.5, fontSize: { xs: '1.6rem', sm: '2.1rem', md: '2.6rem' } }}>
               टर्नकी एवं लेबर ठेका निर्माण सेवाएँ
             </Typography>
-            <Typography variant="body1" sx={{ color: '#64748B', maxWidth: 640, mx: 'auto', fontSize: '1.05rem' }}>
+            <Typography variant="body1" sx={{ color: '#64748B', maxWidth: 640, mx: 'auto', fontSize: { xs: '0.92rem', sm: '1.02rem' } }}>
               नींव खुदाई और ईंट चिनाई से लेकर मॉड्यूलर किचन, लक्ज़री पेंटिंग एवं वाटरप्रूफिंग तक के सम्पूर्ण समाधान।
             </Typography>
           </Box>
 
-          <Grid container spacing={3.5}>
+          <Grid container spacing={{ xs: 2.5, md: 3.5 }}>
             {services.slice(0, 6).map(service => (
               <Grid key={service.id} size={{ xs: 12, sm: 6, lg: 4 }}>
                 <ServiceCard
@@ -598,13 +602,13 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
             ))}
           </Grid>
 
-          <Box sx={{ textAlign: 'center', mt: 5 }}>
+          <Box sx={{ textAlign: 'center', mt: 4 }}>
             <Button
               component={Link}
               to="/services"
               variant="outlined"
               size="large"
-              sx={{ borderColor: '#CBD5E1', color: '#0F172A', fontWeight: 800, px: 4, py: 1.2, borderRadius: 2.5, '&:hover': { borderColor: '#0F172A', bgcolor: '#FFF' } }}
+              sx={{ borderColor: '#CBD5E1', color: '#0F172A', fontWeight: 800, px: 3.5, py: 1.2, borderRadius: 2.5, '&:hover': { borderColor: '#0F172A', bgcolor: '#FFF' } }}
             >
               सभी निर्माण सेवाएँ देखें →
             </Button>
@@ -613,16 +617,16 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
       </Box>
 
       {/* 5. प्रमुख कुशल कारीगर (FEATURED WORKERS & MISTRIS) */}
-      <Container maxWidth="xl" sx={{ my: 10 }}>
+      <Container maxWidth="xl" sx={{ my: { xs: 6, md: 10 }, px: { xs: 2, sm: 3 } }}>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: 3 }}>
           <Box>
             <Typography variant="overline" sx={{ color: '#EA580C', fontWeight: 800, letterSpacing: '0.06em' }}>
               अनुभवी कारीगर
             </Typography>
-            <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A' }}>
+            <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A', fontSize: { xs: '1.45rem', sm: '1.9rem', md: '2.2rem' } }}>
               शीर्ष रेटेड कुशल राज मिस्त्री एवं कारीगर
             </Typography>
-            <Typography variant="body2" sx={{ color: '#64748B', mt: 0.5 }}>
+            <Typography variant="body2" sx={{ color: '#64748B', mt: 0.5, fontSize: { xs: '0.85rem', sm: '0.92rem' } }}>
               अनुभव, दैनिक मजदूरी दर और तत्काल उपलब्धता के आधार पर सत्यापित प्रोफाइल्स।
             </Typography>
           </Box>
@@ -631,7 +635,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
             component={Link}
             to="/workers"
             endIcon={<ArrowRight size={18} />}
-            sx={{ color: '#EA580C', fontWeight: 800 }}
+            sx={{ color: '#EA580C', fontWeight: 800, display: { xs: 'none', sm: 'inline-flex' } }}
           >
             सभी कारीगर देखें
           </Button>
@@ -648,7 +652,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                 bgcolor: workerFilterTab === tab ? '#0F172A' : '#F1F5F9',
                 color: workerFilterTab === tab ? '#FFF' : '#334155',
                 fontWeight: 700,
-                fontSize: '0.82rem',
+                fontSize: '0.8rem',
                 cursor: 'pointer',
                 px: 1,
                 py: 2,
@@ -659,7 +663,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
           ))}
         </Box>
 
-        <Grid container spacing={3}>
+        <Grid container spacing={{ xs: 2.5, md: 3 }}>
           {filteredWorkers.map(worker => (
             <Grid key={worker.id} size={{ xs: 12, sm: 6, lg: 4 }}>
               <WorkerCard
@@ -672,17 +676,17 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
       </Container>
 
       {/* 6. निर्माण सामग्री मार्केटप्लेस (BUILDING MATERIALS MARKETPLACE) */}
-      <Box sx={{ bgcolor: '#F1F5F9', py: 9, borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
-        <Container maxWidth="xl">
+      <Box sx={{ bgcolor: '#F1F5F9', py: { xs: 6, md: 9 }, borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3 } }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: 4 }}>
             <Box>
               <Typography variant="overline" sx={{ color: '#EA580C', fontWeight: 800, letterSpacing: '0.06em' }}>
                 थोक एवं सीधे साइट डिलीवरी
               </Typography>
-              <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A' }}>
+              <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A', fontSize: { xs: '1.45rem', sm: '1.9rem', md: '2.2rem' } }}>
                 निर्माण सामग्री लाइव मंडी भाव
               </Typography>
-              <Typography variant="body2" sx={{ color: '#64748B', mt: 0.5 }}>
+              <Typography variant="body2" sx={{ color: '#64748B', mt: 0.5, fontSize: { xs: '0.85rem', sm: '0.92rem' } }}>
                 सीमेंट, TMT सरिया, शुद्ध बालू/मौरंग, गिट्टी, भट्ठा ईंट और टाइल्स के थोक सप्लायर।
               </Typography>
             </Box>
@@ -691,13 +695,13 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
               component={Link}
               to="/materials"
               endIcon={<ArrowRight size={18} />}
-              sx={{ color: '#EA580C', fontWeight: 800 }}
+              sx={{ color: '#EA580C', fontWeight: 800, display: { xs: 'none', sm: 'inline-flex' } }}
             >
               सभी सामग्री देखें
             </Button>
           </Box>
 
-          <Grid container spacing={3.5}>
+          <Grid container spacing={{ xs: 2.5, md: 3.5 }}>
             {materials.slice(0, 6).map(material => (
               <Grid key={material.id} size={{ xs: 12, sm: 6, lg: 4 }}>
                 <MaterialCard
@@ -711,62 +715,68 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
       </Box>
 
       {/* 7. पारदर्शी कार्य प्रक्रिया (HOW IT WORKS) */}
-      <Box sx={{ bgcolor: '#0F172A', color: '#FFF', py: 9 }}>
-        <Container maxWidth="xl">
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
+      <Box sx={{ bgcolor: '#0F172A', color: '#FFF', py: { xs: 6, md: 9 } }}>
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3 } }}>
+          <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
             <Typography variant="overline" sx={{ color: '#FB923C', fontWeight: 800, letterSpacing: '0.06em' }}>
               पारदर्शी कार्य प्रक्रिया
             </Typography>
-            <Typography variant="h3" sx={{ fontWeight: 800, color: '#FFFFFF', mb: 1.5 }}>
+            <Typography variant="h3" sx={{ fontWeight: 800, color: '#FFFFFF', mb: 1.5, fontSize: { xs: '1.6rem', sm: '2.1rem', md: '2.6rem' } }}>
               मंगलम विश्वकर्मा कैसे काम करता है
             </Typography>
-            <Typography variant="body1" sx={{ color: '#94A3B8', maxWidth: 650, mx: 'auto', fontSize: '1.05rem' }}>
+            <Typography variant="body1" sx={{ color: '#94A3B8', maxWidth: 650, mx: 'auto', fontSize: { xs: '0.92rem', sm: '1.02rem' } }}>
               भारतीय निर्माण स्थलों की वास्तविक जरूरतों को ध्यान में रखकर बनाया गया एक भरोसेमंद और सीधा मंच।
             </Typography>
 
             {/* रोल स्विच टैब्स */}
-            <Box sx={{ display: 'inline-flex', bgcolor: 'rgba(255, 255, 255, 0.06)', p: 0.6, borderRadius: 3, mt: 3.5, border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 1, mt: 3 }}>
               <Button
-                variant={howItWorksTab === 0 ? 'contained' : 'text'}
+                variant={howItWorksTab === 0 ? 'contained' : 'outlined'}
                 onClick={() => setHowItWorksTab(0)}
                 sx={{
-                  bgcolor: howItWorksTab === 0 ? '#EA580C' : 'transparent',
+                  bgcolor: howItWorksTab === 0 ? '#EA580C' : 'rgba(255,255,255,0.05)',
                   color: '#FFF',
-                  borderRadius: 2.2,
-                  px: 2.5,
+                  borderColor: 'rgba(255,255,255,0.2)',
+                  borderRadius: 2,
+                  px: 2,
+                  py: 0.8,
                   fontWeight: 700,
-                  fontSize: '0.88rem',
-                  '&:hover': { bgcolor: howItWorksTab === 0 ? '#C2410C' : 'rgba(255,255,255,0.05)' }
+                  fontSize: '0.85rem',
+                  '&:hover': { bgcolor: howItWorksTab === 0 ? '#C2410C' : 'rgba(255,255,255,0.1)' }
                 }}
               >
                 1. घर मालिकों के लिए
               </Button>
               <Button
-                variant={howItWorksTab === 1 ? 'contained' : 'text'}
+                variant={howItWorksTab === 1 ? 'contained' : 'outlined'}
                 onClick={() => setHowItWorksTab(1)}
                 sx={{
-                  bgcolor: howItWorksTab === 1 ? '#EA580C' : 'transparent',
+                  bgcolor: howItWorksTab === 1 ? '#EA580C' : 'rgba(255,255,255,0.05)',
                   color: '#FFF',
-                  borderRadius: 2.2,
-                  px: 2.5,
+                  borderColor: 'rgba(255,255,255,0.2)',
+                  borderRadius: 2,
+                  px: 2,
+                  py: 0.8,
                   fontWeight: 700,
-                  fontSize: '0.88rem',
-                  '&:hover': { bgcolor: howItWorksTab === 1 ? '#C2410C' : 'rgba(255,255,255,0.05)' }
+                  fontSize: '0.85rem',
+                  '&:hover': { bgcolor: howItWorksTab === 1 ? '#C2410C' : 'rgba(255,255,255,0.1)' }
                 }}
               >
                 2. कुशल कारीगरों के लिए
               </Button>
               <Button
-                variant={howItWorksTab === 2 ? 'contained' : 'text'}
+                variant={howItWorksTab === 2 ? 'contained' : 'outlined'}
                 onClick={() => setHowItWorksTab(2)}
                 sx={{
-                  bgcolor: howItWorksTab === 2 ? '#EA580C' : 'transparent',
+                  bgcolor: howItWorksTab === 2 ? '#EA580C' : 'rgba(255,255,255,0.05)',
                   color: '#FFF',
-                  borderRadius: 2.2,
-                  px: 2.5,
+                  borderColor: 'rgba(255,255,255,0.2)',
+                  borderRadius: 2,
+                  px: 2,
+                  py: 0.8,
                   fontWeight: 700,
-                  fontSize: '0.88rem',
-                  '&:hover': { bgcolor: howItWorksTab === 2 ? '#C2410C' : 'rgba(255,255,255,0.05)' }
+                  fontSize: '0.85rem',
+                  '&:hover': { bgcolor: howItWorksTab === 2 ? '#C2410C' : 'rgba(255,255,255,0.1)' }
                 }}
               >
                 3. सामग्री सप्लायरों के लिए
@@ -776,7 +786,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
 
           {/* टैब 0: घर मालिक */}
           {howItWorksTab === 0 && (
-            <Grid container spacing={3}>
+            <Grid container spacing={2.5}>
               {[
                 { step: '01', title: 'आवश्यकता पोस्ट करें या खोजें', desc: 'अपने मकान का प्लॉट साइज, मंजिलें, आवश्यक मिस्त्री अथवा सामग्री दर्ज करें या सत्यापित सूची देखें।' },
                 { step: '02', title: 'सीधे कोटेशन व बातचीत', desc: 'स्थानीय सत्यापित मिस्त्री व ठेकेदार आपसे सीधे फोन पर बात करेंगे और साइट विजिट तय करेंगे।' },
@@ -785,13 +795,13 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
               ].map((item) => (
                 <Grid key={item.step} size={{ xs: 12, sm: 6, md: 3 }}>
                   <Box sx={{ p: 3, bgcolor: 'rgba(255, 255, 255, 0.04)', borderRadius: 3, border: '1px solid rgba(255, 255, 255, 0.08)', height: '100%' }}>
-                    <Typography variant="h3" sx={{ fontWeight: 900, color: '#EA580C', opacity: 0.9, mb: 1.5 }}>
+                    <Typography variant="h3" sx={{ fontWeight: 900, color: '#EA580C', opacity: 0.9, mb: 1.5, fontSize: '2rem' }}>
                       {item.step}
                     </Typography>
-                    <Typography variant="h6" sx={{ fontWeight: 800, color: '#FFF', mb: 1, fontSize: '1.05rem' }}>
+                    <Typography variant="h6" sx={{ fontWeight: 800, color: '#FFF', mb: 1, fontSize: '1.02rem' }}>
                       {item.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+                    <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '0.86rem' }}>
                       {item.desc}
                     </Typography>
                   </Box>
@@ -802,7 +812,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
 
           {/* टैब 1: कारीगर */}
           {howItWorksTab === 1 && (
-            <Grid container spacing={3}>
+            <Grid container spacing={2.5}>
               {[
                 { step: '01', title: 'निशुल्क प्रोफाइल बनाएं', desc: 'अपना नाम, मोबाइल और प्राथमिक हुनर (राज मिस्त्री, बढ़ई, इलेक्ट्रीशियन आदि) बिना किसी शुल्क के दर्ज करें।' },
                 { step: '02', title: 'अनुभव व कार्य क्षेत्र चुनें', desc: 'अपने शहर का कार्य क्षेत्र और दैनिक मजदूरी अथवा ठेके की प्राथमिकता सेट करें।' },
@@ -811,13 +821,13 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
               ].map((item) => (
                 <Grid key={item.step} size={{ xs: 12, sm: 6, md: 3 }}>
                   <Box sx={{ p: 3, bgcolor: 'rgba(255, 255, 255, 0.04)', borderRadius: 3, border: '1px solid rgba(255, 255, 255, 0.08)', height: '100%' }}>
-                    <Typography variant="h3" sx={{ fontWeight: 900, color: '#EA580C', opacity: 0.9, mb: 1.5 }}>
+                    <Typography variant="h3" sx={{ fontWeight: 900, color: '#EA580C', opacity: 0.9, mb: 1.5, fontSize: '2rem' }}>
                       {item.step}
                     </Typography>
-                    <Typography variant="h6" sx={{ fontWeight: 800, color: '#FFF', mb: 1, fontSize: '1.05rem' }}>
+                    <Typography variant="h6" sx={{ fontWeight: 800, color: '#FFF', mb: 1, fontSize: '1.02rem' }}>
                       {item.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+                    <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '0.86rem' }}>
                       {item.desc}
                     </Typography>
                   </Box>
@@ -828,7 +838,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
 
           {/* टैब 2: सप्लायर */}
           {howItWorksTab === 2 && (
-            <Grid container spacing={3}>
+            <Grid container spacing={2.5}>
               {[
                 { step: '01', title: 'स्टोर / डीलरशिप लिस्ट करें', desc: 'सीमेंट, सरिया, ईंट, रेत या अन्य सामग्रियों की श्रेणियां और डिलीवरी शहर जोड़ें।' },
                 { step: '02', title: 'थोक दरें एवं डिलीवरी क्षेत्र', desc: 'सीमेंट ब्रांड्स, TMT सरिया साइज और न्यूनतम डिलीवरी मात्रा प्रकाशित करें।' },
@@ -837,13 +847,13 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
               ].map((item) => (
                 <Grid key={item.step} size={{ xs: 12, sm: 6, md: 3 }}>
                   <Box sx={{ p: 3, bgcolor: 'rgba(255, 255, 255, 0.04)', borderRadius: 3, border: '1px solid rgba(255, 255, 255, 0.08)', height: '100%' }}>
-                    <Typography variant="h3" sx={{ fontWeight: 900, color: '#EA580C', opacity: 0.9, mb: 1.5 }}>
+                    <Typography variant="h3" sx={{ fontWeight: 900, color: '#EA580C', opacity: 0.9, mb: 1.5, fontSize: '2rem' }}>
                       {item.step}
                     </Typography>
-                    <Typography variant="h6" sx={{ fontWeight: 800, color: '#FFF', mb: 1, fontSize: '1.05rem' }}>
+                    <Typography variant="h6" sx={{ fontWeight: 800, color: '#FFF', mb: 1, fontSize: '1.02rem' }}>
                       {item.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6 }}>
+                    <Typography variant="body2" sx={{ color: '#94A3B8', lineHeight: 1.6, fontSize: '0.86rem' }}>
                       {item.desc}
                     </Typography>
                   </Box>
@@ -854,12 +864,12 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
         </Container>
       </Box>
 
-      {/* 8. संस्थापक की सीधी गारंटी एवं भरोसा (FOUNDER ASSURANCE BANNER) */}
-      <Container maxWidth="xl" sx={{ my: 9 }}>
+      {/* 8. संस्थापक की सीधी गारंटी एवं भरोसा (FOUNDER ASSURANCE BANNER - 100% RESPONSIVE) */}
+      <Container maxWidth="xl" sx={{ my: { xs: 6, md: 9 }, px: { xs: 2, sm: 3 } }}>
         <Paper
           sx={{
-            p: { xs: 3.5, sm: 5.5 },
-            borderRadius: 4.5,
+            p: { xs: 2.5, sm: 4, md: 5.5 },
+            borderRadius: { xs: 3.5, sm: 4.5 },
             background: 'linear-gradient(135deg, #090E17 0%, #0F172A 60%, #1E293B 100%)',
             color: '#FFF',
             border: '1.5px solid rgba(234, 88, 12, 0.35)',
@@ -868,25 +878,25 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
             overflow: 'hidden'
           }}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 3 }}>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'stretch', md: 'center' }, justifyContent: 'space-between', gap: 3 }}>
             <Box sx={{ maxWidth: 720 }}>
               <Chip
                 label="संस्थापक की सीधी निगरानी एवं गारंटी"
                 size="small"
                 sx={{ bgcolor: '#EA580C', color: '#FFF', fontWeight: 800, mb: 2, fontSize: '0.74rem' }}
               />
-              <Typography variant="h3" sx={{ fontWeight: 800, color: '#FFF', mb: 1.5, fontSize: { xs: '1.8rem', md: '2.4rem' } }}>
+              <Typography variant="h3" sx={{ fontWeight: 800, color: '#FFF', mb: 1.5, fontSize: { xs: '1.5rem', sm: '1.9rem', md: '2.4rem' } }}>
                 मंगलम विश्वकर्मा का भरोसा — संस्थापक का सीधा वचन
               </Typography>
-              <Typography variant="body1" sx={{ color: '#CBD5E1', mb: 3, lineHeight: 1.7, fontSize: '1.05rem' }}>
+              <Typography variant="body1" sx={{ color: '#CBD5E1', mb: 2.5, lineHeight: 1.7, fontSize: { xs: '0.92rem', sm: '1.05rem' } }}>
                 "हमारे मंच पर जुड़ने वाले हर राज मिस्त्री और कारीगर को अपनी मेहनत की पूरी मजदूरी मिलनी चाहिए — <strong>बिना किसी बिचौलिये या कमीशन के</strong>। किसी भी असुविधा, विवाद या पूछताछ के लिए आप सीधे मुझसे संपर्क कर सकते हैं।"
               </Typography>
-              <Typography variant="subtitle1" sx={{ color: '#FED7AA', fontWeight: 800 }}>
+              <Typography variant="subtitle1" sx={{ color: '#FED7AA', fontWeight: 800, fontSize: { xs: '0.9rem', sm: '1rem' } }}>
                 — अभिषेक मिश्रा (राका भैया) • मुख्य संस्थापक एवं प्रबंध संचालक
               </Typography>
             </Box>
 
-            <Box sx={{ bgcolor: 'rgba(255, 255, 255, 0.06)', p: 3, borderRadius: 3.5, border: '1px solid rgba(255, 255, 255, 0.12)', textAlign: 'center', minWidth: 260 }}>
+            <Box sx={{ bgcolor: 'rgba(255, 255, 255, 0.06)', p: { xs: 2, sm: 3 }, borderRadius: 3, border: '1px solid rgba(255, 255, 255, 0.12)', textAlign: 'center', minWidth: { xs: '100%', sm: 260 } }}>
               <Typography variant="caption" sx={{ color: '#94A3B8', fontWeight: 700, display: 'block', mb: 1 }}>
                 सीधा संपर्क / व्हाट्सएप:
               </Typography>
@@ -894,22 +904,23 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                 component="a"
                 href="tel:+918739000333"
                 variant="contained"
+                fullWidth
                 startIcon={<PhoneCall size={18} />}
                 sx={{
                   bgcolor: '#EA580C',
                   color: '#FFF',
                   fontWeight: 800,
-                  fontSize: '1rem',
-                  py: 1.4,
-                  px: 3,
-                  borderRadius: 2.5,
+                  fontSize: '0.96rem',
+                  py: 1.2,
+                  px: 2.5,
+                  borderRadius: 2,
                   boxShadow: '0 6px 20px rgba(234, 88, 12, 0.5)',
                   '&:hover': { bgcolor: '#C2410C' }
                 }}
               >
                 +91 8739000333
               </Button>
-              <Typography variant="caption" sx={{ color: '#4ADE80', fontWeight: 700, display: 'block', mt: 1.5 }}>
+              <Typography variant="caption" sx={{ color: '#4ADE80', fontWeight: 700, display: 'block', mt: 1.2 }}>
                 ✓ 24x7 सीधी सहायता उपलब्ध
               </Typography>
             </Box>
@@ -917,10 +928,10 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
         </Paper>
       </Container>
 
-      {/* 9. त्वरित आवश्यकता पोस्टिंग फॉर्म (INLINE REQUIREMENT FORM) */}
-      <Box sx={{ bgcolor: '#0B132B', color: '#FFF', py: 8 }}>
-        <Container maxWidth="xl">
-          <Grid container spacing={4} alignItems="center">
+      {/* 9. त्वरित आवश्यकता पोस्टिंग फॉर्म (INLINE REQUIREMENT FORM - 100% RESPONSIVE) */}
+      <Box sx={{ bgcolor: '#0B132B', color: '#FFF', py: { xs: 6, md: 8 } }}>
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3 } }}>
+          <Grid container spacing={{ xs: 3, md: 4 }} alignItems="center">
             
             <Grid size={{ xs: 12, md: 5 }}>
               <Chip
@@ -928,14 +939,14 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                 size="small"
                 sx={{ bgcolor: '#EA580C', color: '#FFF', fontWeight: 800, mb: 2 }}
               />
-              <Typography variant="h3" sx={{ fontWeight: 800, color: '#FFF', mb: 2 }}>
+              <Typography variant="h3" sx={{ fontWeight: 800, color: '#FFF', mb: 2, fontSize: { xs: '1.6rem', sm: '2.1rem', md: '2.6rem' } }}>
                 क्या आप नया मकान बनवा रहे हैं या काम ढूँढ रहे हैं?
               </Typography>
-              <Typography variant="body1" sx={{ color: '#CBD5E1', mb: 3, lineHeight: 1.7 }}>
+              <Typography variant="body1" sx={{ color: '#CBD5E1', mb: 3, lineHeight: 1.7, fontSize: { xs: '0.92rem', sm: '1rem' } }}>
                 अपनी आवश्यकता दर्ज करें — चाहे आपको छत ढलाई के लिए 6 राज मिस्त्री चाहिए हों, पूरे घर की पेंटिंग करवानी हो, या 10 टन सरिया की आवश्यकता हो।
               </Typography>
 
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
                 {[
                   'त्वरित सन्दर्भ संख्या (रेफरेंस आईडी) प्राप्त होती है',
                   'आपके स्थानीय क्षेत्र के सत्यापित कारीगरों से सीधा मिलान',
@@ -943,8 +954,8 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                   'कारीगरों की मजदूरी से शून्य कमीशन'
                 ].map((feat, i) => (
                   <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                    <CheckCircle2 size={18} color="#EA580C" />
-                    <Typography variant="body2" sx={{ color: '#E2E8F0', fontWeight: 600 }}>
+                    <CheckCircle2 size={18} color="#EA580C" style={{ flexShrink: 0 }} />
+                    <Typography variant="body2" sx={{ color: '#E2E8F0', fontWeight: 600, fontSize: '0.88rem' }}>
                       {feat}
                     </Typography>
                   </Box>
@@ -956,8 +967,8 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
             <Grid size={{ xs: 12, md: 7 }}>
               <Paper
                 sx={{
-                  p: { xs: 2.5, sm: 3.5 },
-                  borderRadius: 4,
+                  p: { xs: 2, sm: 3.5 },
+                  borderRadius: { xs: 3, sm: 4 },
                   bgcolor: '#FFFFFF',
                   color: '#0F172A',
                   boxShadow: '0 16px 40px rgba(0,0,0,0.3)'
@@ -965,17 +976,17 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
               >
                 {quickReqSuccess ? (
                   <Box sx={{ py: 3, textAlign: 'center' }}>
-                    <Box sx={{ width: 60, height: 60, borderRadius: '50%', bgcolor: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
-                      <CheckCircle2 size={34} />
+                    <Box sx={{ width: 56, height: 56, borderRadius: '50%', bgcolor: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
+                      <CheckCircle2 size={32} />
                     </Box>
-                    <Typography variant="h5" sx={{ fontWeight: 800, mb: 1 }}>
+                    <Typography variant="h5" sx={{ fontWeight: 800, mb: 1, fontSize: '1.25rem' }}>
                       आवश्यकता सफलतापूर्वक दर्ज हुई!
                     </Typography>
-                    <Typography variant="body2" sx={{ color: '#64748B', mb: 2 }}>
+                    <Typography variant="body2" sx={{ color: '#64748B', mb: 1.5 }}>
                       आपकी संदर्भ संख्या:
                     </Typography>
-                    <Chip label={quickReqSuccess} sx={{ bgcolor: '#0F172A', color: '#EA580C', fontWeight: 800, fontSize: '1.1rem', py: 2.5, mb: 3 }} />
-                    <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+                    <Chip label={quickReqSuccess} sx={{ bgcolor: '#0F172A', color: '#EA580C', fontWeight: 800, fontSize: '1rem', py: 2.2, mb: 2.5 }} />
+                    <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'center', gap: 1.5 }}>
                       <Button
                         variant="contained"
                         onClick={() => navigate('/dashboard/customer')}
@@ -986,7 +997,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                       <Button
                         variant="outlined"
                         onClick={() => setQuickReqSuccess(null)}
-                        sx={{ borderColor: '#CBD5E1', color: '#0F172A' }}
+                        sx={{ borderColor: '#CBD5E1', color: '#0F172A', fontWeight: 700 }}
                       >
                         दूसरी आवश्यकता पोस्ट करें
                       </Button>
@@ -994,7 +1005,7 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                   </Box>
                 ) : (
                   <form onSubmit={handleQuickReqSubmit}>
-                    <Typography variant="h6" sx={{ fontWeight: 800, mb: 2, color: '#0F172A' }}>
+                    <Typography variant="h6" sx={{ fontWeight: 800, mb: 2, color: '#0F172A', fontSize: '1.05rem' }}>
                       निशुल्क कोटेशन प्राप्त करें
                     </Typography>
 
@@ -1066,11 +1077,11 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
                       </Grid>
                     </Grid>
 
-                    <Box sx={{ mt: 2.5, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Box sx={{ mt: 2.5, display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'stretch', sm: 'center' }, gap: 1.5 }}>
                       <Button
                         size="small"
                         onClick={onOpenPostModal || (() => navigate('/post-requirement'))}
-                        sx={{ color: '#EA580C', fontWeight: 700, textTransform: 'none' }}
+                        sx={{ color: '#EA580C', fontWeight: 700, textTransform: 'none', justifyContent: { xs: 'center', sm: 'flex-start' } }}
                       >
                         विस्तृत फॉर्म खोलें →
                       </Button>
@@ -1100,20 +1111,20 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
       </Box>
 
       {/* 10. ग्राहक एवं कारीगर अनुभव (TESTIMONIALS) */}
-      <Container maxWidth="xl" sx={{ my: 10 }}>
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
+      <Container maxWidth="xl" sx={{ my: { xs: 6, md: 10 }, px: { xs: 2, sm: 3 } }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
           <Typography variant="overline" sx={{ color: '#EA580C', fontWeight: 800, letterSpacing: '0.06em' }}>
             सच्चा अनुभव
           </Typography>
-          <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A', mb: 1 }}>
+          <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A', mb: 1, fontSize: { xs: '1.45rem', sm: '1.9rem', md: '2.2rem' } }}>
             कारीगरों और घर मालिकों की जुबानी
           </Typography>
-          <Typography variant="body2" sx={{ color: '#64748B' }}>
+          <Typography variant="body2" sx={{ color: '#64748B', fontSize: { xs: '0.85rem', sm: '0.92rem' } }}>
             मंगलम विश्वकर्मा मंच से जुड़े लोगों का वास्तविक अनुभव।
           </Typography>
         </Box>
 
-        <Grid container spacing={3}>
+        <Grid container spacing={{ xs: 2.5, md: 3 }}>
           {[
             {
               name: 'इंजीनियर आलोक श्रीवास्तव',
@@ -1135,16 +1146,16 @@ export const HomePage = ({ onOpenPostModal, onOpenQuoteModal }) => {
             }
           ].map((testi, idx) => (
             <Grid key={idx} size={{ xs: 12, md: 4 }}>
-              <Paper sx={{ p: 3.5, borderRadius: 3.5, border: '1px solid #E2E8F0', height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 2 }}>
+              <Paper sx={{ p: { xs: 2.5, sm: 3.5 }, borderRadius: 3.5, border: '1px solid #E2E8F0', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 1.5 }}>
                   {[...Array(testi.rating)].map((_, i) => (
                     <Star key={i} size={16} fill="#F59E0B" color="#F59E0B" />
                   ))}
                 </Box>
-                <Typography variant="body2" sx={{ color: '#334155', lineHeight: 1.7, mb: 3, flex: 1, fontStyle: 'italic' }}>
+                <Typography variant="body2" sx={{ color: '#334155', lineHeight: 1.7, mb: 2.5, flex: 1, fontStyle: 'italic', fontSize: '0.9rem' }}>
                   "{testi.text}"
                 </Typography>
-                <Box sx={{ borderTop: '1px solid #F1F5F9', pt: 2 }}>
+                <Box sx={{ borderTop: '1px solid #F1F5F9', pt: 1.5 }}>
                   <Typography variant="subtitle2" sx={{ fontWeight: 800, color: '#0F172A' }}>
                     {testi.name}
                   </Typography>

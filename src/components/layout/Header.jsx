@@ -359,6 +359,7 @@ export const Header = ({ onOpenPostModal }) => {
                 onClick={onOpenPostModal || (() => navigate('/post-requirement'))}
                 startIcon={<PlusCircle size={18} />}
                 sx={{
+                  display: { xs: 'none', sm: 'inline-flex' },
                   bgcolor: '#EA580C',
                   color: '#FFFFFF',
                   fontWeight: 700,

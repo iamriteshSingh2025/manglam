@@ -10,9 +10,7 @@ import {
   Button,
   Alert,
   Chip,
-  Divider,
-  FormControlLabel,
-  Checkbox
+  Divider
 } from '@mui/material';
 import { Truck, CheckCircle2, Send, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -29,11 +27,11 @@ export const SupplierRegistrationPage = () => {
     phone: '',
     email: '',
     location: '',
-    city: 'Lucknow',
-    deliveryLocationsText: 'Lucknow, Unnao, Barabanki',
-    materialCategoriesText: 'Cement, Sand / Balu, Aggregate / Gitti, Steel / Sariya',
-    pricingModel: 'Wholesale Mandi & Site Delivery',
-    minOrderQty: '50 Bags / 1 Truckload',
+    city: 'लखनऊ (Lucknow)',
+    deliveryLocationsText: 'लखनऊ, उन्नाव, बाराबंकी, सीतापुर',
+    materialCategoriesText: 'सीमेंट, सरिया / स्टील, बालू / मौरंग, गिट्टी',
+    pricingModel: 'थोक मंडी दर एवं सीधे साइट डिलीवरी',
+    minOrderQty: '50 बोरी / 1 डंपर / 1 टन',
   });
 
   const [registered, setRegistered] = useState(null);
@@ -41,7 +39,7 @@ export const SupplierRegistrationPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.businessName || !formData.contactPerson || !formData.phone) {
-      alert('Please fill business name, contact person, and phone number.');
+      alert('कृपया अपनी दुकान/फर्म का नाम, संपर्क व्यक्ति और फोन नंबर भरें।');
       return;
     }
 
@@ -61,32 +59,32 @@ export const SupplierRegistrationPage = () => {
     <Box sx={{ py: 6, bgcolor: '#F8FAFC' }}>
       <Container maxWidth="md">
         
-        {/* Header */}
+        {/* हेडर */}
         <Box sx={{ textAlign: 'center', mb: 4 }}>
-          <Box sx={{ width: 52, height: 52, borderRadius: 3, bgcolor: '#38BDF8', color: '#0F172A', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
+          <Box sx={{ width: 54, height: 54, borderRadius: 3, bgcolor: '#0F172A', color: '#38BDF8', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2, boxShadow: '0 6px 18px rgba(15, 23, 42, 0.25)' }}>
             <Truck size={28} />
           </Box>
-          <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 1 }}>
-            Building Material Supplier Registration
+          <Typography variant="h3" sx={{ fontWeight: 800, color: '#0F172A', mb: 1, fontSize: { xs: '1.8rem', md: '2.4rem' } }}>
+            निर्माण सामग्री सप्लायर पंजीकरण
           </Typography>
-          <Typography variant="h6" sx={{ color: '#EA580C', fontWeight: 600, mb: 1 }}>
-            “Apne Construction Business Ko Naye Customers Tak Pahunchayein.”
+          <Typography variant="h6" sx={{ color: '#EA580C', fontWeight: 800, mb: 1, fontSize: '1.1rem' }}>
+            “अपने निर्माण सामग्री कारोबार को नए ग्राहकों तक पहुँचाएँ।”
           </Typography>
           <Typography variant="body2" sx={{ color: '#64748B', maxWidth: 620, mx: 'auto' }}>
-            List your store, dealership, or stockyard on KaamSetu. Receive verified purchase inquiries directly from homeowners, builders, and contractors.
+            अपनी दुकान, डीलरशिप या स्टॉकयार्ड को मंगलम विश्वकर्मा मंच पर सूचीबद्ध करें। सीधे घर मालिकों और ठेकेदारों से थोक खरीद पूछताछ पाएं।
           </Typography>
         </Box>
 
         {registered ? (
-          <Paper sx={{ p: 5, borderRadius: 4, textAlign: 'center', bgcolor: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)' }}>
-            <Box sx={{ width: 68, height: 68, borderRadius: '50%', bgcolor: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2 }}>
-              <CheckCircle2 size={38} />
+          <Paper sx={{ p: { xs: 3, sm: 5 }, borderRadius: 4, textAlign: 'center', bgcolor: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 8px 30px rgba(15, 23, 42, 0.05)' }}>
+            <Box sx={{ width: 72, height: 72, borderRadius: '50%', bgcolor: '#DCFCE7', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', mx: 'auto', mb: 2.5 }}>
+              <CheckCircle2 size={42} />
             </Box>
             <Typography variant="h4" sx={{ fontWeight: 800, color: '#0F172A', mb: 1 }}>
-              Supplier Business Registered!
+              सप्लायर फर्म पंजीकृत हुई!
             </Typography>
-            <Typography variant="body2" sx={{ color: '#64748B', maxWidth: 540, mx: 'auto', mb: 3 }}>
-              Your supplier profile for <strong>{registered.businessName}</strong> has been created. You can now manage your product catalogue and respond to material purchase quotations in the Supplier Dashboard.
+            <Typography variant="body2" sx={{ color: '#64748B', maxWidth: 540, mx: 'auto', mb: 3.5, lineHeight: 1.7 }}>
+              आपकी सप्लायर प्रोफाइल <strong>{registered.businessName}</strong> दर्ज कर ली गई है। आप अपने सप्लायर डैशबोर्ड में उत्पाद कैटलॉग व दैनिक दरें प्रबंधित कर सकते हैं।
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
               <Button
@@ -96,16 +94,16 @@ export const SupplierRegistrationPage = () => {
                   navigate('/dashboard/supplier');
                 }}
                 endIcon={<ArrowRight size={18} />}
-                sx={{ bgcolor: '#EA580C', fontWeight: 700, px: 3, py: 1.2, '&:hover': { bgcolor: '#C2410C' } }}
+                sx={{ bgcolor: '#EA580C', fontWeight: 800, px: 3.5, py: 1.2, borderRadius: 2, '&:hover': { bgcolor: '#C2410C' } }}
               >
-                Go to Supplier Dashboard
+                सप्लायर डैशबोर्ड खोलें
               </Button>
             </Box>
           </Paper>
         ) : (
-          <Paper sx={{ p: { xs: 3, sm: 5 }, borderRadius: 4, bgcolor: '#FFFFFF', border: '1px solid #E2E8F0' }}>
-            <Alert severity="info" sx={{ mb: 3.5, fontSize: '0.85rem' }}>
-              <strong>Zero Listing Deduction:</strong> Quote your prices directly to customers. KaamSetu does not own inventory or take commission on wholesale truckloads.
+          <Paper sx={{ p: { xs: 3, sm: 4.5 }, borderRadius: 4, bgcolor: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 8px 30px rgba(15, 23, 42, 0.05)' }}>
+            <Alert severity="success" icon={<ShieldCheck size={20} />} sx={{ mb: 3.5, fontSize: '0.86rem', borderRadius: 2.5 }}>
+              <strong>शून्य कटौती:</strong> ग्राहकों को सीधे अपनी दरें बताएं। मंगलम विश्वकर्मा थोक ट्रकलोड या सामग्री पर कोई कमीशन नहीं लेता।
             </Alert>
 
             <form onSubmit={handleSubmit}>
@@ -113,42 +111,46 @@ export const SupplierRegistrationPage = () => {
                 
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Business / Trade Dealership Name *"
+                    label="डीलरशिप / फर्म का नाम *"
                     fullWidth
                     required
+                    size="small"
                     value={formData.businessName}
                     onChange={(e) => setFormData(prev => ({ ...prev, businessName: e.target.value }))}
-                    placeholder="e.g. Kashi Steel & Cement Traders"
+                    placeholder="उदा. काशी स्टील एवं सीमेंट ट्रेडर्स"
                   />
                 </Grid>
 
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Contact Person Name *"
+                    label="संपर्क व्यक्ति का नाम *"
                     fullWidth
                     required
+                    size="small"
                     value={formData.contactPerson}
                     onChange={(e) => setFormData(prev => ({ ...prev, contactPerson: e.target.value }))}
-                    placeholder="e.g. Ramesh Keshari"
+                    placeholder="उदा. रमेश केशरी"
                   />
                 </Grid>
 
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Phone Number *"
+                    label="मोबाइल नंबर *"
                     fullWidth
                     required
+                    size="small"
                     value={formData.phone}
                     onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                    placeholder="+91 98XXX XXXXX"
+                    placeholder="उदा. 98390 XXXXX"
                   />
                 </Grid>
 
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Business Email (optional)"
+                    label="ईमेल (वैकल्पिक)"
                     fullWidth
                     type="email"
+                    size="small"
                     value={formData.email}
                     onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                     placeholder="sales@dealership.com"
@@ -158,9 +160,10 @@ export const SupplierRegistrationPage = () => {
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
                     select
-                    label="Primary Business City *"
+                    label="मुख्य व्यवसाय शहर *"
                     fullWidth
                     required
+                    size="small"
                     value={formData.city}
                     onChange={(e) => setFormData(prev => ({ ...prev, city: e.target.value }))}
                   >
@@ -172,52 +175,57 @@ export const SupplierRegistrationPage = () => {
 
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Store / Warehouse Location *"
+                    label="स्टोर / यार्ड का पता *"
                     fullWidth
                     required
+                    size="small"
                     value={formData.location}
                     onChange={(e) => setFormData(prev => ({ ...prev, location: e.target.value }))}
-                    placeholder="e.g. Transport Nagar, Yard #4"
+                    placeholder="उदा. ट्रांसपोर्ट नगर, यार्ड 4"
                   />
                 </Grid>
 
                 <Grid size={{ xs: 12 }}>
                   <TextField
-                    label="Delivery Cities & Coverage Area (comma separated)"
+                    label="डिलीवरी शहर एवं कवरेज क्षेत्र (अल्पविराम से अलग करें)"
                     fullWidth
+                    size="small"
                     value={formData.deliveryLocationsText}
                     onChange={(e) => setFormData(prev => ({ ...prev, deliveryLocationsText: e.target.value }))}
-                    placeholder="e.g. Lucknow, Unnao, Barabanki, Sitapur"
+                    placeholder="उदा. लखनऊ, उन्नाव, बाराबंकी, सीतापुर"
                   />
                 </Grid>
 
                 <Grid size={{ xs: 12 }}>
                   <TextField
-                    label="Material Categories Offered (comma separated)"
+                    label="उपलब्ध सामग्री श्रेणियां (अल्पविराम से अलग करें)"
                     fullWidth
+                    size="small"
                     value={formData.materialCategoriesText}
                     onChange={(e) => setFormData(prev => ({ ...prev, materialCategoriesText: e.target.value }))}
-                    placeholder="e.g. Cement, Steel / Sariya, Sand / Balu, Bricks, Tiles"
+                    placeholder="उदा. सीमेंट, सरिया / स्टील, बालू / मौरंग, ईंट, टाइल्स"
                   />
                 </Grid>
 
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Pricing Model"
+                    label="मूल्य निर्धारण मॉडल"
                     fullWidth
+                    size="small"
                     value={formData.pricingModel}
                     onChange={(e) => setFormData(prev => ({ ...prev, pricingModel: e.target.value }))}
-                    placeholder="e.g. Daily Mandi Rate / Wholesale Site Delivery"
+                    placeholder="उदा. दैनिक मंडी दर / सीधे साइट डिलीवरी"
                   />
                 </Grid>
 
                 <Grid size={{ xs: 12, sm: 6 }}>
                   <TextField
-                    label="Minimum Order Quantity (MOQ)"
+                    label="न्यूनतम ऑर्डर मात्रा (MOQ)"
                     fullWidth
+                    size="small"
                     value={formData.minOrderQty}
                     onChange={(e) => setFormData(prev => ({ ...prev, minOrderQty: e.target.value }))}
-                    placeholder="e.g. 50 Bags / 1 Tonne / 400 cft"
+                    placeholder="उदा. 50 बोरी / 1 टन / 400 cft"
                   />
                 </Grid>
 
@@ -226,8 +234,8 @@ export const SupplierRegistrationPage = () => {
               <Divider sx={{ my: 3.5 }} />
 
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
-                <Button onClick={() => navigate(-1)} sx={{ color: '#64748B' }}>
-                  Cancel
+                <Button onClick={() => navigate(-1)} sx={{ color: '#64748B', fontWeight: 600 }}>
+                  रद्द करें
                 </Button>
                 <Button
                   type="submit"
@@ -235,15 +243,17 @@ export const SupplierRegistrationPage = () => {
                   startIcon={<Send size={18} />}
                   sx={{
                     bgcolor: '#EA580C',
-                    fontWeight: 700,
+                    color: '#FFF',
+                    fontWeight: 800,
                     px: 4,
-                    py: 1.3,
-                    borderRadius: 2.2,
-                    fontSize: '0.95rem',
+                    py: 1.25,
+                    borderRadius: 2,
+                    fontSize: '0.96rem',
+                    boxShadow: '0 4px 14px rgba(234, 88, 12, 0.4)',
                     '&:hover': { bgcolor: '#C2410C' }
                   }}
                 >
-                  Register Supplier Business
+                  सप्लायर प्रोफाइल पंजीकृत करें
                 </Button>
               </Box>
 
